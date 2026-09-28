@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actualités — Azeroth Forge</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#080d0f;color:#eee8dc;font-family:Georgia,"Times New Roman",serif}
+a{color:inherit;text-decoration:none}
+header{height:92px;background:#080b0c;border-bottom:1px solid #765321;display:flex;align-items:center;padding:0 4%;gap:45px}
+.logo{font-size:28px;font-weight:bold;letter-spacing:1px;color:#f0c36b}
+.logo span{color:#fff0d0}
+.logo small{display:block;font:10px Arial,sans-serif;letter-spacing:2px;color:#9e9588;margin-top:3px}
+nav{display:flex;gap:30px;font:700 13px Arial,sans-serif}
+nav a:hover,nav a.active{color:#e8b957}
+.wrap{width:min(1180px,92%);margin:auto}
+.hero{padding:55px 0 30px;border-bottom:1px solid #2b302f}
+.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:2px;color:#d9a64d}
+h1{font-size:48px;margin:10px 0 12px}
+.hero p{max-width:720px;color:#aaa69f;font:15px/1.7 Arial,sans-serif}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:35px 0 70px}
+.article-card{display:grid;grid-template-columns:220px 1fr;min-height:190px;background:#111719;border:1px solid #403b32;transition:.2s}
+.article-card:hover{border-color:#b58a43;transform:translateY(-2px)}
+.article-card-img{background-size:cover;background-position:center;min-height:190px}
+.article-card-body{padding:20px 22px}
+.tag{display:inline-block;background:#d6a244;color:#111;padding:6px 10px;font:700 10px Arial,sans-serif;letter-spacing:.5px}
+.date{margin:13px 0 7px;color:#9b968d;font:12px Arial,sans-serif}
+h2{font-size:23px;line-height:1.1;margin:0 0 10px}
+.article-card p{margin:0 0 15px;color:#aaa69f;font:13px/1.5 Arial,sans-serif}
+.read{color:#e0ae58;font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:.7px}
+footer{border-top:1px solid #282d2c;padding:35px 0;color:#777;font:12px Arial,sans-serif}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+@media(max-width:620px){header{height:auto;padding:20px 4%;flex-wrap:wrap;gap:18px}nav{gap:15px;flex-wrap:wrap}.article-card{grid-template-columns:1fr}.article-card-img{min-height:180px}h1{font-size:38px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="../index.html">AZEROTH <span>FORGE</span><small>GUIDES · ACTUS · COMMUNAUTÉ</small></a>
+  <nav>
+    <a href="../index.html">ACCUEIL</a>
+    <a class="active" href="index.html">ACTUALITÉS</a>
+    <a href="../index.html#guides">GUIDES</a>
+    <a href="../index.html#talents">TALENTS</a>
+    <a href="../index.html#database">BASE DE DONNÉES</a>
+    <a href="../index.html#community">COMMUNAUTÉ</a>
+  </nav>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">AZEROTH FORGE · ACTUALITÉS</div>
+    <h1>Toutes les actualités</h1>
+    <p>Retrouvez ici les annonces, guides, patch notes et informations consacrés à World of Warcraft: Forever. Cette page accueillera les prochains articles au fur et à mesure de leur publication.</p>
+  </section>
+  <section class="grid">
+    
+<a class="article-card" href="mont-hyjal.html">
+  <div class="article-card-img" style="background-image:url('../assets/article-hyjal.jpg')"></div>
+  <div class="article-card-body">
+    <span class="tag">GUIDE</span>
+    <div class="date">28 septembre 2026</div>
+    <h2>Mont Hyjal : une nouvelle terre à explorer</h2>
+    <p>Découvrez la nouvelle zone, ses paysages, ses quêtes et ce qui vous attend à Hyjal.</p>
+    <span class="read">Lire l'article →</span>
+  </div>
+</a>
+
+<a class="article-card" href="campements.html">
+  <div class="article-card-img" style="background-image:url('../assets/article-campements.jpg')"></div>
+  <div class="article-card-body">
+    <span class="tag">SYSTÈMES</span>
+    <div class="date">28 septembre 2026</div>
+    <h2>Les campements : une nouvelle façon de jouer ensemble</h2>
+    <p>Tout savoir sur les campements et cette nouvelle manière de partager son aventure.</p>
+    <span class="read">Lire l'article →</span>
+  </div>
+</a>
+
+<a class="article-card" href="patchnotes-24-septembre.html">
+  <div class="article-card-img" style="background-image:url('../assets/article-beta.jpg')"></div>
+  <div class="article-card-body">
+    <span class="tag">PATCH NOTES</span>
+    <div class="date">24 septembre 2026</div>
+    <h2>Premier patch notes de la bêta : les changements à retenir</h2>
+    <p>Classes, systèmes, interface et corrections : les principaux changements du build du 24 septembre.</p>
+    <span class="read">Lire l'article →</span>
+  </div>
+</a>
+
+<a class="article-card" href="wow-forever.html">
+  <div class="article-card-img" style="background-image:url('../assets/article-wow-forever.jpg')"></div>
+  <div class="article-card-body">
+    <span class="tag">ANNONCE</span>
+    <div class="date">22 septembre 2026</div>
+    <h2>WoW Forever : tout ce qu’il faut savoir avant le lancement</h2>
+    <p>Dates, contenu, serveurs, nouveautés et informations essentielles avant la sortie.</p>
+    <span class="read">Lire l'article →</span>
+  </div>
+</a>
+  </section>
+</main>
+<footer><div class="wrap">Azeroth Forge · Guides · Actus · Communauté</div></footer>
+</body>
+</html>
