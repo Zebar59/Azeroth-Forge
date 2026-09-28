@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Azeroth Forge — World of Warcraft Forever</title>
+<meta name="description" content="Actualités, guides et outils pour World of Warcraft Forever.">
+<style>
+:root{--bg:#0b0f10;--p:#171c1d;--gold:#d59a3a;--gold2:#f0c36a;--text:#eee9df;--muted:#aaa59b;--line:#5b4224}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#304047,#0b0f10 65%);color:var(--text);font-family:Georgia,serif}a{color:inherit;text-decoration:none}.wrap{max-width:1450px;margin:auto;padding:0 30px}
+header{position:sticky;top:0;z-index:10;background:#080b0cf2;border-bottom:1px solid var(--line)}.nav{height:76px;display:flex;align-items:center;gap:25px}.brand{display:flex;gap:11px;align-items:center;min-width:275px}.mark{width:50px;height:50px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-size:25px}.brand b{font-size:26px;text-transform:uppercase}.brand span{color:var(--gold2)}.sub{font:10px Arial;color:#a69b89;letter-spacing:2px;margin-top:5px}nav{display:flex;gap:5px;flex:1}nav a{font:700 12px Arial;text-transform:uppercase;padding:13px 11px;border:1px solid transparent}nav a:hover{background:#261c10;border-color:#725025}.tools{display:flex;gap:8px}.round{width:40px;height:40px;border:1px solid #70542f;border-radius:50%;display:grid;place-items:center;color:#e9c47c}
+.hero{min-height:475px;display:grid;place-items:center;text-align:center;background:linear-gradient(90deg,#090d0e99,#090d0e18,#090d0e99),linear-gradient(0deg,#080b0ccc,transparent 55%),url("assets/hero-azeroth.jpg") center/cover;border-bottom:1px solid #79552a}.hero-inner{max-width:900px;padding:70px 20px}.eyebrow{font:13px Arial;letter-spacing:5px;color:#e0bc76}.hero h1{font-size:clamp(52px,7vw,92px);line-height:.85;text-transform:uppercase;margin:18px 0;text-shadow:0 5px 22px #000}.hero h1 span{color:var(--gold2)}.hero p{font-size:19px;line-height:1.5}.btn{display:inline-block;margin:6px;padding:14px 23px;border:1px solid #a36e2b;background:linear-gradient(#955f20,#5a3513);font:700 12px Arial;text-transform:uppercase}.btn.alt{background:#111617;border-color:#80603b}
+main{padding:28px 0 65px}.quick{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.quick a{min-height:110px;background:linear-gradient(#1b2122,#101415);border:1px solid #4b4030;border-radius:5px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;text-align:center}.quick a:hover{border-color:#a16c2b;transform:translateY(-2px)}.ico{font-size:28px;color:#e5bb69}.quick strong{font-size:15px}.quick small{font:11px Arial;color:#9e9a91}
+.head{display:flex;justify-content:space-between;align-items:end;margin:48px 0 16px}.head h2{margin:0;font-size:28px;text-transform:uppercase}.head a{font:12px Arial;color:#dcae60}.news{display:grid;grid-template-columns:1.55fr 1fr;gap:14px}.featured{min-height:365px;position:relative;overflow:hidden;background:linear-gradient(0deg,#080b0ddd,transparent 75%),url("assets/article-wow-forever.jpg") center/cover;border:1px solid #514532;border-radius:5px}.featured .content{position:absolute;bottom:0;padding:27px}.tag{display:inline-block;background:#d6a148;color:#17120b;padding:5px 9px;font:700 10px Arial;text-transform:uppercase}.date{font:11px Arial;color:#aaa198;margin:10px 0 6px}.featured h3{font-size:29px;line-height:1.03;margin:0 0 8px}.featured p{margin:0;color:#c8c1b6;line-height:1.5}.arrow{position:absolute;right:20px;bottom:20px;border:1px solid var(--gold);border-radius:50%;width:40px;height:40px;display:grid;place-items:center;font-size:22px;color:#e8bd68}.side{display:grid;gap:14px}.mini{min-height:112px;display:grid;grid-template-columns:145px 1fr;background:linear-gradient(145deg,#1b2021,#101415);border:1px solid #413a30;border-radius:5px;overflow:hidden}.mini-img{background-size:cover;background-position:center}.mini:nth-child(1) .mini-img{background-image:linear-gradient(#07101b33,#07101b55),url("assets/article-beta.jpg")}.mini:nth-child(2) .mini-img{background-image:linear-gradient(#1c130633,#1c130655),url("assets/article-hyjal.jpg")}.mini:nth-child(3) .mini-img{background-image:linear-gradient(#0a120833,#0a120855),url("assets/article-campements.jpg")}.mini-body{padding:15px}.mini h3{font-size:17px;line-height:1.1;margin:5px 0}
+.classes{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}.class{height:185px;position:relative;overflow:hidden;border:1px solid #4b4030;border-radius:5px;background:linear-gradient(0deg,#080b0c,transparent)}.class:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 25%,var(--c),transparent 50%);opacity:.4}.symbol{position:absolute;top:35px;left:0;right:0;text-align:center;font-size:43px;color:#ebc273}.label{position:absolute;bottom:0;left:0;right:0;padding:18px 8px;text-align:center;background:linear-gradient(transparent,#080b0c)}.label strong{display:block}.label small{font:10px Arial;color:#aaa}
+.toolrow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.toolcard{padding:25px;min-height:135px;border:1px solid #8a622f;background:linear-gradient(110deg,#1d2222,#101415)}.toolcard h3{margin:0 0 8px;font-size:23px}.toolcard p{margin:0;color:#aaa59c;font:14px Arial}
+.article{display:none}.article:target{display:block}.article:target~.home{display:none}.article-hero{height:400px;background:linear-gradient(0deg,#080b0ddd,transparent 75%),url("assets/article-wow-forever.jpg") center/cover;display:flex;align-items:end}.article-title{padding:38px 0}.article-title h1{font-size:clamp(40px,5vw,65px);line-height:.95;margin:8px 0}.article-title p{font-size:17px}.article-body{max-width:950px;margin:40px auto;font-size:17px;line-height:1.75}.article-body h2{font-size:31px;color:#f0d39a;margin-top:45px}.article-body h3{font-size:23px;color:#e9bd69;margin-top:28px}.article-body blockquote{margin:25px 0;padding:17px 20px;border-left:3px solid var(--gold);background:#171c1d}.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.fact{padding:17px;background:#171c1d;border:1px solid #493a28;text-align:center}.fact b{display:block;color:#efc16c}.fact small{font:11px Arial;color:#aaa}.back{color:#e2b764;font:700 12px Arial;text-transform:uppercase}
+footer{border-top:1px solid #4b3925;padding:32px 0 45px;font:12px Arial;color:#999}.foot{display:flex;justify-content:space-between}.foot b{color:#e3c27d}
+@media(max-width:1120px){.quick{grid-template-columns:repeat(4,1fr)}.classes{grid-template-columns:repeat(4,1fr)}nav a:nth-child(n+5){display:none}}@media(max-width:760px){.wrap{padding:0 16px}.brand{min-width:auto}.brand b{font-size:20px}.sub{display:none}nav{display:none}.hero{min-height:430px}.quick{grid-template-columns:repeat(2,1fr)}.news{grid-template-columns:1fr}.classes{grid-template-columns:repeat(2,1fr)}.toolrow{grid-template-columns:1fr}.foot{flex-direction:column;gap:18px}.facts{grid-template-columns:repeat(2,1fr)}.article-body{font-size:16px}}
+
+.countdown{margin:22px auto 0;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.countdown .unit{min-width:82px;padding:10px 12px;background:rgba(7,10,11,.76);border:1px solid #80602f;box-shadow:0 5px 18px #0008}
+.countdown strong{display:block;font-size:28px;color:#efc56f;line-height:1}
+.countdown small{display:block;margin-top:5px;font:10px Arial,sans-serif;letter-spacing:1.5px;color:#c8c0b3;text-transform:uppercase}
+.countdown.live{font-size:18px;color:#efc56f;font-family:Arial,sans-serif}
+.article-body .tip{padding:18px 20px;background:#171c1d;border:1px solid #624825;border-left:3px solid #d49a3d;margin:25px 0}
+
+</style>
+
+<style>
+.patch-card .mini-img{background-image:url('assets/article-beta.jpg');background-size:cover;background-position:center}
+</style>
+
+
+<style>
+.news-list .hyjal-card .mini-img,
+.news .hyjal-card .mini-img{
+  background-image:url('assets/article-hyjal.jpg') !important;
+  background-size:cover !important;background-position:center !important;
+}
+.news-list .camp-card .mini-img,
+.news .camp-card .mini-img{
+  background-image:url('assets/article-campements.jpg') !important;
+  background-size:cover !important;background-position:center !important;
+}
+.news-list .patch-card .mini-img,
+.news .patch-card .mini-img{
+  background-image:url('assets/article-beta.jpg') !important;
+  background-size:cover !important;background-position:center !important;
+}
+.news-list .announcement-card .mini-img,
+.news .announcement-card .mini-img{
+  background-image:url('assets/article-wow-forever.jpg') !important;
+  background-size:cover !important;background-position:center !important;
+}
+</style>
+
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#top"><div class="mark">⚒</div><div><div class="brand"><b>Azeroth <span>Forge</span></b></div><div class="sub">GUIDES · ACTUS · COMMUNAUTÉ</div></div></a>
+<nav><a href="#top">Accueil</a><a href="actualites/index.html">Actualités</a><a href="#guides">Guides</a><a href="#talents">Talents</a><a href="#database">Base de données</a><a href="#community">Communauté</a></nav>
+<div class="tools"><div class="round">⌕</div><div class="round">♙</div></div></div></header>
+
+<div class="home" id="top">
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">WORLD OF WARCRAFT</div>
+    <h1>Forever</h1>
+    <p>Redécouvrez Azeroth. De nouvelles terres. De nouvelles histoires.<br>Le 5 novembre 2026.</p>
+    <div id="countdown" class="countdown" aria-label="Compte à rebours">
+      <div class="unit"><strong id="days">00</strong><small>Jours</small></div>
+      <div class="unit"><strong id="hours">00</strong><small>Heures</small></div>
+      <div class="unit"><strong id="minutes">00</strong><small>Minutes</small></div>
+      <div class="unit"><strong id="seconds">00</strong><small>Secondes</small></div>
+    </div>
+    <p style="margin-top:20px">
+      <a class="btn" href="#actualites">Découvrir les actualités</a>
+      <a class="btn alt" href="#guides">Explorer les guides</a>
+    </p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <section class="quick" aria-label="Accès rapides">
+      <a href="#guides"><div class="ico">⚔</div><strong>Classes</strong><small>Guides & builds</small></a>
+      <a href="#guides"><div class="ico">⚒</div><strong>Métiers</strong><small>Ressources & conseils</small></a>
+      <a href="#guides"><div class="ico">⌂</div><strong>Donjons</strong><small>Stratégies & butins</small></a>
+      <a href="#guides"><div class="ico">☠</div><strong>Raids</strong><small>Préparez vos groupes</small></a>
+      <a href="#talents"><div class="ico">✦</div><strong>Talents</strong><small>Calculateur de talents</small></a>
+      <a href="#database"><div class="ico">▤</div><strong>Base de données</strong><small>Objets, quêtes, PNJ...</small></a>
+      <a href="#community"><div class="ico">♟</div><strong>Communauté</strong><small>Échanges & partages</small></a>
+    </section>
+
+    <section id="actualites">
+      <div class="head"><h2>Dernières actualités</h2><a href="actualites/index.html">Voir toutes les actualités →</a></div>
+      <div class="news">
+        <a class="featured" href="actualites/wow-forever.html">
+          <div class="content">
+            <span class="tag">Annonce</span>
+            <div class="date">28 septembre 2026</div>
+            <h3>WoW Forever : tout ce qu’il faut savoir avant le lancement</h3>
+            <p>Dates, contenu, nouveautés, campements, Éolides et points importants avant la sortie.</p>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+        <div class="side">
+          <a class="mini" href="actualites/mont-hyjal.html">
+            <div class="mini-img"></div>
+            <div class="mini-body"><span class="tag">Guide</span><div class="date">28 septembre 2026</div><h3>Mont Hyjal : une nouvelle terre à explorer</h3></div>
+          </a>
+          <a class="mini" href="actualites/campements.html">
+            <div class="mini-img"></div>
+            <div class="mini-body"><span class="tag">Systèmes</span><div class="date">28 septembre 2026</div><h3>Les campements : une nouvelle façon de jouer ensemble</h3></div>
+          </a>
+<a class="mini patch-card" href="actualites/patchnotes-24-septembre.html">
+  <div class="mini-img"></div>
+  <div class="mini-body"><span class="tag">PATCH NOTES</span><div class="date">24 septembre 2026</div><h3>Premier patch notes de la bêta : les changements à retenir</h3></div>
+</a>
+<a class="mini announcement-card" href="actualites/wow-forever.html">
+  <div class="mini-img"></div>
+  <div class="mini-body"><span class="tag">ANNONCE</span><div class="date">22 septembre 2026</div><h3>WoW Forever : tout ce qu’il faut savoir avant le lancement</h3></div>
+</a>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="guides">
+      <div class="head"><h2>Guides</h2><a href="#guides">Voir tous les guides →</a></div>
+      <div class="classes">
+        <a class="class" style="--c:#8b5a3c" href="#guides"><div class="symbol">⚔</div><div class="label"><strong>Guerrier</strong><small>Guides & builds</small></div></a>
+        <a class="class" style="--c:#4d79a8" href="#guides"><div class="symbol">❄</div><div class="label"><strong>Mage</strong><small>Guides & builds</small></div></a>
+        <a class="class" style="--c:#4b8b57" href="#guides"><div class="symbol">✦</div><div class="label"><strong>Druide</strong><small>Guides & builds</small></div></a>
+        <a class="class" style="--c:#6c4b85" href="#guides"><div class="symbol">☠</div><div class="label"><strong>Voleur</strong><small>Guides & builds</small></div></a>
+        <a class="class" style="--c:#76522f" href="#guides"><div class="symbol">◈</div><div class="label"><strong>Chasseur</strong><small>Guides & builds</small></div></a>
+        <a class="class" style="--c:#b46d32" href="#guides"><div class="symbol">✚</div><div class="label"><strong>Paladin</strong><small>Guides & builds</small></div></a>
+        <a class="class" style="--c:#514b86" href="#guides"><div class="symbol">☾</div><div class="label"><strong>Prêtre</strong><small>Guides & builds</small></div></a>
+        <a class="class" style="--c:#587d78" href="#guides"><div class="symbol">⚡</div><div class="label"><strong>Chaman</strong><small>Guides & builds</small></div></a>
+      </div>
+    </section>
+
+    <section id="talents">
+      <div class="head"><h2>Outils</h2></div>
+      <div class="toolrow">
+        <a class="toolcard" href="#talents"><h3>Calculateur de talents →</h3><p>Construisez vos spécialisations et préparez vos personnages.</p></a>
+        <a class="toolcard" id="database" href="#database"><h3>Base de données →</h3><p>Objets, quêtes, PNJ, recettes et ressources de Forever.</p></a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer id="community"><div class="wrap foot"><div><b>⚒ AZEROTH FORGE</b><br>Guides · Actus · Communauté</div><div>Site de fans dédié à World of Warcraft Forever.<br>Projet communautaire non officiel.</div><div>Discord · X · YouTube</div></div></footer>
+
+<script>
+(function(){
+  const target = new Date('2026-11-05T00:00:00+01:00').getTime();
+  const box = document.getElementById('countdown');
+  function tick(){
+    if(!box) return;
+    const diff = target - Date.now();
+    if(diff <= 0){
+      box.classList.add('live');
+      box.innerHTML = '🔥 World of Warcraft: Forever est disponible !';
+      return;
+    }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor(diff%86400000/3600000);
+    const m = Math.floor(diff%3600000/60000);
+    const s = Math.floor(diff%60000/1000);
+    document.getElementById('days').textContent = String(d).padStart(2,'0');
+    document.getElementById('hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+
+</body></html>
