@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Guide Guerrier — Azeroth Forge</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #080d0f;
+      color: #eee8dc;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      height: 82px;
+      background: #090d0f;
+      border-bottom: 1px solid #75501f;
+      display: flex;
+      align-items: center;
+      padding: 0 42px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #f0d39b;
+      min-width: 280px;
+    }
+
+    .logo span {
+      color: #b87824;
+    }
+
+    .logo small {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #8d8d88;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #e8e2d7;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #d99a3b;
+    }
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    .page {
+      width: min(1380px, 92%);
+      margin: auto;
+      padding: 42px 0 80px;
+    }
+
+    .back {
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #c88b35;
+      margin-bottom: 25px;
+    }
+
+    .back:hover {
+      color: #f0c36a;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 440px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #66451d;
+      border-radius: 5px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(7, 10, 11, 0.98) 0%,
+          rgba(7, 10, 11, 0.82) 38%,
+          rgba(7, 10, 11, 0.25) 75%,
+          rgba(7, 10, 11, 0.15) 100%
+        ),
+        url("../../assets/classes/guerrier.jpg") center 25% / cover no-repeat;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      width: 620px;
+      padding: 55px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: #d79a3c;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: 0.95;
+      margin: 0 0 22px;
+      color: #f3e8d3;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.65;
+      color: #d0ccc4;
+      margin: 0;
+      max-width: 570px;
+    }
+
+    .hero-line {
+      width: 90px;
+      height: 2px;
+      background: #bd7d25;
+      margin: 25px 0;
+    }
+
+    /* =========================
+       GUIDES
+    ========================= */
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin: 55px 0 20px;
+      border-bottom: 1px solid #3d3529;
+      padding-bottom: 12px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 32px;
+      color: #eee4d0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: #888983;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    .guides {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .guide-card {
+      min-height: 250px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #5a4324;
+      border-radius: 5px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(8, 12, 13, 0.96),
+          rgba(8, 12, 13, 0.76)
+        ),
+        url("../../assets/classes/guerrier.jpg") center / cover no-repeat;
+      transition:
+        transform 0.2s,
+        border-color 0.2s;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-3px);
+      border-color: #c68b37;
+    }
+
+    .guide-content {
+      padding: 32px;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 580px;
+    }
+
+    .guide-type {
+      display: inline-block;
+      width: fit-content;
+      background: #bd7d25;
+      color: #111;
+      padding: 6px 10px;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .guide-card h3 {
+      margin: 0 0 10px;
+      font-size: 29px;
+      color: #f3e8d5;
+    }
+
+    .guide-card p {
+      margin: 0 0 20px;
+      color: #c3c0ba;
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 470px;
+    }
+
+    .guide-link {
+      font-family: Arial, sans-serif;
+      color: #d99a3b;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .guide-link:hover {
+      color: #f1c56e;
+    }
+
+    /* =========================
+       PREPARATION
+    ========================= */
+
+    .preparation {
+      margin-top: 55px;
+      padding: 30px;
+      border: 1px solid #443a2d;
+      background: #101617;
+    }
+
+    .preparation h2 {
+      margin: 0 0 12px;
+      font-size: 28px;
+    }
+
+    .preparation p {
+      margin: 0;
+      color: #aaa9a3;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 850px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid #332e27;
+      padding: 30px 5%;
+      color: #777872;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      header {
+        height: auto;
+        padding: 18px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .logo {
+        min-width: 0;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .guides {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 500px;
+      }
+
+      .hero-content {
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .page {
+        width: 94%;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero-content {
+        padding: 25px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <a href="../../index.html" class="logo">
+    AZEROTH <span>FORGE</span>
+    <small>GUIDES · ACTUS · COMMUNAUTÉ</small>
+  </a>
+
+  <nav>
+    <a href="../../index.html">Accueil</a>
+    <a href="../../actualites/index.html">Actualités</a>
+    <a href="../index.html">Guides</a>
+    <a href="../../talents.html">Talents</a>
+    <a href="../../base-de-donnees.html">Base de données</a>
+    <a href="../../communaute.html">Communauté</a>
+  </nav>
+
+</header>
+
+
+<main class="page">
+
+  <a class="back" href="../index.html">
+    ← Tous les guides
+  </a>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Guide de classe
+      </div>
+
+      <h1>Guerrier</h1>
+
+      <div class="hero-line"></div>
+
+      <p>
+        Le Guerrier maîtrise le combat au corps à corps et peut remplir
+        plusieurs rôles selon sa spécialisation. Retrouvez ici nos guides
+        pour préparer votre personnage et optimiser votre progression.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- GUIDES -->
+
+  <div class="section-head">
+
+    <h2>Guides du Guerrier</h2>
+
+    <p>
+      PvE · PvP · Tank · Leveling
+    </p>
+
+  </div>
+
+
+  <section class="guides">
+
+
+    <!-- PVE -->
+
+    <a href="pve.html" class="guide-card">
+
+      <div class="guide-content">
+
+        <span class="guide-type">
+          PvE
+        </span>
+
+        <h3>
+          Guerrier PvE
+        </h3>
+
+        <p>
+          Préparation et optimisation du Guerrier pour les activités PvE :
+          races, talents, équipement, métiers, consommables et macros utiles.
+        </p>
+
+        <span class="guide-link">
+          Voir le guide →
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- PVP -->
+
+    <a href="pvp.html" class="guide-card">
+
+      <div class="guide-content">
+
+        <span class="guide-type">
+          PvP
+        </span>
+
+        <h3>
+          Guerrier PvP
+        </h3>
+
+        <p>
+          Préparez votre Guerrier pour le PvP avec les choix de race,
+          talents, équipement, métiers, consommables et macros adaptés.
+        </p>
+
+        <span class="guide-link">
+          Voir le guide →
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- TANK -->
+
+    <a href="tank.html" class="guide-card">
+
+      <div class="guide-content">
+
+        <span class="guide-type">
+          Tank
+        </span>
+
+        <h3>
+          Guerrier Tank
+        </h3>
+
+        <p>
+          Tout ce qu'il faut pour construire un Guerrier Tank efficace :
+          optimisation, talents, équipement, métiers et outils indispensables.
+        </p>
+
+        <span class="guide-link">
+          Voir le guide →
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <!-- LEVELING -->
+
+    <a href="leveling.html" class="guide-card">
+
+      <div class="guide-content">
+
+        <span class="guide-type">
+          Leveling
+        </span>
+
+        <h3>
+          Guerrier Leveling
+        </h3>
+
+        <p>
+          Progressez efficacement du niveau 1 au niveau maximum avec les
+          talents, équipements, métiers et conseils adaptés au leveling.
+        </p>
+
+        <span class="guide-link">
+          Voir le guide →
+        </span>
+
+      </div>
+
+    </a>
+
+
+  </section>
+
+
+  <!-- PREPARATION -->
+
+  <section class="preparation">
+
+    <h2>Préparation du Guerrier</h2>
+
+    <p>
+      La préparation du personnage sera intégrée directement dans chaque
+      guide. Les choix de race, talents, équipement, métiers, objets,
+      consommables et macros peuvent varier selon l'activité pratiquée.
+      Les recommandations PvE, PvP et Tank seront donc traitées séparément.
+    </p>
+
+  </section>
+
+</main>
+
+
+<footer>
+  Azeroth Forge · Site communautaire non officiel dédié à World of Warcraft Forever
+</footer>
+
+
+</body>
+</html>
