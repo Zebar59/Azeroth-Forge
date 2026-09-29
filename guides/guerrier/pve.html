@@ -1,47 +1,854 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Guerrier PvE — Azeroth Forge</title>
-<script>const whTooltips={colorLinks:true,iconizeLinks:true,renameLinks:false,iconSize:'small'};</script>
-<script src="https://wow.zamimg.com/js/tooltips.js"></script>
-<style>
-:root{--bg:#090d0e;--panel:#111718;--panel2:#0d1213;--line:#4b4030;--gold:#d59a3a;--light:#efc273;--text:#eee6d7;--muted:#aaa49a;--green:#5e9f67;--red:#a94b42}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif}a{color:inherit;text-decoration:none}
-header{height:82px;display:flex;align-items:center;padding:0 7%;border-bottom:1px solid #604c2c;background:#080b0c}.brand{font-size:25px;font-weight:bold;color:var(--light);margin-right:55px}nav{display:flex;gap:30px;font:13px Arial,sans-serif;text-transform:uppercase}nav a:hover{color:var(--light)}
-main{width:min(1180px,90%);margin:auto;padding:38px 0 70px}.breadcrumb{font:12px Arial;color:#aaa;margin-bottom:20px}.breadcrumb a{color:var(--light)}
-.hero{position:relative;min-height:350px;border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;align-items:flex-end;background:#111}.hero-image{position:absolute;inset:0;background:url("../../assets/guides/guerrier/guerrier.pve.jpg") center 35%/cover no-repeat}.hero-content{position:relative;width:100%;padding:45px;background:linear-gradient(transparent,rgba(5,8,9,.94))}.tag{display:inline-block;padding:7px 12px;background:var(--gold);color:#111;font:11px Arial;font-weight:bold;text-transform:uppercase;margin-bottom:12px}h1{margin:0 0 10px;font-size:46px}.intro{max-width:780px;margin:0;color:#ddd5c8;font-size:17px;line-height:1.55}
-.quick{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.quick a{padding:9px 12px;border:1px solid #55462e;background:#101516;color:#d8c8ac;font:12px Arial}.quick a:hover{border-color:var(--gold);color:var(--light)}
-section{margin-top:42px}.section-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #39342d;margin-bottom:18px;padding-bottom:10px}h2{margin:0;font-size:29px}.section-head span{font:12px Arial;color:#8f8b83}.guide-layout{display:grid;grid-template-columns:1fr 300px;gap:22px}.content,.side-card{border:1px solid var(--line);background:var(--panel);border-radius:5px}.content{padding:28px}.content h3{font-size:23px;margin:28px 0 10px;color:var(--light)}.content h3:first-child{margin-top:0}.content p,.content li{font:14px Arial,sans-serif;color:#c5c0b7;line-height:1.7}.content ul{padding-left:22px}.side-card{padding:22px;height:max-content;position:sticky;top:20px}.side-card h3{margin:0 0 15px;font-size:20px}.side-card a{display:block;padding:11px 0;border-bottom:1px solid #302d29;font:13px Arial;color:#d5cdbf}.side-card a:last-child{border-bottom:0}.side-card a:hover{color:var(--light)}
-.race-grid,.profession-grid,.stat-grid,.macro-grid,.consumable-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:15px}.info-card{border:1px solid #3e382f;background:var(--panel2);padding:18px}.info-card h4{margin:0 0 9px;font-size:19px;color:#f0dfc3}.info-card p{margin:0}.faction{font:10px Arial;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:5px}.wow-link{color:#e7bd68;border-bottom:1px dotted #a47735}.spell-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #2a2925;font:14px Arial}.spell-row:last-child{border-bottom:0}.spell-icon{width:30px;height:30px;border:1px solid #6d5837;border-radius:4px;object-fit:cover;background:#222}.stat-grid{grid-template-columns:repeat(3,1fr)}.stat{padding:16px;border:1px solid #3e382f;background:#0e1314}.stat strong{display:block;color:var(--light);font:13px Arial;text-transform:uppercase;letter-spacing:.5px}.stat span{display:block;margin-top:6px;font-size:18px}.stat small{display:block;margin-top:5px;color:#999;font:12px Arial;line-height:1.4}
-.talent-wrap{border:1px solid #4b4030;background:#0b1011;padding:22px;margin-top:15px}.talent-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}.talent-top h3{margin:0}.talent-top a{border:1px solid #765b31;background:#17130d;padding:10px 14px;color:var(--light);font:12px Arial}.tree{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;align-items:stretch}.tree-col{border-left:1px solid #2e2b27;padding-left:10px}.tree-col:first-child{border-left:0}.tree-col h4{margin:0 0 10px;color:#c9b79a;font:11px Arial;text-transform:uppercase}.talent{display:flex;align-items:center;gap:8px;padding:8px 7px;margin:6px 0;border:1px solid #332f29;background:#101516;font:12px Arial;color:#cfc8bd}.talent.recommended{border-color:#9a6d2e;background:#18150f;color:#f0d18e}.talent img{width:34px;height:34px;object-fit:cover;border:1px solid #625033;border-radius:3px}.rank{margin-left:auto;color:#c99b52;font-size:10px}.talent-note{margin-top:15px;color:#98948d;font:12px Arial;line-height:1.5}.embed-note{padding:16px;border:1px dashed #5b4a32;background:#0e1314;margin-top:15px;color:#aaa39a;font:12px Arial;line-height:1.5}.embed-note a{color:var(--light)}
-.equipment{width:100%;border-collapse:collapse;margin-top:15px;font:13px Arial}.equipment th,.equipment td{padding:12px 10px;border-bottom:1px solid #2f2d29;text-align:left}.equipment th{color:#c9b27f;text-transform:uppercase;font-size:10px}.equipment td{color:#c5c0b7}.equipment .prio{color:var(--light);font-weight:bold}
-.macro{background:#0a0e0f;border:1px solid #39342d;margin-top:12px}.macro-title{padding:10px 13px;background:#151819;color:var(--light);font:12px Arial;font-weight:bold}.macro pre{margin:0;padding:14px;overflow:auto;color:#ddd4c5;font:12px Consolas,monospace;line-height:1.55}.note{margin-top:22px;padding:18px;border-left:3px solid var(--gold);background:#101516;font:13px Arial;color:#bdb8ae;line-height:1.55}footer{padding:28px 7%;border-top:1px solid #39342d;color:#777;font:11px Arial}
-@media(max-width:950px){.guide-layout{grid-template-columns:1fr}.side-card{position:static}.tree{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){header{height:auto;padding:18px;display:block}.brand{display:block;margin:0 0 15px}nav{gap:14px;flex-wrap:wrap}main{width:92%}.hero{min-height:300px}.hero-content{padding:25px}h1{font-size:36px}.race-grid,.profession-grid,.stat-grid,.macro-grid,.consumable-grid{grid-template-columns:1fr}.tree{grid-template-columns:1fr 1fr}.talent-top{align-items:flex-start;flex-direction:column}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Guerrier PvE — Azeroth Forge</title>
+
+  <link rel="stylesheet" href="../../style.css">
+
+  <!-- Wowhead Tooltips -->
+  <script>
+    const whTooltips = {
+      colorLinks: true,
+      iconizeLinks: true,
+      renameLinks: true
+    };
+  </script>
+  <script src="https://wow.zamimg.com/js/tooltips.js"></script>
+
+  <style>
+
+    /* ================================
+       GUIDE GUERRIER PVE
+       ================================ */
+
+    .guide-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 32px 80px;
+    }
+
+    /* HERO */
+
+    .guide-hero {
+      min-height: 420px;
+      border: 1px solid #60451f;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(7, 11, 12, 0.96) 0%,
+          rgba(7, 11, 12, 0.82) 45%,
+          rgba(7, 11, 12, 0.35) 100%
+        ),
+        url("../../assets/guides/guerrier/guerrier.pve.jpg")
+        center / cover no-repeat;
+
+      display: flex;
+      align-items: flex-end;
+      padding: 42px;
+      margin-bottom: 45px;
+    }
+
+    .guide-hero-content {
+      max-width: 700px;
+    }
+
+    .guide-eyebrow {
+      color: #dca63c;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .guide-hero h1 {
+      font-size: 48px;
+      margin: 0 0 12px;
+      color: #f2ead9;
+    }
+
+    .guide-hero p {
+      color: #c8c3b8;
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* SOMMAIRE */
+
+    .guide-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid #3c3428;
+      padding-bottom: 25px;
+      margin-bottom: 45px;
+    }
+
+    .guide-nav a {
+      border: 1px solid #5a4525;
+      padding: 10px 16px;
+      color: #dca63c;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .guide-nav a:hover {
+      background: #241d13;
+      border-color: #dca63c;
+    }
+
+    /* SECTIONS */
+
+    .guide-section {
+      margin-bottom: 65px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid #3b352c;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    .section-number {
+      border: 1px solid #a8792c;
+      color: #dca63c;
+      padding: 7px 9px;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 34px;
+      color: #f0e8d7;
+    }
+
+    .section-title p {
+      margin: 3px 0 0;
+      color: #9f9b92;
+      font-size: 14px;
+    }
+
+    /* TEXTE */
+
+    .guide-text {
+      color: #c8c3b8;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* CARTES */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .info-card {
+      border: 1px solid #443b2f;
+      background: #101516;
+      padding: 22px;
+    }
+
+    .info-card .faction {
+      color: #dca63c;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .info-card h3 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      color: #f0e8d7;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: #c8c3b8;
+      line-height: 1.55;
+    }
+
+    .info-card a {
+      color: #dca63c;
+    }
+
+    /* NOTE */
+
+    .guide-note {
+      margin-top: 18px;
+      border-left: 3px solid #dca63c;
+      background: #111718;
+      padding: 18px 20px;
+      color: #bcb7ad;
+      line-height: 1.6;
+    }
+
+    /* TALENTS */
+
+    .talent-card {
+      border: 1px solid #4a3b26;
+      background: #101516;
+      padding: 26px;
+    }
+
+    .talent-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+
+    .talent-header h3 {
+      margin: 5px 0 8px;
+      font-size: 27px;
+      color: #f0e8d7;
+    }
+
+    .talent-header p {
+      margin: 0;
+      max-width: 700px;
+      color: #aaa69d;
+      line-height: 1.6;
+    }
+
+    .eyebrow {
+      color: #dca63c;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .talent-button {
+      display: inline-block;
+      border: 1px solid #8c672d;
+      color: #dca63c;
+      padding: 11px 15px;
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .talent-button:hover {
+      background: #251e13;
+    }
+
+    .talent-preview {
+      border: 1px solid #35332e;
+      background: #0b0f10;
+      padding: 25px;
+    }
+
+    .talent-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .talent-preview-header h3 {
+      margin: 4px 0 0;
+      color: #eee6d6;
+      font-size: 24px;
+    }
+
+    .talent-points {
+      color: #dca63c;
+      font-size: 14px;
+    }
+
+    .talent-placeholder {
+      min-height: 260px;
+      border: 1px dashed #594729;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .talent-icon-main {
+      width: 74px;
+      height: 74px;
+      border: 1px solid #8c672d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #dca63c;
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .talent-placeholder h4 {
+      margin: 0 0 10px;
+      color: #eee6d6;
+      font-size: 22px;
+    }
+
+    .talent-placeholder p {
+      max-width: 650px;
+      margin: 0 0 18px;
+      color: #9e9a91;
+      line-height: 1.6;
+    }
+
+    .talent-placeholder a {
+      color: #dca63c;
+      text-decoration: none;
+    }
+
+    .talent-note {
+      margin-top: 18px;
+      border: 1px dashed #594729;
+      padding: 16px;
+      color: #aaa69d;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .talent-note strong {
+      color: #dca63c;
+    }
+
+    /* LISTES */
+
+    .guide-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .guide-list li {
+      border: 1px solid #3d3830;
+      background: #101516;
+      padding: 18px;
+      color: #c9c4ba;
+    }
+
+    .guide-list strong {
+      color: #eee6d6;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+
+      .guide-page {
+        padding: 25px 18px 60px;
+      }
+
+      .guide-hero {
+        min-height: 350px;
+        padding: 28px;
+      }
+
+      .guide-hero h1 {
+        font-size: 36px;
+      }
+
+      .info-grid,
+      .guide-list {
+        grid-template-columns: 1fr;
+      }
+
+      .talent-header {
+        flex-direction: column;
+      }
+
+      .talent-button {
+        white-space: normal;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-<header><a class="brand" href="../../index.html">AZEROTH FORGE</a><nav><a href="../../index.html">Accueil</a><a href="../../actualites/index.html">Actualités</a><a href="../index.html">Guides</a><a href="#talents">Talents</a><a href="#equipement">Base de données</a><a href="#">Communauté</a></nav></header>
-<main>
-<div class="breadcrumb"><a href="../../index.html">Accueil</a> · <a href="../index.html">Guides</a> · <a href="../guerrier.html">Guerrier</a> · Guerrier PvE</div>
-<div class="hero"><div class="hero-image"></div><div class="hero-content"><span class="tag">Guide PvE</span><h1>Guerrier PvE</h1><p class="intro">Guide du Guerrier Fureur pour WoW Forever : race, métiers, talents, statistiques, équipement, consommables et macros utiles pour le PvE.</p><div class="quick"><a href="#race">Race</a><a href="#metiers">Métiers</a><a href="#talents">Talents</a><a href="#stats">Stats</a><a href="#equipement">Équipement</a><a href="#consommables">Consommables</a><a href="#macros">Macros</a></div></div></div>
-<section id="race"><div class="section-head"><h2>01 — Race</h2><span>Choix PvE</span></div><div class="race-grid"><div class="info-card"><div class="faction">Horde</div><h4>Orc</h4><p><a class="wow-link" href="https://www.wowhead.com/forever/fr/spell=20572" data-wowhead="spell=20572&domain=www.wowhead.com/forever/fr">Fureur sanguinaire</a> est le racial offensif à surveiller pour le Guerrier PvE. L'Orc bénéficie également de <a class="wow-link" href="https://www.wowhead.com/forever/fr/spell=20574" data-wowhead="spell=20574&domain=www.wowhead.com/forever/fr">Spécialisation Hache</a>.</p></div><div class="info-card"><div class="faction">Alliance</div><h4>Humain</h4><p>Pour un Guerrier utilisant une épée, <a class="wow-link" href="https://www.wowhead.com/forever/fr/spell=20597" data-wowhead="spell=20597&domain=www.wowhead.com/forever/fr">Spécialisation Épée</a> apporte un bonus directement lié au choix d'arme.</p></div></div><div class="note">Le choix final dépend de votre faction et surtout de l'arme que vous comptez utiliser. Les raciaux et spécialisations d'armes doivent être lus avec votre équipement et votre build.</div></section>
-<section id="metiers"><div class="section-head"><h2>02 — Métiers</h2><span>Optimisation PvE</span></div><div class="profession-grid"><div class="info-card"><h4>Ingénierie</h4><p>À privilégier pour l'accès aux consommables et outils d'Ingénierie utiles en combat et en préparation de raid.</p></div><div class="info-card"><h4>Forge</h4><p>Intéressante si votre objectif est de fabriquer ou d'améliorer votre équipement d'armes et de plaques.</p></div></div></section>
-<section id="talents"><div class="section-head"><h2>03 — Talents</h2><span>Fureur PvE</span></div><div class="talent-wrap"><div class="talent-top"><h3>Arbre Fureur — build PvE</h3><a href="https://www.wowhead.com/forever/fr/talent-calc/warrior/fury" target="_blank" rel="noopener">Ouvrir le calculateur Wowhead →</a></div><div class="tree">
-<div class="tree-col"><h4>Palier 1</h4><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_boomingvoice.jpg"><span>Voix tonitruante</span><b class="rank">0/5</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_rogue_sinistercalling.jpg"><span>Cruauté</span><b class="rank">5/5</b></div><div class="talent"><img src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerinfusion.jpg"><span>Volonté de fer</span><b class="rank">0/5</b></div></div>
-<div class="tree-col"><h4>Palier 2</h4><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_unbridledwrath.jpg"><span>Colère déchaînée</span><b class="rank">5/5</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_cleave.jpg"><span>Enchaînement amélioré</span><b class="rank">3/3</b></div><div class="talent"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_piercinghowl.jpg"><span>Hurlement perçant</span><b class="rank">0/1</b></div></div>
-<div class="tree-col"><h4>Palier 3</h4><div class="talent"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_bloodcraze.jpg"><span>Folie sanguinaire</span><b class="rank">0/3</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_bloodrage.jpg"><span>Rage infinie</span><b class="rank">2/3</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_dualwield.jpg"><span>Spécialisation Ambidextrie</span><b class="rank">5/5</b></div></div>
-<div class="tree-col"><h4>Palier 4</h4><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_ragingblow.jpg"><span>Coups déchaînés</span><b class="rank">1/1</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_enrage.jpg"><span>Enrager</span><b class="rank">5/5</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_precision.jpg"><span>Précision</span><b class="rank">3/3</b></div></div>
-<div class="tree-col"><h4>Palier 5</h4><div class="talent"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_rogue_improvedsliceanddice.jpg"><span>Exécution améliorée</span><b class="rank">0/2</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_deathwish.jpg"><span>Souhait mortel</span><b class="rank">1/1</b></div><div class="talent"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_charge.jpg"><span>Interception améliorée</span><b class="rank">0/2</b></div></div>
-<div class="tree-col"><h4>Palier 6–7</h4><div class="talent"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_berserkeranger.jpg"><span>Rage berserker améliorée</span><b class="rank">0/2</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_flurry.jpg"><span>Rafale</span><b class="rank">3/5</b></div><div class="talent recommended"><img src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_bloodlust.jpg"><span>Sanguinaire</span><b class="rank">1/1</b></div></div>
-</div><div class="embed-note">Cette vue reprend les talents Fureur documentés pour Forever et met en évidence le cœur du build PvE. Les valeurs et rangs peuvent évoluer pendant la bêta. Pour modifier les points, utilisez le <a href="https://www.wowhead.com/forever/fr/talent-calc/warrior/fury" target="_blank" rel="noopener">calculateur Forever de Wowhead</a>.</div></div></section>
-<section id="stats"><div class="section-head"><h2>04 — Statistiques</h2><span>Priorités</span></div><div class="stat-grid"><div class="stat"><strong>Toucher</strong><span>Prioritaire</span><small>Réduire les ratés avant de pousser les autres statistiques offensives.</small></div><div class="stat"><strong>Puissance d'attaque</strong><span>Très élevée</span><small>Augmente directement la valeur de vos attaques physiques.</small></div><div class="stat"><strong>Critique</strong><span>Élevé</span><small>Renforce les déclenchements et la fréquence des fenêtres de dégâts.</small></div></div></section>
-<section id="equipement"><div class="section-head"><h2>05 — Équipement</h2><span>Fureur à deux armes</span></div><div class="content" style="padding:0;overflow:auto"><table class="equipment"><thead><tr><th>Emplacement</th><th>Priorité</th><th>À rechercher</th></tr></thead><tbody><tr><td>Armes</td><td class="prio">Très haute</td><td>Deux armes adaptées au build et à votre spécialisation d'arme.</td></tr><tr><td>Bijoux</td><td class="prio">Haute</td><td>Puissance offensive et effets activables intéressants pour les fenêtres de burst.</td></tr><tr><td>Armure</td><td>Haute</td><td>Force, toucher, puissance d'attaque et critique selon votre niveau d'équipement.</td></tr></tbody></table></div><div class="note">Les objets précis seront ajoutés avec leurs identifiants Wowhead au fur et à mesure que la base d'équipement Forever sera consolidée.</div></section>
-<section id="consommables"><div class="section-head"><h2>06 — Consommables</h2><span>Avant le combat</span></div><div class="consumable-grid"><div class="info-card"><h4>Préparation</h4><p>Prévoyez nourriture, potions et consommables offensifs adaptés à votre niveau et au contenu visé.</p></div><div class="info-card"><h4>Fenêtre de burst</h4><p>Alignez vos consommables utilisables avec <a class="wow-link" href="https://www.wowhead.com/forever/fr/spell=20572" data-wowhead="spell=20572&domain=www.wowhead.com/forever/fr">Fureur sanguinaire</a> ou <a class="wow-link" href="https://www.wowhead.com/forever/fr/spell=12292" data-wowhead="spell=12292&domain=www.wowhead.com/forever/fr">Souhait mortel</a> quand la rencontre le permet.</p></div></div></section>
-<section id="macros"><div class="section-head"><h2>07 — Macros utiles</h2><span>À adapter à vos raccourcis</span></div><div class="macro-grid"><div class="macro"><div class="macro-title">Charge / Interception</div><pre>/cast [stance:1] Charge
-/cast [stance:3] Interception</pre></div><div class="macro"><div class="macro-title">Sanguinaire</div><pre>/cast Sanguinaire</pre></div><div class="macro"><div class="macro-title">Souhait mortel + burst</div><pre>/cast Souhait mortel
-/use 13
-/use 14</pre></div><div class="macro"><div class="macro-title">Rage de berserker</div><pre>/cast Rage de berserker</pre></div></div></section>
-</main><footer><strong>Azeroth Forge</strong> · Guides · Actualités · Communauté</footer>
-</body></html>
+
+  <main class="guide-page">
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="guide-hero">
+
+      <div class="guide-hero-content">
+
+        <div class="guide-eyebrow">
+          Guerrier — PvE
+        </div>
+
+        <h1>Guerrier PvE</h1>
+
+        <p>
+          Préparez votre Guerrier pour le contenu PvE de Forever :
+          race, métiers, spécialisation, talents, statistiques,
+          consommables et outils utiles.
+        </p>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================================
+         SOMMAIRE
+         ================================ -->
+
+    <nav class="guide-nav">
+
+      <a href="#race">Race</a>
+      <a href="#metiers">Métiers</a>
+      <a href="#talents">Talents</a>
+      <a href="#stats">Statistiques</a>
+      <a href="#consommables">Consommables</a>
+      <a href="#macros">Macros</a>
+
+    </nav>
+
+
+    <!-- ================================
+         01 — RACE
+         ================================ -->
+
+    <section class="guide-section" id="race">
+
+      <div class="section-title">
+
+        <span class="section-number">01</span>
+
+        <div>
+          <h2>Race</h2>
+          <p>Optimisation PvE</p>
+        </div>
+
+      </div>
+
+      <p class="guide-text">
+        Le Guerrier est disponible pour toutes les races.
+        Pour le PvE, les capacités raciales et les spécialisations
+        d'armes peuvent cependant modifier l'optimisation du personnage.
+      </p>
+
+
+      <div class="info-grid">
+
+        <!-- HORDE -->
+
+        <article class="info-card">
+
+          <div class="faction">Horde</div>
+
+          <h3>Orc</h3>
+
+          <p>
+
+            <a
+              href="https://www.wowhead.com/forever/fr/spell=20572/fureur-sanguinaire"
+              data-wowhead="domain=forever"
+              target="_blank"
+              rel="noopener"
+            >
+              Fureur sanguinaire
+            </a>
+
+            est particulièrement intéressante pour le burst du
+            Guerrier PvE.
+
+            <br><br>
+
+            L'Orc bénéficie également de
+            <a
+              href="https://www.wowhead.com/forever/fr/spell=20574/specialisation-hache"
+              data-wowhead="domain=forever"
+              target="_blank"
+              rel="noopener"
+            >
+              Spécialisation Hache
+            </a>.
+
+          </p>
+
+        </article>
+
+
+        <!-- ALLIANCE -->
+
+        <article class="info-card">
+
+          <div class="faction">Alliance</div>
+
+          <h3>Humain</h3>
+
+          <p>
+
+            Pour un Guerrier utilisant une épée,
+
+            <a
+              href="https://www.wowhead.com/forever/fr/spell=20597/specialisation-epee"
+              data-wowhead="domain=forever"
+              target="_blank"
+              rel="noopener"
+            >
+              Spécialisation Épée
+            </a>
+
+            apporte un avantage directement lié au choix d'arme.
+
+          </p>
+
+        </article>
+
+      </div>
+
+
+      <div class="guide-note">
+
+        Le choix final dépend de votre faction et surtout de l'arme
+        que vous comptez utiliser. Les raciaux et spécialisations
+        d'armes doivent être lus avec votre équipement et votre build.
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         02 — METIERS
+         ================================ -->
+
+    <section class="guide-section" id="metiers">
+
+      <div class="section-title">
+
+        <span class="section-number">02</span>
+
+        <div>
+          <h2>Métiers</h2>
+          <p>Optimisation PvE</p>
+        </div>
+
+      </div>
+
+
+      <div class="info-grid">
+
+        <article class="info-card">
+
+          <h3>Ingénierie</h3>
+
+          <p>
+            À privilégier pour l'accès aux consommables et outils
+            d'Ingénierie utiles en combat et en préparation de raid.
+          </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+          <h3>Forge</h3>
+
+          <p>
+            Intéressante si votre objectif est de fabriquer ou
+            d'améliorer votre équipement d'armes et de plaques.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         03 — TALENTS
+         ================================ -->
+
+    <section class="guide-section" id="talents">
+
+      <div class="section-title">
+
+        <span class="section-number">03</span>
+
+        <div>
+          <h2>Talents</h2>
+          <p>Guerrier Fureur — PvE</p>
+        </div>
+
+      </div>
+
+
+      <div class="talent-card">
+
+        <div class="talent-header">
+
+          <div>
+
+            <span class="eyebrow">
+              BUILD PVE
+            </span>
+
+            <h3>
+              Guerrier Fureur — PvE
+            </h3>
+
+            <p>
+              Build orienté dégâts en PvE. Les points pourront évoluer
+              avec les ajustements de la bêta et l'évolution du contenu
+              de Forever.
+            </p>
+
+          </div>
+
+
+          <a
+            class="talent-button"
+            href="https://www.wowhead.com/forever/fr/talent-calc/warrior/fury"
+            target="_blank"
+            rel="noopener"
+          >
+            Ouvrir le calculateur Wowhead →
+          </a>
+
+        </div>
+
+
+        <div class="talent-preview">
+
+          <div class="talent-preview-header">
+
+            <div>
+
+              <span class="eyebrow">
+                ARBRE DE TALENTS
+              </span>
+
+              <h3>
+                Fureur
+              </h3>
+
+            </div>
+
+            <span class="talent-points">
+              51 points
+            </span>
+
+          </div>
+
+
+          <div class="talent-placeholder">
+
+            <div class="talent-icon-main">
+              FUREUR
+            </div>
+
+            <h4>
+              Arbre de talents Fureur
+            </h4>
+
+            <p>
+              Consultez l'arbre complet et les valeurs actuelles
+              directement dans le calculateur de talents Forever
+              de Wowhead.
+            </p>
+
+            <a
+              href="https://www.wowhead.com/forever/fr/talent-calc/warrior/fury"
+              target="_blank"
+              rel="noopener"
+            >
+              Voir l'arbre Fureur sur Wowhead →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="talent-note">
+
+          <strong>À retenir :</strong>
+
+          ce build sert de base PvE.
+          Les derniers points peuvent être adaptés selon le contenu,
+          l'équipement et les besoins du groupe.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         04 — STATISTIQUES
+         ================================ -->
+
+    <section class="guide-section" id="stats">
+
+      <div class="section-title">
+
+        <span class="section-number">04</span>
+
+        <div>
+          <h2>Statistiques</h2>
+          <p>Priorités du Guerrier PvE</p>
+        </div>
+
+      </div>
+
+
+      <ul class="guide-list">
+
+        <li>
+          <strong>Force</strong>
+          Statistique principale pour augmenter les dégâts physiques
+          et la puissance du personnage.
+        </li>
+
+        <li>
+          <strong>Toucher</strong>
+          À atteindre en priorité jusqu'au seuil nécessaire
+          pour fiabiliser les attaques.
+        </li>
+
+        <li>
+          <strong>Critique</strong>
+          Augmente les chances d'infliger des coups critiques.
+        </li>
+
+        <li>
+          <strong>Puissance d'attaque</strong>
+          Améliore directement les dégâts physiques.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- ================================
+         05 — CONSOMMABLES
+         ================================ -->
+
+    <section class="guide-section" id="consommables">
+
+      <div class="section-title">
+
+        <span class="section-number">05</span>
+
+        <div>
+          <h2>Consommables</h2>
+          <p>Préparation avant le combat</p>
+        </div>
+
+      </div>
+
+
+      <ul class="guide-list">
+
+        <li>
+          <strong>Potions</strong>
+          Gardez toujours les potions adaptées à votre niveau
+          et au contenu joué.
+        </li>
+
+        <li>
+          <strong>Nourriture</strong>
+          Utilisez la nourriture apportant les statistiques
+          pertinentes pour votre spécialisation.
+        </li>
+
+        <li>
+          <strong>Élixirs</strong>
+          À utiliser avant les combats importants lorsque le contenu
+          le justifie.
+        </li>
+
+        <li>
+          <strong>Consommables d'Ingénierie</strong>
+          Certains objets peuvent apporter un avantage supplémentaire
+          lors de la préparation ou pendant les combats.
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- ================================
+         06 — MACROS
+         ================================ -->
+
+    <section class="guide-section" id="macros">
+
+      <div class="section-title">
+
+        <span class="section-number">06</span>
+
+        <div>
+          <h2>Macros</h2>
+          <p>Raccourcis utiles</p>
+        </div>
+
+      </div>
+
+
+      <div class="info-grid">
+
+        <article class="info-card">
+
+          <h3>Intervention</h3>
+
+          <p>
+            Macro destinée à faciliter l'utilisation rapide de
+            l'Intervention sur un membre du groupe.
+          </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+          <h3>Provocation</h3>
+
+          <p>
+            Une macro dédiée permet de garder facilement la Provocation
+            accessible lorsque la situation l'exige.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <script>
+    if (window.WH) {
+      WH.Tooltips.init();
+    }
+  </script>
+
+</body>
+</html>
