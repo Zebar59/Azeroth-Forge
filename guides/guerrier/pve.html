@@ -7,17 +7,21 @@
 <title>Guerrier PvE — Azeroth Forge</title>
 
 <style>
+
 :root{
-  --bg:#080c0d;
-  --panel:#111718;
-  --panel2:#151c1e;
-  --border:#4b3b23;
-  --gold:#d89b35;
-  --gold-light:#efbd5b;
-  --text:#eee9df;
-  --muted:#a7aaa7;
-  --green:#5c9d68;
-  --red:#a9554b;
+  --bg:#080b0c;
+  --bg2:#0d1112;
+  --panel:#13191a;
+  --panel2:#182022;
+  --border:#3d3325;
+  --border-light:#5a472d;
+  --gold:#d7a447;
+  --gold-light:#f0c66a;
+  --text:#e8e5dc;
+  --muted:#999d9b;
+  --green:#67a96e;
+  --red:#b75b50;
+  --blue:#5e89c4;
 }
 
 *{
@@ -30,9 +34,10 @@ html{
 
 body{
   margin:0;
-  background:var(--bg);
+  background:
+    radial-gradient(circle at top,#151b1d 0,#080b0c 600px);
   color:var(--text);
-  font-family:Georgia, "Times New Roman", serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 a{
@@ -40,28 +45,22 @@ a{
   text-decoration:none;
 }
 
-/* =========================
-   PAGE
-========================= */
-
 .page{
-  width:min(1180px, calc(100% - 40px));
+  width:min(1200px,calc(100% - 36px));
   margin:auto;
   padding-bottom:80px;
 }
 
 /* =========================
-   HEADER
+   TOP
 ========================= */
 
 .topbar{
-  padding:28px 0 18px;
-  border-bottom:1px solid #342b1d;
-  margin-bottom:35px;
+  padding:25px 0 18px;
+  border-bottom:1px solid #292722;
 }
 
 .breadcrumb{
-  font-family:Arial, sans-serif;
   font-size:13px;
   color:var(--muted);
 }
@@ -79,122 +78,159 @@ a{
 ========================= */
 
 .hero{
-  min-height:440px;
-  border:1px solid var(--border);
-  border-radius:6px;
-  overflow:hidden;
+  min-height:470px;
+  margin-top:25px;
+
   position:relative;
+  overflow:hidden;
 
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(5,8,9,.15) 0%,
-      rgba(5,8,9,.10) 45%,
-      rgba(5,8,9,.20) 100%
-    ),
-    url("../../assets/guides/guerrier/guerrier.pve.jpg");
+  border:1px solid var(--border-light);
+  border-radius:6px;
 
+  background-image:url("../../assets/guides/guerrier/guerrier.pve.jpg");
   background-size:cover;
   background-position:center;
 }
 
-.hero-content{
+.hero::after{
+  content:"";
   position:absolute;
-  left:0;
-  bottom:0;
-  width:100%;
-  padding:55px 45px 35px;
+  inset:0;
 
-  background:
-    linear-gradient(
-      to top,
-      rgba(5,8,9,.92),
-      rgba(5,8,9,.55),
-      transparent
-    );
+  background:linear-gradient(
+    to top,
+    rgba(5,7,8,.94) 0%,
+    rgba(5,7,8,.45) 38%,
+    rgba(5,7,8,.05) 75%
+  );
 }
 
-.tag{
+.hero-content{
+  position:absolute;
+  z-index:2;
+
+  left:35px;
+  right:35px;
+  bottom:30px;
+}
+
+.hero-tag{
   display:inline-block;
-  padding:7px 13px;
+
+  padding:7px 12px;
   margin-bottom:12px;
 
   background:var(--gold);
   color:#111;
 
-  font-family:Arial,sans-serif;
-  font-size:12px;
+  font-size:11px;
   font-weight:bold;
   text-transform:uppercase;
+  letter-spacing:.5px;
 }
 
 .hero h1{
-  margin:0 0 10px;
-  font-size:42px;
-  color:#f4ead7;
+  margin:0 0 8px;
+
+  font-family:Georgia,serif;
+  font-size:44px;
 }
 
 .hero p{
   max-width:760px;
+
   margin:0;
 
-  color:#d1d0ca;
-  font-family:Arial,sans-serif;
-  font-size:16px;
+  color:#d2d1cb;
   line-height:1.6;
 }
 
 /* =========================
-   NAVIGATION RAPIDE
+   QUICK NAV
 ========================= */
 
 .quick-nav{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:10px;
+  position:sticky;
+  top:0;
+  z-index:20;
 
-  margin:25px 0 40px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+
+  margin:20px 0 35px;
+  padding:10px;
+
+  background:rgba(10,13,14,.96);
+  border:1px solid var(--border);
+
+  backdrop-filter:blur(5px);
 }
 
 .quick-nav a{
-  padding:13px 8px;
+  padding:10px 14px;
 
-  border:1px solid var(--border);
-  background:#101516;
+  color:#c7c5be;
 
-  text-align:center;
-  font-family:Arial,sans-serif;
   font-size:12px;
-  color:#d8d3c9;
+  font-weight:bold;
 
-  transition:.2s;
+  border:1px solid transparent;
 }
 
 .quick-nav a:hover{
-  border-color:var(--gold);
+  border-color:var(--border-light);
   color:var(--gold-light);
+  background:#171b1c;
 }
 
 /* =========================
-   TITRES
+   SECTIONS
 ========================= */
 
-.section-title{
-  margin:55px 0 18px;
+.section{
+  margin-top:50px;
+}
 
-  font-size:27px;
-  color:#eee6d9;
+.section-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
 
-  border-bottom:1px solid #382f22;
+  margin-bottom:20px;
+
+  border-bottom:1px solid #302b23;
   padding-bottom:10px;
 }
 
-.section-intro{
-  margin:-5px 0 20px;
+.section-number{
+  width:32px;
+  height:32px;
 
-  color:var(--muted);
-  font-family:Arial,sans-serif;
-  line-height:1.6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#211b13;
+  border:1px solid var(--border-light);
+
+  color:var(--gold-light);
+
+  font-weight:bold;
+  font-size:13px;
+}
+
+.section-header h2{
+  margin:0;
+
+  font-family:Georgia,serif;
+  font-size:27px;
+}
+
+.intro{
+  color:#b7bab7;
+  line-height:1.65;
+  font-size:14px;
 }
 
 /* =========================
@@ -204,344 +240,597 @@ a{
 .grid-2{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:18px;
+  gap:16px;
 }
 
 .grid-3{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:16px;
 }
 
 .card{
-  background:var(--panel);
+  background:
+    linear-gradient(145deg,#171d1e,#101516);
+
   border:1px solid var(--border);
-  padding:24px;
+
+  padding:22px;
+
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.025),
+    0 8px 25px rgba(0,0,0,.18);
 }
 
 .card h3{
-  margin:0 0 15px;
-  color:var(--gold-light);
-  font-size:21px;
+  margin:0 0 13px;
+
+  font-family:Georgia,serif;
+  font-size:20px;
+
+  color:#eee7d8;
 }
 
 .card p{
   margin:8px 0;
-  color:#c8c8c2;
-  font-family:Arial,sans-serif;
+
+  color:#c0c2bd;
   font-size:14px;
   line-height:1.65;
 }
 
-.card ul{
-  margin:8px 0 0;
-  padding-left:20px;
-
-  font-family:Arial,sans-serif;
-  color:#d0d0ca;
-  line-height:1.8;
-}
-
-.card li::marker{
-  color:var(--gold);
-}
-
 /* =========================
-   RACES
+   RACE
 ========================= */
 
-.race{
+.race-card{
+  min-height:220px;
   position:relative;
-  padding-left:20px;
-  border-left:3px solid var(--gold);
+  overflow:hidden;
 }
 
-.race h3{
-  margin-bottom:6px;
+.race-card::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(215,164,71,.12),
+      transparent 45%
+    );
 }
 
-.race .faction{
-  display:block;
-  margin-bottom:12px;
+.race-content{
+  position:relative;
+}
 
-  font-family:Arial,sans-serif;
-  font-size:12px;
-  color:var(--muted);
+.faction{
+  color:var(--gold);
+  font-size:11px;
+  font-weight:bold;
   text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.race-name{
+  margin:5px 0 15px;
+
+  font-family:Georgia,serif;
+  font-size:28px;
+}
+
+.racial-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.racial{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.icon{
+  width:38px;
+  height:38px;
+
+  flex:none;
+
+  border:1px solid #665331;
+  background:#080a0b;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:var(--gold);
+
+  font-size:11px;
+}
+
+.racial-text strong{
+  display:block;
+  color:#e6e0d2;
+  font-size:13px;
+}
+
+.racial-text span{
+  display:block;
+  margin-top:2px;
+
+  color:var(--muted);
+  font-size:12px;
 }
 
 /* =========================
-   TALENTS
+   METIERS
 ========================= */
 
-.build{
-  background:#101617;
-  border:1px solid var(--border);
-  padding:26px;
+.profession{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
 }
 
-.build-title{
+.profession .icon{
+  width:50px;
+  height:50px;
+}
+
+.profession h3{
+  margin-bottom:5px;
+}
+
+/* =========================
+   TALENT BUILD
+========================= */
+
+.build-header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:15px;
 
   margin-bottom:18px;
 }
 
-.build-title h3{
-  margin:0;
-  color:#eee6d9;
+.build-title{
+  font-family:Georgia,serif;
+  font-size:23px;
 }
 
 .build-code{
-  padding:9px 13px;
+  padding:8px 12px;
 
-  background:#080b0c;
-  border:1px solid #493b25;
+  background:#090c0d;
+  border:1px solid var(--border-light);
 
   color:var(--gold-light);
 
   font-family:monospace;
-  font-size:13px;
+  font-size:12px;
 }
 
-.priority{
+/* =========================
+   TALENT TREE
+========================= */
+
+.talent-wrapper{
+  overflow:auto;
+
+  padding:25px;
+
+  background:
+    radial-gradient(circle at center,#1b2021,#0b0e0f 75%);
+
+  border:1px solid var(--border);
+}
+
+.talent-tree{
+  min-width:820px;
+
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
 
-  margin-top:20px;
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:22px;
 }
 
-.priority div{
-  padding:15px 8px;
+.talent-column{
+  background:rgba(8,10,11,.75);
+  border:1px solid #332d25;
+  padding:18px;
+}
 
-  border:1px solid #39342c;
-  background:#0d1213;
+.talent-column h3{
+  margin:0 0 18px;
 
   text-align:center;
 
-  font-family:Arial,sans-serif;
-  font-size:13px;
+  font-family:Georgia,serif;
+  color:var(--gold-light);
 }
 
-.priority strong{
-  display:block;
+.talent-row{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+
+  margin:12px 0;
+}
+
+.talent{
+  width:70px;
+  min-height:78px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+
+  position:relative;
+}
+
+.talent-icon{
+  width:52px;
+  height:52px;
+
+  border:2px solid #56504a;
+
+  background:#090b0c;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#777;
+
+  font-size:10px;
+}
+
+.talent.selected .talent-icon{
+  border-color:var(--gold);
+
+  box-shadow:
+    0 0 0 1px #8c682e,
+    0 0 15px rgba(215,164,71,.25);
+}
+
+.talent-name{
+  margin-top:5px;
+
+  text-align:center;
+
+  color:#a9aaa5;
+
+  font-size:10px;
+  line-height:1.2;
+}
+
+.talent.selected .talent-name{
   color:var(--gold-light);
-  font-size:18px;
-  margin-bottom:5px;
+}
+
+.talent-rank{
+  position:absolute;
+
+  right:3px;
+  top:37px;
+
+  min-width:18px;
+
+  padding:2px 4px;
+
+  background:#050607;
+  border:1px solid #514a40;
+
+  color:#fff;
+
+  font-size:9px;
+  text-align:center;
+}
+
+/* =========================
+   TOOLTIP
+========================= */
+
+.wow-tooltip{
+  color:#f0c45e;
+
+  border-bottom:1px dotted #9c7937;
+
+  cursor:help;
+}
+
+.wow-tooltip:hover{
+  color:#ffe19a;
+}
+
+.tooltip{
+  position:fixed;
+
+  z-index:99999;
+
+  width:330px;
+
+  padding:14px;
+
+  background:#101820;
+
+  border:1px solid #69727a;
+
+  box-shadow:0 12px 35px rgba(0,0,0,.75);
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:opacity .1s ease;
+}
+
+.tooltip.visible{
+  opacity:1;
+}
+
+.tooltip-top{
+  display:flex;
+  gap:10px;
+
+  margin-bottom:10px;
+}
+
+.tooltip-icon{
+  width:48px;
+  height:48px;
+
+  background:#07090a;
+  border:1px solid #777;
+}
+
+.tooltip-name{
+  color:#f1c65f;
+  font-weight:bold;
+  font-size:15px;
+}
+
+.tooltip-type{
+  margin-top:3px;
+
+  color:#aaa;
+
+  font-size:11px;
+}
+
+.tooltip-text{
+  color:#eee;
+
+  font-size:12px;
+  line-height:1.55;
+}
+
+.tooltip-rank{
+  margin-top:8px;
+
+  color:#bbb;
+
+  font-size:11px;
+}
+
+/* =========================
+   ROTATION
+========================= */
+
+.rotation{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.rotation-step{
+  position:relative;
+
+  padding:18px 14px;
+
+  background:#101516;
+  border:1px solid var(--border);
+
+  text-align:center;
+}
+
+.rotation-number{
+  width:27px;
+  height:27px;
+
+  margin:0 auto 10px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#251d12;
+  border:1px solid var(--border-light);
+
+  color:var(--gold-light);
+
+  font-size:11px;
+  font-weight:bold;
+}
+
+.rotation-step strong{
+  display:block;
+
+  color:#eee5d4;
+
+  font-size:14px;
 }
 
 /* =========================
    STATS
 ========================= */
 
-.stat{
-  display:flex;
-  align-items:center;
-  gap:15px;
-
-  padding:14px 0;
-
-  border-bottom:1px solid #292d2d;
+.stats{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
 }
 
-.stat:last-child{
-  border-bottom:0;
+.stat{
+  padding:18px 10px;
+
+  background:#101516;
+  border:1px solid var(--border);
+
+  text-align:center;
 }
 
 .stat-number{
-  width:34px;
-  height:34px;
+  color:var(--gold);
+
+  font-size:20px;
+  font-weight:bold;
+}
+
+.stat-name{
+  margin-top:5px;
+
+  color:#e4dfd5;
+
+  font-size:13px;
+}
+
+.stat-note{
+  margin-top:5px;
+
+  color:var(--muted);
+
+  font-size:10px;
+}
+
+/* =========================
+   EQUIPMENT
+========================= */
+
+.equipment{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+}
+
+.equipment-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:11px;
+
+  background:#101516;
+  border:1px solid #302c27;
+}
+
+.item-icon{
+  width:44px;
+  height:44px;
+
+  flex:none;
+
+  background:#080a0b;
+  border:1px solid #5d513f;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  border:1px solid var(--gold);
-  color:var(--gold-light);
+  color:#777;
 
-  font-weight:bold;
+  font-size:10px;
 }
 
-.stat-name{
-  font-family:Arial,sans-serif;
-  color:#e1ded7;
+.item-info strong{
+  display:block;
+
+  color:#e9e3d6;
+
+  font-size:13px;
 }
 
-.stat-desc{
-  margin-left:auto;
+.item-info span{
+  display:block;
+
+  margin-top:3px;
 
   color:var(--muted);
-  font-family:Arial,sans-serif;
-  font-size:13px;
+
+  font-size:11px;
+}
+
+/* =========================
+   CONSUMABLES
+========================= */
+
+.consume{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.consume-card{
+  padding:17px;
+
+  background:#101516;
+  border:1px solid var(--border);
+}
+
+.consume-card h3{
+  font-size:16px;
+}
+
+.consume-card p{
+  font-size:12px;
 }
 
 /* =========================
    MACROS
 ========================= */
 
+.macros{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
 .macro{
-  margin-top:15px;
+  background:#101516;
+  border:1px solid var(--border);
 }
 
 .macro-title{
-  display:block;
-  margin-bottom:8px;
+  padding:12px 15px;
 
   color:var(--gold-light);
 
-  font-family:Arial,sans-serif;
   font-weight:bold;
+  font-size:13px;
+
+  border-bottom:1px solid #302c27;
 }
 
 pre{
   margin:0;
+  padding:15px;
 
   overflow:auto;
 
-  padding:17px;
-
-  background:#080b0c;
-  border:1px solid #38352f;
-
-  color:#d7d4cc;
+  color:#d5d5cf;
 
   font-family:Consolas,monospace;
-  font-size:13px;
-  line-height:1.55;
-}
-
-/* =========================
-   CONSOMMABLES
-========================= */
-
-.item{
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-
-  padding:15px 0;
-
-  border-bottom:1px solid #292d2d;
-}
-
-.item:last-child{
-  border-bottom:0;
-}
-
-.item-icon{
-  width:42px;
-  height:42px;
-  flex:none;
-
-  border:1px solid #5c4829;
-  background:#171b1b;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:var(--gold);
-  font-family:Arial,sans-serif;
-  font-size:11px;
-}
-
-.item strong{
-  display:block;
-  margin-bottom:4px;
-  color:#eee6d9;
-}
-
-.item span{
-  color:var(--muted);
-  font-family:Arial,sans-serif;
-  font-size:13px;
-}
-
-/* =========================
-   WOW TOOLTIPS
-========================= */
-
-.wow-tooltip{
-  color:var(--gold-light);
-  border-bottom:1px dotted var(--gold);
-  cursor:help;
-  position:relative;
-}
-
-.tooltip-box{
-  position:fixed;
-  z-index:9999;
-
-  width:310px;
-
-  padding:15px;
-
-  background:#111827;
-  border:1px solid #6d6f77;
-  border-radius:5px;
-
-  box-shadow:0 8px 30px rgba(0,0,0,.65);
-
-  pointer-events:none;
-
-  opacity:0;
-  transform:translateY(5px);
-
-  transition:opacity .12s ease, transform .12s ease;
-}
-
-.tooltip-box.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.tooltip-head{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin-bottom:10px;
-}
-
-.tooltip-icon{
-  width:42px;
-  height:42px;
-
-  border:1px solid #777;
-  background:#222;
-
-  object-fit:cover;
-}
-
-.tooltip-name{
-  color:#f3c65e;
-  font-weight:bold;
-  font-size:16px;
-}
-
-.tooltip-type{
-  display:block;
-  margin-top:3px;
-
-  color:#aaa;
-  font-family:Arial,sans-serif;
-  font-size:11px;
-}
-
-.tooltip-info{
-  color:#f0f0e8;
-  font-family:Arial,sans-serif;
-  font-size:13px;
-  line-height:1.55;
-}
-
-.tooltip-cooldown{
-  margin-top:8px;
-  color:#d6d6d0;
-  font-family:Arial,sans-serif;
   font-size:12px;
+  line-height:1.55;
 }
 
 /* =========================
@@ -552,12 +841,12 @@ pre{
   margin-top:70px;
   padding-top:20px;
 
-  border-top:1px solid #342b1d;
+  border-top:1px solid #302b23;
+
+  text-align:center;
 
   color:#777b78;
-  font-family:Arial,sans-serif;
-  font-size:12px;
-  text-align:center;
+  font-size:11px;
 }
 
 /* =========================
@@ -566,522 +855,886 @@ pre{
 
 @media(max-width:900px){
 
-  .quick-nav{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .grid-3{
+  .grid-3,
+  .consume{
     grid-template-columns:1fr;
   }
 
-  .priority{
+  .stats{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .rotation{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 @media(max-width:650px){
 
   .page{
-    width:min(100% - 24px,1180px);
+    width:calc(100% - 20px);
   }
 
   .hero{
-    min-height:380px;
+    min-height:390px;
   }
 
   .hero-content{
-    padding:35px 22px 25px;
+    left:20px;
+    right:20px;
   }
 
   .hero h1{
-    font-size:30px;
+    font-size:32px;
   }
 
-  .grid-2{
+  .grid-2,
+  .equipment,
+  .macros{
     grid-template-columns:1fr;
   }
 
-  .quick-nav{
+  .stats{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .priority{
+  .rotation{
     grid-template-columns:1fr;
   }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="page">
 
-  <header class="topbar">
-    <div class="breadcrumb">
-      <a href="../../index.html">Azeroth Forge</a>
-      <span>›</span>
-      <a href="../index.html">Guides</a>
-      <span>›</span>
-      <a href="index.html">Guerrier</a>
-      <span>›</span>
-      PvE
-    </div>
-  </header>
+<header class="topbar">
 
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <span class="tag">Guide PvE</span>
-
-      <h1>Guerrier Fureur PvE</h1>
-
-      <p>
-        Guide du Guerrier DPS PvE sur WoW Forever :
-        race, métiers, talents, statistiques, équipement,
-        consommables et macros utiles.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- NAVIGATION -->
-
-  <nav class="quick-nav">
-
-    <a href="#race">Race</a>
-    <a href="#metiers">Métiers</a>
-    <a href="#talents">Talents</a>
-    <a href="#stats">Statistiques</a>
-    <a href="#equipement">Équipement</a>
-    <a href="#macros">Macros</a>
-
-  </nav>
-
-
-  <!-- RACE -->
-
-  <h2 class="section-title" id="race">Choix de la race</h2>
-
-  <p class="section-intro">
-    Le choix dépend de votre faction et de l'objectif d'optimisation.
-    Pour le Guerrier PvE offensif, l'Orc est le choix Horde le plus naturel.
-    Côté Alliance, l'Humain apporte un bonus intéressant avec les épées.
-  </p>
-
-  <div class="grid-2">
-
-    <article class="card race">
-
-      <span class="faction">Horde</span>
-
-      <h3>Orc</h3>
-
-      <p>
-        <span
-          class="wow-tooltip"
-          data-name="Fureur sanguinaire"
-          data-type="Compétence raciale"
-          data-icon=""
-          data-info="Augmente la puissance d’attaque en mêlée de base de 25 % pendant 15 sec et réduit les effets des soins sur vous de 50 % pendant 25 sec."
-          data-cooldown="2 min de recharge"
-        >
-          Fureur sanguinaire
-        </span>
-        offre une fenêtre de burst particulièrement intéressante
-        pour le Guerrier DPS.
-      </p>
-
-      <p>
-        La Spécialisation Hache augmente également les chances
-        de coup critique avec les haches.
-      </p>
-
-    </article>
-
-
-    <article class="card race">
-
-      <span class="faction">Alliance</span>
-
-      <h3>Humain</h3>
-
-      <p>
-        La Spécialisation Épée augmente les chances d'infliger
-        un coup critique avec les sorts et techniques lorsque
-        vous utilisez une épée.
-      </p>
-
-      <p>
-        Le choix de l'arme doit donc être pris en compte
-        lors de l'optimisation du personnage.
-      </p>
-
-    </article>
-
+  <div class="breadcrumb">
+    <a href="../../index.html">Azeroth Forge</a>
+    <span>›</span>
+    <a href="../index.html">Guides</a>
+    <span>›</span>
+    <a href="index.html">Guerrier</a>
+    <span>›</span>
+    PvE
   </div>
 
-
-  <!-- METIERS -->
-
-  <h2 class="section-title" id="metiers">Métiers optimisés</h2>
-
-  <div class="grid-2">
-
-    <article class="card">
-
-      <h3>Ingénierie</h3>
-
-      <p>
-        Le métier à privilégier pour un Guerrier PvE orienté
-        contenu de groupe.
-      </p>
-
-      <ul>
-        <li>Accès aux outils d'ingénierie.</li>
-        <li>Utilitaires supplémentaires en combat.</li>
-        <li>Bombes et gadgets utiles pour les phases d'AoE.</li>
-        <li>Excellent choix pour le PvE HL.</li>
-      </ul>
-
-    </article>
+</header>
 
 
-    <article class="card">
+<!-- HERO -->
 
-      <h3>Forge</h3>
+<section class="hero">
 
-      <p>
-        Un choix logique pour compléter l'Ingénierie avec
-        un métier directement lié à l'équipement du Guerrier.
-      </p>
+  <div class="hero-content">
 
-      <ul>
-        <li>Création d'équipement adapté au Guerrier.</li>
-        <li>Accès aux pièces d'armure et armes selon les recettes disponibles.</li>
-        <li>Bonne combinaison avec Ingénierie.</li>
-      </ul>
+    <span class="hero-tag">Guide PvE — Niveau 60</span>
 
-    </article>
+    <h1>Guerrier Fureur PvE</h1>
 
-  </div>
-
-
-  <!-- TALENTS -->
-
-  <h2 class="section-title" id="talents">Spécialisation et talents</h2>
-
-  <div class="build">
-
-    <div class="build-title">
-
-      <h3>Fureur — DPS PvE</h3>
-
-      <span class="build-code">
-        Fureur / Ambidextrie
-      </span>
-
-    </div>
-
-    <p class="section-intro">
-
-      Fureur s'appuie sur le double maniement, Sanguinaire,
-      Rafale et une génération régulière de Rage.
-      Forever modifie fortement l'arbre par rapport à vanilla,
-      notamment avec Rage infinie, Coups déchaînés et Précision.
-
+    <p>
+      Build et guide complet du Guerrier Fureur pour WoW Forever.
+      Race, métiers, talents, rotation, statistiques, équipement,
+      consommables et macros.
     </p>
 
-    <div class="grid-2">
+  </div>
 
-      <div class="card">
-
-        <h3>Talents clés</h3>
-
-        <ul>
-
-          <li>
-            <span
-              class="wow-tooltip"
-              data-name="Sanguinaire"
-              data-type="Talent / Technique"
-              data-icon=""
-              data-info="Attaque instantanément la cible, lui infligeant des dégâts d’un montant égal à 35 % de votre puissance d’attaque plus 30, et augmente votre vitesse de déplacement de 10 % pendant 10 sec."
-            >
-              Sanguinaire
-            </span>
-          </li>
-
-          <li>
-            <span
-              class="wow-tooltip"
-              data-name="Rafale"
-              data-type="Talent"
-              data-icon=""
-              data-info="Augmente votre vitesse d’attaque en mêlée pour vos 3 prochaines attaques après avoir infligé un coup critique en mêlée."
-            >
-              Rafale
-            </span>
-          </li>
-
-          <li>
-            <span
-              class="wow-tooltip"
-              data-name="Spécialisation Ambidextrie"
-              data-type="Talent"
-              data-icon=""
-              data-info="Augmente les dégâts de l’arme tenue en main gauche, la Rage générée avec la main gauche et les chances de toucher avec les attaques effectuées avec la main gauche."
-            >
-              Spécialisation Ambidextrie
-            </span>
-          </li>
-
-          <li>
-            <span
-              class="wow-tooltip"
-              data-name="Précision"
-              data-type="Talent"
-              data-icon=""
-              data-info="Augmente vos chances de toucher."
-            >
-              Précision
-            </span>
-          </li>
-
-        </ul>
-
-      </div>
+</section>
 
 
-      <div class="card">
+<!-- NAVIGATION -->
 
-        <h3>Fenêtre de burst</h3>
+<nav class="quick-nav">
 
-        <p>
+  <a href="#race">Race</a>
+  <a href="#metiers">Métiers</a>
+  <a href="#talents">Talents</a>
+  <a href="#rotation">Rotation</a>
+  <a href="#stats">Stats</a>
+  <a href="#equipement">Équipement</a>
+  <a href="#consommables">Consommables</a>
+  <a href="#macros">Macros</a>
 
-          <span
-            class="wow-tooltip"
-            data-name="Souhait mortel"
-            data-type="Talent"
-            data-icon=""
-            data-info="À l’activation, augmente de 20 % les dégâts physiques infligés et rend insensible aux effets de peur, mais augmente de 5 % les dégâts subis. Dure 30 sec."
-          >
-            Souhait mortel
-          </span>
+</nav>
 
-          doit être utilisé pendant les phases où le groupe
-          peut exploiter pleinement la fenêtre de dégâts.
 
-        </p>
+<!-- RACE -->
 
-        <p>
-          Côté Horde, il peut être associé à
-          <span
-            class="wow-tooltip"
-            data-name="Fureur sanguinaire"
-            data-type="Compétence raciale"
-            data-icon=""
-            data-info="Augmente la puissance d’attaque en mêlée de base de 25 % pendant 15 sec."
-            data-cooldown="2 min de recharge"
-          >
-            Fureur sanguinaire
-          </span>
-          pour concentrer les principaux cooldowns offensifs.
-        </p>
+<section class="section" id="race">
+
+  <div class="section-header">
+
+    <div class="section-number">01</div>
+
+    <h2>Choix de la race</h2>
+
+  </div>
+
+  <p class="intro">
+    Le choix de la race dépend de la faction et de l'équipement
+    utilisé. Pour un Guerrier PvE orienté optimisation, les bonus
+    raciaux liés aux armes et à la puissance offensive sont
+    particulièrement importants.
+  </p>
+
+
+  <div class="grid-2">
+
+    <article class="card race-card">
+
+      <div class="race-content">
+
+        <div class="faction">Horde</div>
+
+        <div class="race-name">Orc</div>
+
+        <div class="racial-list">
+
+          <div class="racial">
+
+            <div class="icon">IMG</div>
+
+            <div class="racial-text">
+
+              <strong>
+                <span
+                  class="wow-tooltip"
+                  data-name="Fureur sanguinaire"
+                  data-type="Compétence raciale"
+                  data-text="Augmente la puissance d'attaque en mêlée. La durée et les valeurs exactes doivent suivre les données Forever actuelles."
+                >
+                  Fureur sanguinaire
+                </span>
+              </strong>
+
+              <span>Fenêtre de burst offensive.</span>
+
+            </div>
+
+          </div>
+
+
+          <div class="racial">
+
+            <div class="icon">IMG</div>
+
+            <div class="racial-text">
+
+              <strong>Spécialisation Hache</strong>
+
+              <span>
+                Bonus directement lié à l'utilisation des haches.
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
-    </div>
+    </article>
+
+
+    <article class="card race-card">
+
+      <div class="race-content">
+
+        <div class="faction">Alliance</div>
+
+        <div class="race-name">Humain</div>
+
+        <div class="racial-list">
+
+          <div class="racial">
+
+            <div class="icon">IMG</div>
+
+            <div class="racial-text">
+
+              <strong>Spécialisation Épée</strong>
+
+              <span>
+                Bonus intéressant lorsque le build utilise une épée.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="racial">
+
+            <div class="icon">IMG</div>
+
+            <div class="racial-text">
+
+              <strong>Spécialisation Masse</strong>
+
+              <span>
+                À prendre en compte selon l'arme équipée.
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- METIERS -->
+
+<section class="section" id="metiers">
+
+  <div class="section-header">
+
+    <div class="section-number">02</div>
+
+    <h2>Métiers</h2>
 
   </div>
 
 
-  <!-- STATS -->
+  <div class="grid-2">
 
-  <h2 class="section-title" id="stats">Priorité des statistiques</h2>
+    <article class="card">
+
+      <div class="profession">
+
+        <div class="icon">IMG</div>
+
+        <div>
+
+          <h3>Ingénierie</h3>
+
+          <p>
+            Le métier de référence pour accéder aux objets
+            d'ingénierie et aux utilitaires utiles en PvE.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="profession">
+
+        <div class="icon">IMG</div>
+
+        <div>
+
+          <h3>Forge</h3>
+
+          <p>
+            Permet de fabriquer des armes et pièces d'équipement
+            adaptées au Guerrier.
+          </p>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- TALENTS -->
+
+<section class="section" id="talents">
+
+  <div class="section-header">
+
+    <div class="section-number">03</div>
+
+    <h2>Spécialisation et talents</h2>
+
+  </div>
+
 
   <div class="card">
 
+    <div class="build-header">
+
+      <div class="build-title">
+        Fureur — DPS PvE
+      </div>
+
+      <div class="build-code">
+        Build Forever
+      </div>
+
+    </div>
+
+
+    <p class="intro">
+      L'arbre Fureur de Forever conserve son identité autour du
+      double maniement, de Sanguinaire et de Rafale, tout en
+      introduisant plusieurs nouveaux talents et de nombreuses
+      modifications de valeurs.
+    </p>
+
+
+    <div class="talent-wrapper">
+
+      <div class="talent-tree">
+
+
+        <!-- ARMES -->
+
+        <div class="talent-column">
+
+          <h3>Armes</h3>
+
+          <div class="talent-row">
+
+            <div class="talent">
+
+              <div class="talent-icon">IMG</div>
+
+              <div class="talent-name">
+                Talent
+              </div>
+
+            </div>
+
+            <div class="talent">
+
+              <div class="talent-icon">IMG</div>
+
+              <div class="talent-name">
+                Talent
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="talent-row">
+
+            <div class="talent">
+
+              <div class="talent-icon">IMG</div>
+
+              <div class="talent-name">
+                Talent
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FUREUR -->
+
+        <div class="talent-column">
+
+          <h3>Fureur</h3>
+
+
+          <div class="talent-row">
+
+            <div class="talent selected">
+
+              <div class="talent-icon">
+
+                IMG
+
+              </div>
+
+              <div class="talent-rank">
+                5/5
+              </div>
+
+              <div class="talent-name">
+                Cruauté
+              </div>
+
+            </div>
+
+
+            <div class="talent selected">
+
+              <div class="talent-icon">
+                IMG
+              </div>
+
+              <div class="talent-rank">
+                3/3
+              </div>
+
+              <div class="talent-name">
+                Rage infinie
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="talent-row">
+
+            <div class="talent selected">
+
+              <div class="talent-icon">
+                IMG
+              </div>
+
+              <div class="talent-rank">
+                5/5
+              </div>
+
+              <div class="talent-name">
+                Ambidextrie
+              </div>
+
+            </div>
+
+
+            <div class="talent selected">
+
+              <div class="talent-icon">
+                IMG
+              </div>
+
+              <div class="talent-rank">
+                1/1
+              </div>
+
+              <div class="talent-name">
+                Coups déchaînés
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="talent-row">
+
+            <div class="talent selected">
+
+              <div class="talent-icon">
+                IMG
+              </div>
+
+              <div class="talent-rank">
+                3/3
+              </div>
+
+              <div class="talent-name">
+                Précision
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="talent-row">
+
+            <div class="talent selected">
+
+              <div class="talent-icon">
+                IMG
+              </div>
+
+              <div class="talent-rank">
+                1/1
+              </div>
+
+              <div class="talent-name">
+                Souhait mortel
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROTECTION -->
+
+        <div class="talent-column">
+
+          <h3>Protection</h3>
+
+          <div class="talent-row">
+
+            <div class="talent">
+
+              <div class="talent-icon">
+                IMG
+              </div>
+
+              <div class="talent-name">
+                Talent
+              </div>
+
+            </div>
+
+            <div class="talent">
+
+              <div class="talent-icon">
+                IMG
+              </div>
+
+              <div class="talent-name">
+                Talent
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ROTATION -->
+
+<section class="section" id="rotation">
+
+  <div class="section-header">
+
+    <div class="section-number">04</div>
+
+    <h2>Rotation</h2>
+
+  </div>
+
+
+  <div class="rotation">
+
+    <div class="rotation-step">
+
+      <div class="rotation-number">1</div>
+
+      <strong>
+        <span
+          class="wow-tooltip"
+          data-name="Charge"
+          data-type="Technique"
+          data-text="Engagez la cible et générez de la Rage."
+        >
+          Charge
+        </span>
+      </strong>
+
+    </div>
+
+
+    <div class="rotation-step">
+
+      <div class="rotation-number">2</div>
+
+      <strong>
+        <span
+          class="wow-tooltip"
+          data-name="Sanguinaire"
+          data-type="Technique — Fureur"
+          data-text="Technique centrale du Guerrier Fureur."
+        >
+          Sanguinaire
+        </span>
+      </strong>
+
+    </div>
+
+
+    <div class="rotation-step">
+
+      <div class="rotation-number">3</div>
+
+      <strong>
+        <span
+          class="wow-tooltip"
+          data-name="Tourbillon"
+          data-type="Technique"
+          data-text="Attaque de zone et outil important de la rotation."
+        >
+          Tourbillon
+        </span>
+      </strong>
+
+    </div>
+
+
+    <div class="rotation-step">
+
+      <div class="rotation-number">4</div>
+
+      <strong>
+        <span
+          class="wow-tooltip"
+          data-name="Exécution"
+          data-type="Technique"
+          data-text="Utilisez Exécution lorsque la cible entre dans sa phase d'exécution."
+        >
+          Exécution
+        </span>
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="section" id="stats">
+
+  <div class="section-header">
+
+    <div class="section-number">05</div>
+
+    <h2>Statistiques</h2>
+
+  </div>
+
+
+  <div class="stats">
+
     <div class="stat">
-      <div class="stat-number">1</div>
+      <div class="stat-number">01</div>
       <div class="stat-name">Toucher</div>
-      <div class="stat-desc">
-        Priorité à la fiabilité des attaques
-      </div>
+      <div class="stat-note">Fiabiliser les attaques</div>
     </div>
 
     <div class="stat">
-      <div class="stat-number">2</div>
+      <div class="stat-number">02</div>
       <div class="stat-name">Force</div>
-      <div class="stat-desc">
-        Puissance offensive principale
-      </div>
+      <div class="stat-note">Puissance offensive</div>
     </div>
 
     <div class="stat">
-      <div class="stat-number">3</div>
-      <div class="stat-name">Coup critique</div>
-      <div class="stat-desc">
-        Synergie avec Rafale et les talents de Fureur
-      </div>
+      <div class="stat-number">03</div>
+      <div class="stat-name">Critique</div>
+      <div class="stat-note">Synergie avec Rafale</div>
     </div>
 
     <div class="stat">
-      <div class="stat-number">4</div>
+      <div class="stat-number">04</div>
       <div class="stat-name">Hâte</div>
-      <div class="stat-desc">
-        Améliore la fréquence des attaques
-      </div>
+      <div class="stat-note">Cadence d'attaque</div>
     </div>
 
     <div class="stat">
-      <div class="stat-number">5</div>
-      <div class="stat-name">Puissance d'attaque</div>
-      <div class="stat-desc">
-        À prendre selon l'équipement disponible
-      </div>
+      <div class="stat-number">05</div>
+      <div class="stat-name">PA</div>
+      <div class="stat-note">Puissance d'attaque</div>
     </div>
 
   </div>
 
+</section>
 
-  <!-- EQUIPEMENT -->
 
-  <h2 class="section-title" id="equipement">Équipement</h2>
+<!-- EQUIPEMENT -->
 
-  <div class="grid-3">
+<section class="section" id="equipement">
 
-    <article class="card">
+  <div class="section-header">
 
-      <h3>Armes</h3>
+    <div class="section-number">06</div>
+
+    <h2>Équipement</h2>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="equipment">
+
+      <div class="equipment-row">
+
+        <div class="item-icon">IMG</div>
+
+        <div class="item-info">
+          <strong>Tête</strong>
+          <span>Équipement recommandé</span>
+        </div>
+
+      </div>
+
+
+      <div class="equipment-row">
+
+        <div class="item-icon">IMG</div>
+
+        <div class="item-info">
+          <strong>Cou</strong>
+          <span>Équipement recommandé</span>
+        </div>
+
+      </div>
+
+
+      <div class="equipment-row">
+
+        <div class="item-icon">IMG</div>
+
+        <div class="item-info">
+          <strong>Épaules</strong>
+          <span>Équipement recommandé</span>
+        </div>
+
+      </div>
+
+
+      <div class="equipment-row">
+
+        <div class="item-icon">IMG</div>
+
+        <div class="item-info">
+          <strong>Arme principale</strong>
+          <span>Priorité élevée</span>
+        </div>
+
+      </div>
+
+
+      <div class="equipment-row">
+
+        <div class="item-icon">IMG</div>
+
+        <div class="item-info">
+          <strong>Arme secondaire</strong>
+          <span>Priorité élevée</span>
+        </div>
+
+      </div>
+
+
+      <div class="equipment-row">
+
+        <div class="item-icon">IMG</div>
+
+        <div class="item-info">
+          <strong>Bijoux</strong>
+          <span>Selon le contenu</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONSOMMABLES -->
+
+<section class="section" id="consommables">
+
+  <div class="section-header">
+
+    <div class="section-number">07</div>
+
+    <h2>Consommables</h2>
+
+  </div>
+
+
+  <div class="consume">
+
+    <article class="consume-card">
+
+      <h3>Potions</h3>
 
       <p>
-        La Fureur PvE utilise deux armes à une main.
-        La qualité des armes reste une priorité majeure
-        lors du remplacement d'une pièce.
+        Potions offensives à utiliser pendant les phases
+        de burst ou selon les besoins du combat.
       </p>
 
     </article>
 
 
-    <article class="card">
+    <article class="consume-card">
 
-      <h3>Armure</h3>
+      <h3>Nourriture</h3>
 
       <p>
-        Privilégiez les pièces apportant les statistiques
-        correspondant à votre priorité offensive.
+        Utilisez la nourriture donnant le meilleur bonus
+        offensif disponible pour votre équipement.
       </p>
 
     </article>
 
 
-    <article class="card">
+    <article class="consume-card">
 
-      <h3>Bijoux</h3>
+      <h3>Élixirs</h3>
 
       <p>
-        Recherchez les bijoux capables d'augmenter votre
-        puissance pendant les fenêtres de burst.
+        À adapter au contenu et aux consommables disponibles
+        dans Forever.
       </p>
 
     </article>
 
   </div>
 
-
-  <!-- CONSOMMABLES -->
-
-  <h2 class="section-title">Consommables</h2>
-
-  <div class="grid-2">
-
-    <article class="card">
-
-      <div class="item">
-
-        <div class="item-icon">P</div>
-
-        <div>
-          <strong>Potions offensives</strong>
-          <span>
-            À conserver pour les phases de burst et les combats où
-            leur utilisation apporte un gain réel.
-          </span>
-        </div>
-
-      </div>
+</section>
 
 
-      <div class="item">
+<!-- MACROS -->
 
-        <div class="item-icon">F</div>
+<section class="section" id="macros">
 
-        <div>
-          <strong>Nourriture</strong>
-          <span>
-            Utilisez la nourriture apportant le bonus offensif
-            disponible pour votre niveau.
-          </span>
-        </div>
+  <div class="section-header">
 
-      </div>
+    <div class="section-number">08</div>
 
-    </article>
-
-
-    <article class="card">
-
-      <div class="item">
-
-        <div class="item-icon">E</div>
-
-        <div>
-          <strong>Élixirs</strong>
-          <span>
-            À utiliser lorsque leur bonus correspond à votre
-            configuration PvE.
-          </span>
-        </div>
-
-      </div>
-
-
-      <div class="item">
-
-        <div class="item-icon">B</div>
-
-        <div>
-          <strong>Buffs de groupe</strong>
-          <span>
-            Préparez les consommables nécessaires avant chaque
-            raid ou donjon important.
-          </span>
-        </div>
-
-      </div>
-
-    </article>
+    <h2>Macros utiles</h2>
 
   </div>
 
 
-  <!-- MACROS -->
+  <div class="macros">
 
-  <h2 class="section-title" id="macros">Macros utiles</h2>
+    <article class="macro">
 
-  <div class="grid-2">
-
-    <article class="card macro">
-
-      <span class="macro-title">
+      <div class="macro-title">
         Charge / Interception
-      </span>
+      </div>
 
       <pre>/cast [stance:1] Charge
 /cast [stance:3] Interception</pre>
@@ -1089,22 +1742,22 @@ pre{
     </article>
 
 
-    <article class="card macro">
+    <article class="macro">
 
-      <span class="macro-title">
+      <div class="macro-title">
         Frappe héroïque
-      </span>
+      </div>
 
       <pre>/cast Frappe héroïque</pre>
 
     </article>
 
 
-    <article class="card macro">
+    <article class="macro">
 
-      <span class="macro-title">
-        Burst Guerrier Orc
-      </span>
+      <div class="macro-title">
+        Burst Orc
+      </div>
 
       <pre>/cast Fureur sanguinaire
 /cast Souhait mortel</pre>
@@ -1112,11 +1765,11 @@ pre{
     </article>
 
 
-    <article class="card macro">
+    <article class="macro">
 
-      <span class="macro-title">
+      <div class="macro-title">
         Cri de guerre
-      </span>
+      </div>
 
       <pre>/cast Cri de guerre</pre>
 
@@ -1124,47 +1777,58 @@ pre{
 
   </div>
 
+</section>
 
-  <footer class="footer">
 
-    Azeroth Forge — Guides WoW Forever<br>
-    Informations susceptibles d'évoluer pendant la bêta.
+<footer class="footer">
 
-  </footer>
+  Azeroth Forge — Guides WoW Forever
+
+</footer>
 
 </div>
 
 
-<!-- =========================
-     TOOLTIP SYSTEM
-========================= -->
+<!-- TOOLTIP -->
+
+<div class="tooltip" id="tooltip">
+
+  <div class="tooltip-top">
+
+    <div class="tooltip-icon"></div>
+
+    <div>
+
+      <div class="tooltip-name"></div>
+      <div class="tooltip-type"></div>
+
+    </div>
+
+  </div>
+
+  <div class="tooltip-text"></div>
+
+  <div class="tooltip-rank"></div>
+
+</div>
+
 
 <script>
 
-const tooltip = document.createElement("div");
+const tooltip = document.getElementById("tooltip");
 
-tooltip.className = "tooltip-box";
+const tooltipName =
+  tooltip.querySelector(".tooltip-name");
 
-tooltip.innerHTML = `
-  <div class="tooltip-head">
-    <img class="tooltip-icon" alt="">
-    <div>
-      <div class="tooltip-name"></div>
-      <span class="tooltip-type"></span>
-    </div>
-  </div>
+const tooltipType =
+  tooltip.querySelector(".tooltip-type");
 
-  <div class="tooltip-info"></div>
-  <div class="tooltip-cooldown"></div>
-`;
+const tooltipText =
+  tooltip.querySelector(".tooltip-text");
 
-document.body.appendChild(tooltip);
+const tooltipRank =
+  tooltip.querySelector(".tooltip-rank");
 
-const tooltipIcon = tooltip.querySelector(".tooltip-icon");
-const tooltipName = tooltip.querySelector(".tooltip-name");
-const tooltipType = tooltip.querySelector(".tooltip-type");
-const tooltipInfo = tooltip.querySelector(".tooltip-info");
-const tooltipCooldown = tooltip.querySelector(".tooltip-cooldown");
 
 document.querySelectorAll(".wow-tooltip").forEach(item => {
 
@@ -1176,33 +1840,35 @@ document.querySelectorAll(".wow-tooltip").forEach(item => {
     tooltipType.textContent =
       item.dataset.type || "";
 
-    tooltipInfo.textContent =
-      item.dataset.info || "";
+    tooltipText.textContent =
+      item.dataset.text || "";
 
-    tooltipCooldown.textContent =
-      item.dataset.cooldown || "";
-
-    if(item.dataset.icon){
-
-      tooltipIcon.src = item.dataset.icon;
-      tooltipIcon.style.display = "block";
-
-    }else{
-
-      tooltipIcon.style.display = "none";
-
-    }
+    tooltipRank.textContent =
+      item.dataset.rank || "";
 
     tooltip.classList.add("visible");
-
-    moveTooltip(item);
 
   });
 
 
-  item.addEventListener("mousemove", () => {
+  item.addEventListener("mousemove", event => {
 
-    moveTooltip(item);
+    let x = event.clientX + 18;
+    let y = event.clientY + 18;
+
+    const width = 330;
+    const height = tooltip.offsetHeight;
+
+    if(x + width > window.innerWidth - 15){
+      x = event.clientX - width - 18;
+    }
+
+    if(y + height > window.innerHeight - 15){
+      y = event.clientY - height - 18;
+    }
+
+    tooltip.style.left = x + "px";
+    tooltip.style.top = y + "px";
 
   });
 
@@ -1214,33 +1880,6 @@ document.querySelectorAll(".wow-tooltip").forEach(item => {
   });
 
 });
-
-
-function moveTooltip(item){
-
-  const rect = item.getBoundingClientRect();
-
-  let left = rect.left;
-  let top = rect.bottom + 12;
-
-  const width = 310;
-  const height = tooltip.offsetHeight;
-
-  if(left + width > window.innerWidth - 15){
-    left = window.innerWidth - width - 15;
-  }
-
-  if(top + height > window.innerHeight - 15){
-    top = rect.top - height - 12;
-  }
-
-  if(left < 15){
-    left = 15;
-  }
-
-  tooltip.style.left = left + "px";
-  tooltip.style.top = top + "px";
-}
 
 </script>
 
