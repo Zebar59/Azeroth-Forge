@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#080b0c">
+<title>Azeroth Forge — Calculateur de talents</title>
+<meta name="description" content="Calculateur de talents WoW Forever — Azeroth Forge.">
+
+<!-- Moteur du calculateur : ne pas modifier -->
+<script type="module" crossorigin src="./assets/index-CwtqOCg9.js"></script>
+<link rel="stylesheet" crossorigin href="./assets/index-DeH8mCbs.css">
+
+<style>
+:root{--bg:#0b0f10;--panel:#171c1d;--gold:#d59a3a;--gold2:#f0c36a;--text:#eee9df;--muted:#aaa59b;--line:#5b4224}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#304047,#0b0f10 65%);color:var(--text);font-family:Georgia,serif}
+a{color:inherit;text-decoration:none}
+.af-header{position:sticky;top:0;z-index:9999;background:#080b0cf5;border-bottom:1px solid var(--line);box-shadow:0 4px 20px #0008}
+.af-wrap{max-width:1450px;margin:auto;padding:0 30px}
+.af-nav{min-height:76px;display:flex;align-items:center;gap:25px}
+.af-brand{display:flex;gap:11px;align-items:center;min-width:275px}
+.af-mark{width:50px;height:50px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-size:25px;flex:none}
+.af-brand-title{font-size:26px;font-weight:700;text-transform:uppercase;line-height:1}
+.af-brand-title span{color:var(--gold2)}
+.af-sub{font:10px Arial,sans-serif;color:#a69b89;letter-spacing:2px;margin-top:5px}
+.af-links{display:flex;gap:5px;flex:1}
+.af-links a{font:700 12px Arial,sans-serif;text-transform:uppercase;padding:13px 11px;border:1px solid transparent}
+.af-links a:hover,.af-links a.active{background:#261c10;border-color:#725025;color:var(--gold2)}
+.af-tools{display:flex;gap:8px}
+.af-round{width:40px;height:40px;border:1px solid #70542f;border-radius:50%;display:grid;place-items:center;color:#e9c47c;font-family:Arial,sans-serif}
+.af-titlebar{border-bottom:1px solid #493a28;background:linear-gradient(180deg,#111617,#0c1011);padding:34px 0 30px}
+.af-titlebar-inner{display:flex;align-items:end;justify-content:space-between;gap:25px}
+.af-eyebrow{font:11px Arial,sans-serif;letter-spacing:4px;color:var(--gold2);text-transform:uppercase;margin-bottom:8px}
+.af-titlebar h1{margin:0;font-size:38px;line-height:1;text-transform:uppercase}
+.af-titlebar p{margin:10px 0 0;color:var(--muted);font:14px Arial,sans-serif}
+.af-back{display:inline-block;border:1px solid #80603b;background:#111617;color:#e8bd68;padding:13px 18px;font:700 11px Arial,sans-serif;text-transform:uppercase;white-space:nowrap}
+.af-back:hover{background:#261c10;border-color:#a36e2b}
+#root{width:100%;min-height:calc(100vh - 76px)}
+.af-footer{border-top:1px solid #4b3925;padding:30px 0 42px;background:#080b0c;font:12px Arial,sans-serif;color:#999}
+.af-footer-inner{display:flex;justify-content:space-between;gap:25px;align-items:center}
+.af-footer b{color:#e3c27d}
+@media(max-width:1000px){.af-brand{min-width:auto}.af-links a:nth-child(n+5){display:none}}
+@media(max-width:760px){.af-wrap{padding:0 16px}.af-nav{min-height:66px}.af-brand-title{font-size:20px}.af-mark{width:42px;height:42px;font-size:21px}.af-sub{display:none}.af-links{display:none}.af-titlebar-inner{align-items:flex-start;flex-direction:column}.af-titlebar h1{font-size:30px}.af-footer-inner{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<header class="af-header">
+<div class="af-wrap af-nav">
+<a class="af-brand" href="../" aria-label="Retour à Azeroth Forge">
+<div class="af-mark">⚒</div>
+<div><div class="af-brand-title">Azeroth <span>Forge</span></div><div class="af-sub">GUIDES · ACTUS · COMMUNAUTÉ</div></div>
+</a>
+<nav class="af-links" aria-label="Navigation principale">
+<a href="../">Accueil</a>
+<a href="../actualites/index.html">Actualités</a>
+<a href="../#guides">Guides</a>
+<a href="./" class="active">Talents</a>
+<a href="../#database">Base de données</a>
+<a href="../#community">Communauté</a>
+</nav>
+<div class="af-tools"><div class="af-round">⌕</div><div class="af-round">♙</div></div>
+</div>
+</header>
+
+<section class="af-titlebar">
+<div class="af-wrap af-titlebar-inner">
+<div>
+<div class="af-eyebrow">Azeroth Forge · WoW Forever</div>
+<h1>Calculateur de talents</h1>
+<p>Construisez, testez et partagez vos spécialisations.</p>
+</div>
+<a class="af-back" href="../">← Retour à Azeroth Forge</a>
+</div>
+</section>
+
+<div id="root"></div>
+
+<footer class="af-footer">
+<div class="af-wrap af-footer-inner">
+<div><b>⚒ AZEROTH FORGE</b><br>Guides · Actus · Communauté</div>
+<div>Site de fans dédié à World of Warcraft Forever.<br>Projet communautaire non officiel.</div>
+<div><a href="../">Accueil</a> · <a href="../#guides">Guides</a> · <a href="./">Calculateur de talents</a></div>
+</div>
+</footer>
+
+</body>
+</html>
