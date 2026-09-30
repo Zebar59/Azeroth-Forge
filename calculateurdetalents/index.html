@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Calculateur de talents — Azeroth Forge</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #090d0e;
+      color: #e8dfcf;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* =========================
+       PAGE
+       ========================= */
+
+    .page {
+      width: min(1500px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 45px 0 70px;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+
+      padding-bottom: 22px;
+      margin-bottom: 25px;
+
+      border-bottom: 1px solid #493a25;
+    }
+
+    .eyebrow {
+      margin-bottom: 8px;
+
+      color: #d9a13b;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: #f0e6d3;
+
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.05;
+    }
+
+    .intro {
+      max-width: 650px;
+
+      margin: 10px 0 0;
+
+      color: #a9a49a;
+
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .back-link {
+      color: #d9a13b;
+
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+
+      text-decoration: none;
+
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       CALCULATEUR
+       ========================= */
+
+    .calculator-shell {
+      border: 1px solid #4c3c25;
+
+      background: #0d1112;
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .calculator-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+
+      padding: 14px 18px;
+
+      border-bottom: 1px solid #403426;
+
+      background: #111718;
+    }
+
+    .calculator-title {
+      color: #ddd4c3;
+
+      font-size: 15px;
+    }
+
+    .calculator-title strong {
+      color: #d9a13b;
+    }
+
+    .external-link {
+      padding: 9px 13px;
+
+      border: 1px solid #765526;
+
+      color: #d9a13b;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+
+      text-decoration: none;
+    }
+
+    .external-link:hover {
+      background: #211a10;
+    }
+
+    /* =========================
+       IFRAME
+       ========================= */
+
+    .calculator-frame {
+      width: 100%;
+      height: 900px;
+
+      border: 0;
+
+      display: block;
+
+      background: #171717;
+    }
+
+    /* =========================
+       FALLBACK
+       ========================= */
+
+    .fallback {
+      padding: 45px 30px;
+
+      text-align: center;
+
+      background: #101516;
+    }
+
+    .fallback h2 {
+      margin: 0 0 12px;
+
+      color: #eee5d4;
+
+      font-size: 28px;
+    }
+
+    .fallback p {
+      max-width: 650px;
+
+      margin: 0 auto 22px;
+
+      color: #aaa59b;
+
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .fallback-button {
+      display: inline-block;
+
+      padding: 12px 20px;
+
+      border: 1px solid #956d2c;
+
+      background: #17140e;
+
+      color: #d9a13b;
+
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+
+      text-decoration: none;
+    }
+
+    .fallback-button:hover {
+      background: #261e11;
+    }
+
+    /* =========================
+       NOTE
+       ========================= */
+
+    .source-note {
+      margin-top: 18px;
+
+      color: #77746e;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .source-note a {
+      color: #a9854a;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 800px) {
+
+      .page {
+        width: min(100% - 20px, 1500px);
+        padding-top: 25px;
+      }
+
+      .page-header {
+        display: block;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 15px;
+      }
+
+      .calculator-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .calculator-frame {
+        height: 850px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header class="page-header">
+
+      <div>
+
+        <div class="eyebrow">
+          Azeroth Forge
+        </div>
+
+        <h1>
+          Calculateur de talents
+        </h1>
+
+        <p class="intro">
+          Construisez, testez et partagez vos spécialisations
+          pour les neuf classes de WoW Forever.
+        </p>
+
+      </div>
+
+      <a
+        class="back-link"
+        href="../index.html"
+      >
+        ← Retour à Azeroth Forge
+      </a>
+
+    </header>
+
+
+    <!-- =========================
+         CALCULATEUR
+         ========================= -->
+
+    <section class="calculator-shell">
+
+      <div class="calculator-top">
+
+        <div class="calculator-title">
+
+          <strong>WoW Forever</strong>
+          — Calculateur de talents
+
+        </div>
+
+        <a
+          class="external-link"
+          href="https://wowforevertalent.com/fr/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ouvrir dans un nouvel onglet →
+        </a>
+
+      </div>
+
+
+      <!--
+        Calculateur WoW Forever Talent
+      -->
+
+      <iframe
+        class="calculator-frame"
+        src="https://wowforevertalent.com/fr/"
+        title="Calculateur de talents WoW Forever"
+        loading="eager"
+        allow="clipboard-write"
+      >
+      </iframe>
+
+
+    </section>
+
+
+    <!-- =========================
+         SOURCE
+         ========================= -->
+
+    <div class="source-note">
+
+      Calculateur fourni par
+      <a
+        href="https://wowforevertalent.com/fr/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WoW Forever Talent
+      </a>.
+
+      Azeroth Forge utilise ce calculateur comme outil externe.
+
+    </div>
+
+  </main>
+
+</body>
+</html>
