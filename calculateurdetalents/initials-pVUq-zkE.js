@@ -1,0 +1,1 @@
+function e(e){let t=e.split(/\s+/).filter(Boolean);return t.length===0?`?`:t.length===1?t[0].slice(0,2):`${t[0][0]??``}${t[1][0]??``}`.toUpperCase()}export{e as t};
