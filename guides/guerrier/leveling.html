@@ -1,572 +1,947 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Guerrier Leveling — Azeroth Forge</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Guide Guerrier Leveling — WoW Forever | Azeroth Forge</title>
 
 <meta name="description"
-content="Guide Guerrier Leveling WoW Forever : talents, rotation, équipement, métiers, consommables et donjons.">
+content="Guide complet du Guerrier pour le leveling dans World of Warcraft Forever : races, talents, rotation, équipement, métiers, consommables et donjons.">
 
-<link rel="stylesheet" href="../../style.css">
+<!-- Wowhead Tooltips -->
+<script>
+const whTooltips = {
+    colorLinks: true,
+    iconizeLinks: true,
+    renameLinks: true,
+    iconSize: 'small'
+};
+</script>
+
+<script src="https://wow.zamimg.com/js/tooltips.js"></script>
 
 <style>
 
 /* =========================================================
-   AZEROTH FORGE — GUIDE GUERRIER LEVELING
-   ========================================================= */
+   BASE
+========================================================= */
 
-.guide-page{
+:root{
+    --bg:#0b0f10;
+    --bg2:#111617;
+    --panel:#171c1d;
+    --panel2:#1c2223;
+    --gold:#d59a3a;
+    --gold2:#f0c36a;
+    --text:#eee9df;
+    --muted:#aaa59b;
+    --line:#5b4224;
+    --green:#8fcf63;
+    --red:#d87575;
+    --blue:#72a9d8;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(circle at 50% -10%,#304047,#0b0f10 65%);
+    color:var(--text);
+    font-family:Georgia,"Times New Roman",serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.af-header{
+    position:sticky;
+    top:0;
+    z-index:9999;
+    background:#080b0cf5;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 4px 20px #0008;
+}
+
+.af-wrap{
+    max-width:1450px;
+    margin:auto;
+    padding:0 30px;
+}
+
+.af-nav{
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.af-brand{
+    display:flex;
+    gap:11px;
+    align-items:center;
+    min-width:275px;
+}
+
+.af-mark{
+    width:50px;
+    height:50px;
+    border:2px solid var(--gold);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:var(--gold2);
+    font-size:25px;
+    flex:none;
+}
+
+.af-brand-title{
+    font-size:26px;
+    font-weight:700;
+    text-transform:uppercase;
+    line-height:1;
+}
+
+.af-brand-title span{
+    color:var(--gold2);
+}
+
+.af-sub{
+    font:10px Arial,sans-serif;
+    color:#a69b89;
+    letter-spacing:2px;
+    margin-top:5px;
+}
+
+.af-links{
+    display:flex;
+    align-items:center;
+    gap:3px;
+}
+
+.af-links a{
+    font:700 12px Arial,sans-serif;
+    text-transform:uppercase;
+    padding:13px 11px;
+    border:1px solid transparent;
+}
+
+.af-links a:hover,
+.af-links a.active{
+    background:#261c10;
+    border-color:#725025;
+    color:var(--gold2);
+}
+
+.af-tools{
+    display:flex;
+    gap:8px;
+    margin-left:auto;
+}
+
+.af-round{
+    width:40px;
+    height:40px;
+    border:1px solid #70542f;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:#e9c47c;
+    font-family:Arial,sans-serif;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
     max-width:1450px;
     margin:auto;
     padding:35px 30px 80px;
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .guide-hero{
-    min-height:360px;
+    min-height:370px;
     display:flex;
     align-items:end;
     position:relative;
     overflow:hidden;
-    border:1px solid #5d4528;
+
     background:
-        linear-gradient(90deg,#080b0cdd,#080b0c55,#080b0cdd),
-        url("../../assets/guerrier-leveling.jpg") center/cover;
+        linear-gradient(
+            0deg,
+            #080b0cee,
+            #080b0c22 75%
+        ),
+        linear-gradient(
+            90deg,
+            #080b0c55,
+            transparent,
+            #080b0c55
+        );
+
+    border:1px solid #594528;
+    border-radius:6px;
 }
 
 .guide-hero-content{
     padding:45px;
-    max-width:900px;
+    max-width:950px;
 }
 
-.guide-kicker{
+.eyebrow{
     font:700 12px Arial,sans-serif;
     letter-spacing:4px;
+    color:var(--gold2);
     text-transform:uppercase;
-    color:#e3b65f;
 }
 
 .guide-hero h1{
-    margin:12px 0;
-    font-size:clamp(45px,6vw,76px);
+    font-size:clamp(44px,6vw,76px);
     line-height:.95;
+    margin:15px 0;
     text-transform:uppercase;
+    text-shadow:0 5px 18px #000;
+}
+
+.guide-hero h1 span{
+    color:var(--gold2);
 }
 
 .guide-hero p{
-    max-width:720px;
+    max-width:780px;
     font-size:18px;
     line-height:1.6;
-    color:#d0c8bc;
+    color:#d0c9bd;
 }
 
-.beta-note{
-    display:inline-block;
-    margin-top:12px;
-    padding:8px 12px;
-    border:1px solid #80602f;
-    background:#171411dd;
-    color:#efc66f;
-    font:700 11px Arial,sans-serif;
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.guide-layout{
+    display:grid;
+    grid-template-columns:240px minmax(0,1fr);
+    gap:35px;
+    margin-top:35px;
+}
+
+/* =========================================================
+   SOMMAIRE
+========================================================= */
+
+.guide-sidebar{
+    position:sticky;
+    top:105px;
+    align-self:start;
+}
+
+.toc{
+    background:#101516;
+    border:1px solid #443a2c;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+.toc-title{
+    padding:15px 17px;
+    background:#181d1e;
+    border-bottom:1px solid #443a2c;
+    color:var(--gold2);
+    font:700 12px Arial,sans-serif;
     text-transform:uppercase;
     letter-spacing:1px;
 }
 
-
-/* LAYOUT */
-
-.guide-layout{
-    display:grid;
-    grid-template-columns:250px minmax(0,1fr);
-    gap:30px;
-    margin-top:35px;
-}
-
-
-/* SOMMAIRE */
-
-.guide-toc{
-    position:sticky;
-    top:105px;
-    align-self:start;
-    padding:20px;
-    background:#111617;
-    border:1px solid #51432e;
-}
-
-.guide-toc-title{
-    font:700 12px Arial,sans-serif;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    color:#e2b866;
-    margin-bottom:15px;
-}
-
-.guide-toc a{
+.toc a{
     display:block;
-    padding:8px 0;
-    border-bottom:1px solid #292b28;
+    padding:10px 15px;
     color:#aaa59b;
-    font:13px Arial,sans-serif;
+    border-bottom:1px solid #252b2c;
+    font:12px Arial,sans-serif;
+    transition:.2s;
 }
 
-.guide-toc a:hover{
-    color:#e8bd69;
-    padding-left:4px;
+.toc a:hover{
+    color:var(--gold2);
+    background:#1b2021;
+    padding-left:19px;
 }
 
+.toc a.sub{
+    padding-left:28px;
+    font-size:11px;
+}
 
-/* CONTENU */
+/* =========================================================
+   CONTENT
+========================================================= */
 
 .guide-content{
     min-width:0;
+}
+
+section{
+    scroll-margin-top:110px;
 }
 
 .guide-section{
     margin-bottom:55px;
 }
 
-.guide-section h2{
-    font-size:34px;
-    margin:0 0 18px;
-    color:#f0d39a;
-    border-bottom:1px solid #493a28;
-    padding-bottom:10px;
-}
-
-.guide-section h3{
-    font-size:23px;
-    color:#e9bd69;
-    margin-top:30px;
-}
-
-.guide-section p{
-    font-size:17px;
-    line-height:1.75;
-    color:#d1cbc1;
-}
-
-.guide-section ul{
-    line-height:1.8;
-    color:#cfc8bd;
-}
-
-
-/* INFOS RAPIDES */
-
-.guide-stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin:25px 0;
-}
-
-.guide-stat{
-    padding:18px;
-    background:#171c1d;
-    border:1px solid #4d402d;
-}
-
-.guide-stat strong{
-    display:block;
-    color:#edc26c;
-    font-size:20px;
-}
-
-.guide-stat span{
-    display:block;
-    margin-top:5px;
-    color:#99958c;
-    font:11px Arial,sans-serif;
-}
-
-
-/* BUILD */
-
-.build-card{
-    background:
-        linear-gradient(145deg,#1c2020,#101415);
-    border:1px solid #6b4b24;
-    padding:25px;
-    margin:20px 0;
-}
-
-.build-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    margin-bottom:20px;
-}
-
-.build-header h3{
-    margin:0;
-}
-
-.build-points{
-    border:1px solid #6e8e35;
-    color:#d4ed8a;
-    padding:8px 12px;
-    font:700 12px Arial,sans-serif;
-}
-
-
-/* ARBRE */
-
-.talent-tree{
-    border:1px solid #493c2b;
-    background:#0b0e12;
-    padding:12px;
-    text-align:center;
-}
-
-.talent-tree img{
-    width:100%;
-    max-width:1050px;
-    display:block;
-    margin:auto;
-}
-
-.tree-caption{
-    padding:12px;
-    color:#aaa59b;
-    font:12px Arial,sans-serif;
-}
-
-
-/* TALENTS */
-
-.talent-list{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-top:20px;
-}
-
-.talent-card{
-    padding:18px;
-    background:#171c1d;
-    border:1px solid #4c402e;
-}
-
-.talent-card strong{
-    display:block;
-    color:#efc46e;
-    font-size:18px;
-}
-
-.talent-card span{
-    display:block;
-    margin-top:7px;
-    color:#aaa59b;
-    font:12px Arial,sans-serif;
-}
-
-
-/* ICÔNES WOWHEAD */
-
-.wh-link{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    color:#e5bd70;
-    font-weight:bold;
-}
-
-.wh-icon{
-    width:36px;
-    height:36px;
-    border:1px solid #80602f;
-    border-radius:3px;
-    vertical-align:middle;
-    background:#080b0c;
-}
-
-.spell-row{
+.section-title{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:12px 0;
-    border-bottom:1px solid #292d2d;
+    gap:15px;
+    margin:0 0 20px;
+    padding-bottom:12px;
+    border-bottom:1px solid #463a29;
 }
 
-.spell-row p{
-    margin:0;
+.section-title span{
+    color:var(--gold2);
     font-size:15px;
 }
 
-
-/* ROTATION */
-
-.rotation{
-    counter-reset:rotation;
+.section-title h2{
+    margin:0;
+    font-size:31px;
+    text-transform:uppercase;
 }
 
-.rotation-step{
-    display:grid;
-    grid-template-columns:45px 48px 1fr;
-    gap:12px;
-    align-items:center;
-    padding:13px;
-    margin:7px 0;
-    background:#151a1b;
-    border:1px solid #373a35;
+.guide-content p{
+    font-size:16px;
+    line-height:1.7;
+    color:#d2ccc2;
 }
 
-.rotation-step::before{
-    counter-increment:rotation;
-    content:counter(rotation);
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    background:#2b2114;
+.guide-content li{
+    margin:8px 0;
+    line-height:1.6;
+    color:#d2ccc2;
+}
+
+/* =========================================================
+   NOTICE FOREVER
+========================================================= */
+
+.forever-note{
+    margin:20px 0;
+    padding:20px 22px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #1d2222,
+            #121617
+        );
+
     border:1px solid #80602f;
-    display:grid;
-    place-items:center;
-    color:#eac06a;
-    font:bold 13px Arial,sans-serif;
+    border-left:4px solid var(--gold);
+
+    border-radius:4px;
 }
 
-.rotation-step img{
-    width:42px;
-    height:42px;
-    border:1px solid #68502e;
+.forever-note strong{
+    display:block;
+    color:var(--gold2);
+    margin-bottom:7px;
+    font-size:17px;
 }
 
-.rotation-step strong{
-    color:#ead0a0;
+.forever-note p{
+    margin:0;
+    font-size:14px;
 }
 
-.rotation-step span{
-    color:#aaa59b;
-    font:13px Arial,sans-serif;
-}
+/* =========================================================
+   FORCES / FAIBLESSES
+========================================================= */
 
-
-/* PROFESSIONS */
-
-.professions{
+.strength-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:15px;
 }
 
-.profession{
+.strength-box{
     padding:23px;
+    background:#151a1b;
+    border:1px solid #403b32;
+    border-radius:5px;
+}
+
+.strength-box h3{
+    margin:0 0 17px;
+    font-size:22px;
+}
+
+.strength-box.strength h3{
+    color:var(--green);
+}
+
+.strength-box.weakness h3{
+    color:var(--red);
+}
+
+.strength-box ul{
+    margin:0;
+    padding-left:20px;
+}
+
+/* =========================================================
+   RACES
+========================================================= */
+
+.race-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.race-card{
+    background:#151a1b;
+    border:1px solid #443b2c;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+.race-header{
+    padding:17px 20px;
+    background:#1c2223;
+    border-bottom:1px solid #443b2c;
+}
+
+.race-header h3{
+    margin:0;
+    font-size:22px;
+    color:var(--gold2);
+}
+
+.race-body{
+    padding:20px;
+}
+
+.race{
+    padding:15px 0;
+    border-bottom:1px solid #2d3233;
+}
+
+.race:last-child{
+    border-bottom:0;
+}
+
+.race-name{
+    font-size:18px;
+    font-weight:bold;
+    color:#f0dfbd;
+}
+
+.race-desc{
+    margin-top:6px;
+    font:13px/1.6 Arial,sans-serif;
+    color:#aaa59b;
+}
+
+.racial{
+    margin-top:7px;
+    font:12px Arial,sans-serif;
+    color:#d6ad63;
+}
+
+/* =========================================================
+   TALENTS
+========================================================= */
+
+.talent-box{
+    background:#101516;
+    border:1px solid #594528;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+.talent-header{
+    padding:22px;
+    background:#181d1e;
+    border-bottom:1px solid #594528;
+}
+
+.talent-header h3{
+    margin:0;
+    font-size:25px;
+}
+
+.talent-header p{
+    margin:8px 0 0;
+    font-size:14px;
+}
+
+.talent-build{
+    padding:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.talent-info{
+    flex:1;
+}
+
+.talent-info strong{
+    display:block;
+    font-size:18px;
+    color:var(--gold2);
+    margin-bottom:8px;
+}
+
+.talent-code{
+    font:12px monospace;
+    color:#aaa;
+}
+
+.talent-button{
+    display:inline-block;
+    padding:13px 20px;
+    background:linear-gradient(#955f20,#5a3513);
+    border:1px solid #a36e2b;
+    color:#fff1d4;
+    font:700 12px Arial,sans-serif;
+    text-transform:uppercase;
+}
+
+.talent-button:hover{
+    background:linear-gradient(#aa6c25,#704418);
+}
+
+.calculator-frame{
+    margin-top:20px;
+    background:#080b0c;
+    border:1px solid #403b32;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.calculator-frame iframe{
+    width:100%;
+    height:760px;
+    border:0;
+    display:block;
+}
+
+/* =========================================================
+   ROTATION
+========================================================= */
+
+.rotation{
+    display:grid;
+    gap:12px;
+}
+
+.rotation-step{
+    display:grid;
+    grid-template-columns:55px 1fr;
+    gap:15px;
+    align-items:start;
+    padding:17px;
     background:#171c1d;
-    border:1px solid #4d402d;
+    border:1px solid #3f3b34;
+    border-radius:4px;
 }
 
-.profession h3{
+.rotation-number{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border:1px solid #80602f;
+    border-radius:50%;
+    color:var(--gold2);
+    font:bold 16px Arial,sans-serif;
+}
+
+.rotation-step strong{
+    display:block;
+    margin-bottom:5px;
+    color:#f0d6a2;
+}
+
+/* =========================================================
+   MILESTONES
+========================================================= */
+
+.milestones{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.milestone{
+    padding:18px;
+    background:#151a1b;
+    border:1px solid #423a2d;
+}
+
+.milestone-level{
+    color:var(--gold2);
+    font:bold 24px Arial,sans-serif;
+}
+
+.milestone-title{
+    margin-top:7px;
+    font-weight:bold;
+}
+
+.milestone-text{
+    margin-top:6px;
+    color:#aaa;
+    font:12px/1.5 Arial,sans-serif;
+}
+
+/* =========================================================
+   EQUIPMENT
+========================================================= */
+
+.loot-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#131819;
+    border:1px solid #443b2d;
+}
+
+.loot-table th{
+    padding:13px;
+    background:#1b2021;
+    color:var(--gold2);
+    font:700 11px Arial,sans-serif;
+    text-align:left;
+    text-transform:uppercase;
+}
+
+.loot-table td{
+    padding:14px 13px;
+    border-top:1px solid #2e3334;
+    font:13px Arial,sans-serif;
+    color:#d1cbc0;
+}
+
+.loot-table tr:hover td{
+    background:#191e1f;
+}
+
+.source{
+    color:#a9a39a;
+}
+
+.source.quest{
+    color:#82b5dd;
+}
+
+.source.dungeon{
+    color:#d8a761;
+}
+
+.source.craft{
+    color:#91c879;
+}
+
+/* =========================================================
+   PROFESSIONS
+========================================================= */
+
+.prof-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.prof{
+    padding:22px;
+    background:#151a1b;
+    border:1px solid #413a2e;
+    border-radius:5px;
+}
+
+.prof h3{
     margin:0 0 10px;
+    color:var(--gold2);
 }
 
-.profession .reason{
-    color:#d6c9b7;
-    line-height:1.6;
+.prof p{
+    margin:0;
+    font-size:14px;
 }
 
+/* =========================================================
+   CONSUMABLES
+========================================================= */
 
-/* ITEMS */
-
-.item-grid{
+.consumable-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:12px;
 }
 
-.item-card{
-    display:flex;
-    gap:15px;
-    align-items:center;
-    padding:15px;
+.consumable{
+    padding:17px;
     background:#151a1b;
-    border:1px solid #3d3b34;
+    border:1px solid #413a2e;
+    border-radius:4px;
 }
 
-.item-card img{
-    width:50px;
-    height:50px;
-    border:1px solid #75552b;
+.consumable h3{
+    margin:0 0 8px;
+    font-size:17px;
 }
 
-.item-card strong{
-    display:block;
-    color:#e9bd69;
+.consumable p{
+    margin:0;
+    font:13px/1.6 Arial,sans-serif;
 }
 
-.item-card small{
-    color:#99958c;
+.stack-note{
+    margin-top:8px;
+    color:#9d978c;
     font:11px Arial,sans-serif;
 }
 
+/* =========================================================
+   DUNGEONS
+========================================================= */
 
-/* CONSOMMABLES */
-
-.consumable-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
+.dungeon-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
-
-.consumable-table th,
-.consumable-table td{
-    padding:12px;
-    border:1px solid #39372f;
-    text-align:left;
-}
-
-.consumable-table th{
-    background:#1b1d1c;
-    color:#e6bd6d;
-    font:700 12px Arial,sans-serif;
-    text-transform:uppercase;
-}
-
-.consumable-table td{
-    color:#c9c2b8;
-    font-size:14px;
-}
-
-
-/* DONJONS */
 
 .dungeon{
-    display:grid;
-    grid-template-columns:180px 1fr;
-    gap:20px;
-    margin:18px 0;
-    padding:18px;
     background:#151a1b;
-    border:1px solid #464031;
+    border:1px solid #443b2d;
+    border-radius:5px;
+    overflow:hidden;
 }
 
-.dungeon-map{
-    min-height:130px;
-    background:#242a2a;
-    border:1px solid #5b4a30;
+.dungeon-top{
+    min-height:125px;
+    background:
+        linear-gradient(#080b0c44,#080b0caa),
+        linear-gradient(120deg,#3b3f42,#161a1b);
     display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#8f8a81;
-    font:11px Arial,sans-serif;
-    text-align:center;
+    align-items:end;
+    padding:17px;
 }
 
-.dungeon h3{
-    margin:0 0 8px;
+.dungeon-top h3{
+    margin:0;
+    font-size:23px;
 }
 
-.dungeon p{
-    font-size:14px;
-    margin:5px 0;
+.dungeon-body{
+    padding:19px;
 }
 
-
-/* LOOT */
-
-.loot-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
+.dungeon-body p{
+    font-size:13px;
 }
 
-.loot-table th,
-.loot-table td{
-    border:1px solid #39372f;
+.dungeon-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin:15px 0;
+}
+
+.dungeon-info div{
     padding:10px;
+    background:#101516;
+    border:1px solid #303637;
+    font:11px Arial,sans-serif;
 }
 
-.loot-table th{
-    color:#e4b967;
-    background:#1a1d1c;
-    font:700 11px Arial,sans-serif;
-    text-transform:uppercase;
+.dungeon-info strong{
+    display:block;
+    color:var(--gold2);
+    margin-bottom:4px;
 }
 
-.loot-table td{
-    color:#c8c1b6;
-    font-size:14px;
+/* =========================================================
+   TIPS
+========================================================= */
+
+.tip-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
-
-/* NOTE */
-
-.guide-note{
-    margin:25px 0;
-    padding:18px 20px;
+.tip{
+    padding:18px;
     background:#171c1d;
-    border-left:3px solid #d59a3a;
-    border-top:1px solid #463a2a;
-    border-right:1px solid #463a2a;
-    border-bottom:1px solid #463a2a;
+    border-left:3px solid var(--gold);
+    border-top:1px solid #3c372e;
+    border-right:1px solid #3c372e;
+    border-bottom:1px solid #3c372e;
 }
 
-.guide-note strong{
-    color:#efc36d;
+.tip strong{
+    color:var(--gold2);
 }
 
+/* =========================================================
+   FOOTER
+========================================================= */
 
-/* RESPONSIVE */
+footer{
+    border-top:1px solid #4b3925;
+    padding:32px 0 45px;
+    font:12px Arial,sans-serif;
+    color:#999;
+}
 
-@media(max-width:1000px){
+.foot{
+    max-width:1450px;
+    margin:auto;
+    padding:0 30px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.foot b{
+    color:#e3c27d;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
+
+    .af-brand{
+        min-width:auto;
+    }
+
+    .af-links a{
+        padding:10px 7px;
+        font-size:10px;
+    }
 
     .guide-layout{
         grid-template-columns:1fr;
     }
 
-    .guide-toc{
+    .guide-sidebar{
         position:relative;
         top:auto;
     }
 
-    .guide-stats{
+    .toc{
+        display:grid;
         grid-template-columns:repeat(2,1fr);
     }
 
-    .talent-list{
-        grid-template-columns:1fr;
+    .toc-title{
+        grid-column:1/-1;
     }
 
+    .milestones{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
-@media(max-width:700px){
+@media(max-width:760px){
 
-    .guide-page{
-        padding:20px 15px 50px;
+    .af-nav{
+        min-height:65px;
+    }
+
+    .af-sub{
+        display:none;
+    }
+
+    .af-brand-title{
+        font-size:20px;
+    }
+
+    .af-mark{
+        width:42px;
+        height:42px;
+    }
+
+    .af-links{
+        display:none;
+    }
+
+    .page{
+        padding:20px 16px 60px;
     }
 
     .guide-hero-content{
         padding:30px 22px;
     }
 
-    .guide-stats{
+    .guide-hero h1{
+        font-size:42px;
+    }
+
+    .strength-grid,
+    .race-grid,
+    .prof-grid,
+    .consumable-grid,
+    .dungeon-grid,
+    .tip-grid{
+        grid-template-columns:1fr;
+    }
+
+    .milestones{
         grid-template-columns:1fr 1fr;
     }
 
-    .professions,
-    .item-grid{
+    .toc{
         grid-template-columns:1fr;
     }
 
-    .dungeon{
-        grid-template-columns:1fr;
+    .toc-title{
+        grid-column:auto;
     }
 
+    .calculator-frame iframe{
+        height:650px;
+    }
+
+    .foot{
+        flex-direction:column;
+        gap:15px;
+    }
 }
 
 </style>
 </head>
 
-
 <body>
 
 <!-- =====================================================
-     HEADER AZEROTH FORGE
-     ===================================================== -->
+     HEADER
+===================================================== -->
 
 <header class="af-header">
 
@@ -576,95 +951,88 @@ content="Guide Guerrier Leveling WoW Forever : talents, rotation, équipement, m
    href="../../index.html"
    aria-label="Retour à Azeroth Forge">
 
-<div class="af-mark">⚒</div>
+    <div class="af-mark">⚒</div>
 
-<div>
-<div class="af-brand-title">
-Azeroth <span>Forge</span>
-</div>
+    <div>
+        <div class="af-brand-title">
+            Azeroth <span>Forge</span>
+        </div>
 
-<div class="af-sub">
-GUIDES · ACTUS · COMMUNAUTÉ
-</div>
-
-</div>
+        <div class="af-sub">
+            GUIDES · ACTUS · COMMUNAUTÉ
+        </div>
+    </div>
 
 </a>
-
 
 <nav class="af-links"
      aria-label="Navigation principale">
 
-<a href="../../index.html">
-Accueil
-</a>
+    <a href="../../index.html">
+        Accueil
+    </a>
 
-<a href="../../actualites/index.html">
-Actualités
-</a>
+    <a href="../../actualites/index.html">
+        Actualités
+    </a>
 
-<a href="../index.html"
-   class="active">
-Guides
-</a>
+    <a href="../index.html"
+       class="active">
+        Guides
+    </a>
 
-<a href="../../calculateurdetalents/index.html">
-Talents
-</a>
+    <a href="../../calculateurdetalents/index.html">
+        Talents
+    </a>
 
-<a href="../../index.html#database">
-Base de données
-</a>
+    <a href="../../index.html#database">
+        Base de données
+    </a>
 
-<a href="../../index.html#community">
-Communauté
-</a>
+    <a href="../../index.html#community">
+        Communauté
+    </a>
 
 </nav>
 
-
 <div class="af-tools">
-
-<div class="af-round">⌕</div>
-<div class="af-round">♙</div>
-
+    <div class="af-round">⌕</div>
+    <div class="af-round">♙</div>
 </div>
 
 </div>
-
 </header>
 
 
+<main class="page">
+
 <!-- =====================================================
-     GUIDE
-     ===================================================== -->
-
-<main class="guide-page">
-
+     HERO
+===================================================== -->
 
 <section class="guide-hero">
 
 <div class="guide-hero-content">
 
-<div class="guide-kicker">
-Azeroth Forge · Guide Guerrier
+<div class="eyebrow">
+    GUIDE GUERRIER · LEVELING
 </div>
 
 <h1>
-Guerrier<br>
-Leveling
+    Guerrier <span>Leveling</span>
 </h1>
 
 <p>
-Du niveau 1 jusqu'au niveau 30, on va voir comment faire progresser
-ton Guerrier sans passer trois heures à lire une encyclopédie.
-Talents, rotation, équipement, métiers, consommables et donjons :
-tout ce qui peut réellement faire gagner du temps.
+    Le Guerrier n'est pas forcément la classe la plus confortable
+    pour monter de niveau. Mais avec une bonne arme, un minimum
+    d'organisation et quelques bons réflexes, le leveling devient
+    beaucoup plus agréable.
 </p>
 
-<div class="beta-note">
-Guide basé sur les données actuelles de la bêta — sujet à évolution
-</div>
+<p>
+    Ce guide est consacré à la progression dans
+    <strong>World of Warcraft Forever</strong>.
+</p>
 
 </div>
 
@@ -673,93 +1041,168 @@ Guide basé sur les données actuelles de la bêta — sujet à évolution
 
 <div class="guide-layout">
 
-
 <!-- =====================================================
-     SOMMAIRE
-     ===================================================== -->
+     SIDEBAR
+===================================================== -->
 
-<aside class="guide-toc">
+<aside class="guide-sidebar">
 
-<div class="guide-toc-title">
-Dans ce guide
+<nav class="toc">
+
+<div class="toc-title">
+    Sommaire
 </div>
 
-<a href="#intro">Le Guerrier en leveling</a>
-<a href="#talents20">Build niveau 20</a>
-<a href="#talents30">Objectif niveau 30</a>
-<a href="#rotation">Rotation</a>
-<a href="#stats">Stats & équipement</a>
-<a href="#professions">Métiers</a>
-<a href="#consommables">Consommables</a>
-<a href="#donjons">Donjons</a>
-<a href="#quetes">Quêtes importantes</a>
-<a href="#conseils">Conseils de leveling</a>
+<a href="#overview">
+    1. Le Guerrier en leveling
+</a>
+
+<a href="#races">
+    2. Choisir sa race
+</a>
+
+<a href="#progression">
+    3. Progression
+</a>
+
+<a href="#talents">
+    4. Talents
+</a>
+
+<a href="#rotation">
+    5. Rotation
+</a>
+
+<a href="#equipment">
+    6. Équipement
+</a>
+
+<a href="#professions">
+    7. Métiers
+</a>
+
+<a href="#consumables">
+    8. Consommables
+</a>
+
+<a href="#dungeons">
+    9. Donjons
+</a>
+
+<a href="#tips">
+    10. Conseils
+</a>
+
+</nav>
 
 </aside>
 
 
 <!-- =====================================================
-     CONTENU
-     ===================================================== -->
+     CONTENT
+===================================================== -->
 
-<article class="guide-content">
+<div class="guide-content">
 
 
-<!-- INTRO -->
+<!-- =====================================================
+     1. OVERVIEW
+===================================================== -->
 
-<section class="guide-section"
-         id="intro">
+<section id="overview"
+         class="guide-section">
 
-<h2>
-Le Guerrier en leveling
-</h2>
+<div class="section-title">
+    <span>01</span>
+    <h2>Le Guerrier en leveling</h2>
+</div>
+
+<div class="strength-grid">
+
+<div class="strength-box strength">
+
+<h3>Forces du Guerrier</h3>
+
+<ul>
+
+<li>
+    Une fois correctement équipé, le Guerrier possède
+    un excellent potentiel de dégâts au corps-à-corps.
+</li>
+
+<li>
+    Il peut également remplir le rôle de tank dans les donjons.
+</li>
+
+<li>
+    Son gameplay possède un vrai plafond de maîtrise :
+    gestion de la rage, positionnement, choix des armes
+    et changement de posture.
+</li>
+
+<li>
+    Il dispose d'un énorme choix d'armes.
+</li>
+
+<li>
+    Son équipement peut faire une énorme différence
+    dans la vitesse de progression.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="strength-box weakness">
+
+<h3>Faiblesses du Guerrier</h3>
+
+<ul>
+
+<li>
+    Le leveling solo peut être plus lent que celui de
+    nombreuses autres classes.
+</li>
+
+<li>
+    La mobilité est limitée.
+</li>
+
+<li>
+    La dépendance à l'arme est importante.
+</li>
+
+<li>
+    Les consommables et les premiers soins deviennent
+    rapidement très utiles.
+</li>
+
+<li>
+    Les réparations peuvent coûter cher.
+</li>
+
+<li>
+    En PvP sauvage et seul, le Guerrier peut être vulnérable
+    lorsqu'il est pris sans rage ou mal positionné.
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="forever-note">
+
+<strong>Important — Forever</strong>
 
 <p>
-Le Guerrier n'a jamais été la classe la plus tranquille à monter.
-Mais Forever change pas mal la donne : nouvelles capacités, nouveaux
-objets, nouvelles récompenses de donjons et surtout davantage
-d'options pour construire son personnage.
-</p>
-
-<p>
-Pour ce guide, on privilégie un gameplay orienté dégâts et leveling
-solo, tout en gardant suffisamment de polyvalence pour rejoindre un
-groupe de donjon sans devoir refaire tout son personnage.
-</p>
-
-
-<div class="guide-stats">
-
-<div class="guide-stat">
-<strong>Rôle</strong>
-<span>DPS mêlée / Tank</span>
-</div>
-
-<div class="guide-stat">
-<strong>Armure</strong>
-<span>Maille puis plaques</span>
-</div>
-
-<div class="guide-stat">
-<strong>Ressource</strong>
-<span>Rage</span>
-</div>
-
-<div class="guide-stat">
-<strong>Spécialisation</strong>
-<span>Fury / Arms selon progression</span>
-</div>
-
-</div>
-
-<div class="guide-note">
-
-<strong>Pourquoi on ne va pas jusqu'au niveau 60 ici ?</strong>
-
-<p>
-Parce que les données Forever continuent d'évoluer pendant la bêta.
-On préfère publier un guide réellement basé sur le jeu plutôt que
-de recycler un arbre Classic et devoir tout refaire ensuite.
+    Ce guide est construit pour WoW Forever et non pour reproduire
+    mécaniquement les guides Classic. Certaines mécaniques, raciaux,
+    objets et talents de Forever ont été modifiés. Les informations
+    susceptibles d'évoluer sont donc volontairement signalées.
 </p>
 
 </div>
@@ -768,324 +1211,560 @@ de recycler un arbre Classic et devoir tout refaire ensuite.
 
 
 <!-- =====================================================
-     TALENTS 20
-     ===================================================== -->
+     2. RACES
+===================================================== -->
 
-<section class="guide-section"
-         id="talents20">
+<section id="races"
+         class="guide-section">
 
-<h2>
-Build niveau 20
-</h2>
+<div class="section-title">
+    <span>02</span>
+    <h2>Choisir sa race</h2>
+</div>
 
 <p>
-À niveau 20, le Guerrier dispose actuellement de 11 points de talents.
-Pour cette première étape du leveling, le build Fury ci-dessous
-s'appuie sur Cruelty, Unbridled Wrath et Piercing Howl.
+    Dans Forever, le Guerrier dispose d'un choix de races beaucoup
+    plus large que dans le Classic historique. Les races disponibles
+    pour Guerrier comprennent notamment Humain, Nain, Elfe de la nuit,
+    Gnome, Orc, Mort-vivant, Tauren, Troll et les Skyborne selon
+    la faction. :chatgpt-content-reference{index="2"}
+</p>
+
+<div class="race-grid">
+
+<div class="race-card">
+
+<div class="race-header">
+    <h3>Alliance</h3>
+</div>
+
+<div class="race-body">
+
+<div class="race">
+
+<div class="race-name">
+    Humain
+</div>
+
+<div class="racial">
+    Spécialisation Épée · Esprit humain · Perception
+</div>
+
+<div class="race-desc">
+    Très intéressant pour un Guerrier qui utilise régulièrement
+    les épées. Forever transforme notamment la Spécialisation Épée
+    en bonus de critique pour les attaques et sorts utilisant
+    une épée. :chatgpt-content-reference{index="3"}
+</div>
+
+</div>
+
+
+<div class="race">
+
+<div class="race-name">
+    Nain
+</div>
+
+<div class="racial">
+    Spécialisation Masse · Stoneform · Big Game Hunter
+</div>
+
+<div class="race-desc">
+    Une option très intéressante si vous aimez les masses et
+    souhaitez disposer d'un bouton défensif très polyvalent.
+    Stoneform peut supprimer plusieurs effets négatifs et réduire
+    les dégâts physiques. :chatgpt-content-reference{index="4"}
+</div>
+
+</div>
+
+
+<div class="race">
+
+<div class="race-name">
+    Elfe de la nuit
+</div>
+
+<div class="racial">
+    Elune's Light · Quickness · Shadowmeld
+</div>
+
+<div class="race-desc">
+    Une combinaison davantage orientée mobilité, esquive et
+    burst. Quickness apporte notamment de la vitesse de déplacement,
+    ce qui est intéressant pendant le leveling. :chatgpt-content-reference{index="5"}
+</div>
+
+</div>
+
+
+<div class="race">
+
+<div class="race-name">
+    Gnome
+</div>
+
+<div class="racial">
+    Eureka! · Escape Artist · Engineering Specialization
+</div>
+
+<div class="race-desc">
+    Une option particulièrement intéressante si vous voulez
+    combiner Guerrier et Ingénierie. Eureka! apporte également
+    un court effet offensif. :chatgpt-content-reference{index="6"}
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="race-card">
+
+<div class="race-header">
+    <h3>Horde</h3>
+</div>
+
+<div class="race-body">
+
+<div class="race">
+
+<div class="race-name">
+    Orc
+</div>
+
+<div class="racial">
+    Spécialisation Hache · Fureur sanguinaire · Solidité
+</div>
+
+<div class="race-desc">
+    Un excellent profil pour un Guerrier orienté combat. Fureur
+    sanguinaire augmente la puissance d'attaque et Solidité réduit
+    la durée des étourdissements subis. :chatgpt-content-reference{index="7"}
+</div>
+
+</div>
+
+
+<div class="race">
+
+<div class="race-name">
+    Troll
+</div>
+
+<div class="racial">
+    Tueur de bêtes · Berserker · Régénération
+</div>
+
+<div class="race-desc">
+    Très intéressant pour le leveling grâce au bonus contre les
+    bêtes, au cooldown Berserker et à sa régénération améliorée. :chatgpt-content-reference{index="8"}
+</div>
+
+</div>
+
+
+<div class="race">
+
+<div class="race-name">
+    Tauren
+</div>
+
+<div class="racial">
+    Endurance · Plainsrunning · Choc martial
+</div>
+
+<div class="race-desc">
+    Le bonus de vie, la mobilité progressive de Plainsrunning et
+    le stun de zone donnent au Tauren un profil très confortable
+    pour le leveling et les donjons. :chatgpt-content-reference{index="9"}
+</div>
+
+</div>
+
+
+<div class="race">
+
+<div class="race-name">
+    Mort-vivant
+</div>
+
+<div class="racial">
+    Cannibalisme · Touch of the Grave · Volonté des Réprouvés
+</div>
+
+<div class="race-desc">
+    Cannibalisme est particulièrement intéressant pendant le
+    leveling puisqu'il permet de récupérer des points de vie
+    entre deux combats sans consommer immédiatement de nourriture. :chatgpt-content-reference{index="10"}
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="forever-note">
+
+<strong>Notre conseil</strong>
+
+<p>
+    Pour le moment, on ne va pas figer une "meilleure race absolue".
+    Forever modifie suffisamment les raciaux pour que le choix dépende
+    aussi de votre style de jeu, de votre arme et de votre objectif.
+    Les données de la beta peuvent encore évoluer avant la sortie.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     3. PROGRESSION
+===================================================== -->
+
+<section id="progression"
+         class="guide-section">
+
+<div class="section-title">
+    <span>03</span>
+    <h2>Progression</h2>
+</div>
+
+<div class="milestones">
+
+<div class="milestone">
+
+<div class="milestone-level">
+    04
+</div>
+
+<div class="milestone-title">
+    Charge
+</div>
+
+<div class="milestone-text">
+    Charge devient disponible au niveau 4 et génère
+    de la rage. Prenez rapidement le réflexe d'engager
+    vos combats avec elle lorsque les conditions le permettent.
+</div>
+
+</div>
+
+
+<div class="milestone">
+
+<div class="milestone-level">
+    08
+</div>
+
+<div class="milestone-title">
+    Contrôle
+</div>
+
+<div class="milestone-text">
+    À partir de ce stade, la gestion du déplacement
+    des ennemis et de votre rage commence réellement
+    à faire la différence.
+</div>
+
+</div>
+
+
+<div class="milestone">
+
+<div class="milestone-level">
+    20
+</div>
+
+<div class="milestone-title">
+    Premier build
+</div>
+
+<div class="milestone-text">
+    On peut commencer à construire un vrai chemin de talents
+    cohérent avec le système Forever.
+</div>
+
+</div>
+
+
+<div class="milestone">
+
+<div class="milestone-level">
+    30
+</div>
+
+<div class="milestone-title">
+    Build Beta
+</div>
+
+<div class="milestone-text">
+    Build à finaliser lorsque les données définitives
+    et le niveau maximum de la beta seront confirmés.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="forever-note">
+
+<strong>Pourquoi on ne pousse pas directement jusqu'au niveau 60 ?</strong>
+
+<p>
+    Parce que ce serait exactement le piège que nous voulons éviter.
+    Les données de WoW Forever sont encore en cours d'évolution.
+    Azeroth Forge doit fournir des informations utiles, pas remplir
+    des cases avec des données Classic qui risquent d'être fausses.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     4. TALENTS
+===================================================== -->
+
+<section id="talents"
+         class="guide-section">
+
+<div class="section-title">
+    <span>04</span>
+    <h2>Talents</h2>
+</div>
+
+<p>
+    Ici, on utilise notre propre configurateur Azeroth Forge.
+    Pas question de copier un arbre Classic et de le présenter
+    comme un arbre Forever.
 </p>
 
 
-<div class="build-card">
+<div class="talent-box">
 
-<div class="build-header">
+<div class="talent-header">
 
 <h3>
-Fury — 11 points
+    Build Guerrier — Niveau 20
 </h3>
 
-<div class="build-points">
-11 / 51
+<p>
+    Build actuellement préparé pour la progression beta.
+    Cliquez pour ouvrir le build directement dans le
+    configurateur Azeroth Forge.
+</p>
+
+</div>
+
+
+<div class="talent-build">
+
+<div class="talent-info">
+
+<strong>
+    Guerrier · Level 20
+</strong>
+
+<div class="talent-code">
+    Build Azeroth Forge · Warrior · v1
 </div>
 
 </div>
 
 
-<div class="talent-tree">
+<a class="talent-button"
+   href="../../calculateurdetalents/index.html#/warrior?v=1&t=-050501"
+   target="_blank">
+
+    Ouvrir le build
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="talent-box"
+     style="margin-top:15px;">
+
+<div class="talent-header">
+
+<h3>
+    Build Guerrier — Niveau 30
+</h3>
+
+<p>
+    Cette partie sera ajoutée dès que nous aurons suffisamment
+    de données Forever fiables pour construire le build.
+</p>
+
+</div>
+
+<div class="talent-build">
+
+<div class="talent-info">
+
+<strong>
+    En construction
+</strong>
+
+<div class="talent-code">
+    Pas de build Classic recyclé ici.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 
 <!--
-IMPORTANT :
-placer ici la capture de l'arbre Forever
-dans :
+     Si le configurateur devient suffisamment stable,
+     on pourra également intégrer directement une vue
+     iframe ici.
 
-assets/talents/guerrier-level20-fury.jpg
+     Pour le moment le bouton reste plus propre et
+     évite d'avoir deux interfaces complètes empilées
+     dans le guide.
 -->
 
-<img
-src="../../assets/talents/guerrier-level20-fury.jpg"
-alt="Arbre de talents Guerrier Fury niveau 20 — World of Warcraft Forever">
-
-<div class="tree-caption">
-Build Fury niveau 20 — données actuelles de la bêta Forever.
-</div>
-
-</div>
-
-
-<div class="talent-list">
-
-<div class="talent-card">
-
-<strong>Cruelty — 5/5</strong>
-
-<span>
-On sécurise rapidement le gain de dégâts lié aux coups critiques.
-</span>
-
-</div>
-
-
-<div class="talent-card">
-
-<strong>Unbridled Wrath — 5/5</strong>
-
-<span>
-Plus de rage pendant le leveling = moins de temps à attendre avant
-de pouvoir utiliser nos capacités offensives.
-</span>
-
-</div>
-
-
-<div class="talent-card">
-
-<strong>Piercing Howl — 1/1</strong>
-
-<span>
-Un point très pratique pour gérer les packs et les mobs qui veulent
-prendre la fuite.
-</span>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
 
 <!-- =====================================================
-     TALENTS 30
-     ===================================================== -->
+     5. ROTATION
+===================================================== -->
 
-<section class="guide-section"
-         id="talents30">
+<section id="rotation"
+         class="guide-section">
 
-<h2>
-Objectif niveau 30
-</h2>
-
-<div class="guide-note">
-
-<strong>Build niveau 30 : à valider</strong>
-
-<p>
-Le niveau 30 sera ajouté avec l'arbre complet dès que la version de
-référence sera suffisamment stable. On ne va volontairement pas
-inventer les derniers points à partir d'un arbre Classic.
-</p>
-
-<p>
-Le niveau 30 est particulièrement intéressant pour le Guerrier :
-c'est également à cette période que commence la progression vers la
-quête de l'arme Tourbillon.
-</p>
-
+<div class="section-title">
+    <span>05</span>
+    <h2>Rotation</h2>
 </div>
 
-</section>
-
-
-<!-- =====================================================
-     ROTATION
-     ===================================================== -->
-
-<section class="guide-section"
-         id="rotation">
-
-<h2>
-Rotation
-</h2>
-
 <p>
-Pas besoin de jouer le Guerrier comme si tu étais en raid mondial.
-En leveling, le but est simple : entrer dans le combat rapidement,
-faire tomber la cible et repartir.
+    En leveling, le but n'est pas de réciter une rotation de raid.
+    Le Guerrier doit surtout gérer sa rage, son temps entre deux
+    combats et la qualité de son arme.
 </p>
 
-
-<h3>
-Avant le niveau 20
-</h3>
 
 <div class="rotation">
 
 <div class="rotation-step">
 
-<img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_battleshout.jpg"
-     alt="Battle Shout">
-
-<div>
-<strong>Battle Shout</strong>
-<span>Maintiens le buff actif avant de partir au combat.</span>
+<div class="rotation-number">
+    1
 </div>
-
-</div>
-
-
-<div class="rotation-step">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_charge.jpg"
-     alt="Charge">
-
-<div>
-<strong>Charge</strong>
-<span>Ton ouverture standard dès que la situation le permet.</span>
-</div>
-
-</div>
-
-
-<div class="rotation-step">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/ability_gouge.jpg"
-     alt="Rend">
-
-<div>
-<strong>Rend</strong>
-<span>Pose-le si la cible va vivre suffisamment longtemps.</span>
-</div>
-
-</div>
-
-
-<div class="rotation-step">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_thunderclap.jpg"
-     alt="Thunder Clap">
-
-<div>
-<strong>Thunder Clap</strong>
-<span>Très intéressant sur plusieurs cibles et pour réduire leur vitesse d'attaque.</span>
-</div>
-
-</div>
-
-
-<div class="rotation-step">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_overpower.jpg"
-     alt="Overpower">
-
-<div>
-<strong>Overpower</strong>
-<span>À utiliser dès que le proc est disponible.</span>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="guide-note">
-
-<strong>Attention à Heroic Strike.</strong>
-
-<p>
-À bas niveau, il est très facile de vider toute sa rage avec Heroic
-Strike. Garde suffisamment de rage pour tes capacités qui ont
-réellement un impact sur le combat.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     STATS / EQUIPEMENT
-     ===================================================== -->
-
-<section class="guide-section"
-         id="stats">
-
-<h2>
-Stats & équipement
-</h2>
-
-<p>
-Pour le leveling, ton arme reste l'objet à surveiller en priorité.
-Un upgrade d'arme peut transformer complètement le rythme des combats.
-</p>
-
-<div class="item-grid">
-
-<div class="item-card">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_39.jpg"
-     alt="Veteran's Silvered Chain Helm">
 
 <div>
 
-<a class="wh-link"
-   href="https://www.wowhead.com/forever/item=250528/veterans-silvered-chain-helm"
-   target="_blank">
+<strong>
+    Engagement
+</strong>
 
-Veteran's Silvered Chain Helm
-
+Utilisez
+<a href="https://www.wowhead.com/forever/spell=100/charge"
+   data-wowhead="spell=100&domain=forever">
+    Charge
 </a>
-
-<small>
-Niveau requis 20 · +10 Force · +9 Endurance
-</small>
+lorsque la situation le permet.
 
 </div>
 
 </div>
 
 
-<div class="item-card">
+<div class="rotation-step">
 
-<img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_mail_05.jpg"
-     alt="Veteran's Chain Leggings">
+<div class="rotation-number">
+    2
+</div>
 
 <div>
 
-<a class="wh-link"
-   href="https://www.wowhead.com/forever/item=250493/veterans-chain-leggings"
-   target="_blank">
+<strong>
+    Construire la rage
+</strong>
 
-Veteran's Chain Leggings
-
-</a>
-
-<small>
-Niveau requis 20 · Force / Agilité / Endurance
-</small>
+Laissez vos attaques automatiques faire leur travail.
+La rage est votre ressource : évitez de la gaspiller sur
+des cibles qui vont mourir immédiatement.
 
 </div>
 
 </div>
 
 
-<div class="item-card">
+<div class="rotation-step">
 
-<img src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_chain_07.jpg"
-     alt="Veteran's Chain Shirt">
+<div class="rotation-number">
+    3
+</div>
 
 <div>
 
-<a class="wh-link"
-   href="https://www.wowhead.com/forever/spell=1252237/veterans-chain-shirt"
-   target="_blank">
+<strong>
+    Dépenser au bon moment
+</strong>
 
-Veteran's Chain Shirt
+Utilisez vos capacités offensives lorsque leur coût est
+rentable par rapport à la durée de vie de la cible.
 
-</a>
+</div>
 
-<small>
-Niveau requis 15 · +7 Force · +4 Agilité · +5 Endurance
-</small>
+</div>
+
+
+<div class="rotation-step">
+
+<div class="rotation-number">
+    4
+</div>
+
+<div>
+
+<strong>
+    Finir le combat proprement
+</strong>
+
+Ne partez pas automatiquement sur la cible suivante avec
+0 rage et 20% de vie. Garder quelques ressources pour
+l'engagement suivant peut accélérer votre progression globale.
+
+</div>
+
+</div>
+
+
+<div class="rotation-step">
+
+<div class="rotation-number">
+    5
+</div>
+
+<div>
+
+<strong>
+    Jouer avec le terrain
+</strong>
+
+Le Guerrier gagne énormément à choisir ses combats :
+évitez les groupes trop importants lorsque vous êtes seul,
+et utilisez votre environnement pour limiter les ennemis.
 
 </div>
 
@@ -1097,184 +1776,35 @@ Niveau requis 15 · +7 Force · +4 Agilité · +5 Endurance
 
 
 <!-- =====================================================
-     METIERS
-     ===================================================== -->
+     6. EQUIPMENT
+===================================================== -->
 
-<section class="guide-section"
-         id="professions">
+<section id="equipment"
+         class="guide-section">
 
-<h2>
-Métiers
-</h2>
+<div class="section-title">
+    <span>06</span>
+    <h2>Équipement</h2>
+</div>
 
 <p>
-Pour un Guerrier qui monte son personnage, le duo le plus logique
-reste <strong>Minage + Forge</strong>. Les deux métiers travaillent
-ensemble et apportent surtout des upgrades directement utilisables.
+    Pendant le leveling, une nouvelle arme peut avoir beaucoup
+    plus d'impact qu'une petite amélioration de statistiques sur
+    plusieurs pièces d'armure. Wowhead Forever permet notamment
+    de filtrer les armes par niveau, DPS, vitesse et provenance. :chatgpt-content-reference{index="11"}
 </p>
 
 
-<div class="professions">
-
-<div class="profession">
-
-<h3>
-Minage
-</h3>
-
-<p class="reason">
-
-Le Minage permet de récupérer directement les minerais nécessaires
-à la Forge. En plus, le métier donne accès au
-<strong>Lodestone</strong>, un buff de camp qui augmente la puissance
-d'attaque en mêlée.
-
-</p>
-
-<p class="reason">
-
-À noter : Lodestone ne se cumule pas avec
-Blessing of Might. Si tu joues régulièrement avec un Paladin,
-le choix du buff de camp peut donc changer.
-
-</p>
-
-</div>
-
-
-<div class="profession">
-
-<h3>
-Forge
-</h3>
-
-<p class="reason">
-
-La Forge permet de fabriquer plusieurs pièces intéressantes pendant
-le leveling : casque, torse, jambes, ceinture, bottes et autres
-upgrades selon ton niveau de compétence.
-
-</p>
-
-<p class="reason">
-
-Elle donne également accès à la
-<strong>Sharpening Wheel</strong>, qui apporte de la Force et constitue
-un excellent buff de camp pour un Guerrier.
-
-</p>
-
-</div>
-
-</div>
-
-
-<h3>
-Exemples d'objets à surveiller
-</h3>
-
-<div class="item-grid">
-
-<div class="item-card">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/inv_helmet_39.jpg">
-
-<div>
-
-<a class="wh-link"
-href="https://www.wowhead.com/forever/item=250528/veterans-silvered-chain-helm"
-target="_blank">
-
-Veteran's Silvered Chain Helm
-
-</a>
-
-<small>
-Très bon upgrade niveau 20.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="item-card">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/inv_pants_mail_05.jpg">
-
-<div>
-
-<a class="wh-link"
-href="https://www.wowhead.com/forever/item=250493/veterans-chain-leggings"
-target="_blank">
-
-Veteran's Chain Leggings
-
-</a>
-
-<small>
-Force + Agilité + Endurance.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="item-card">
-
-<img src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_chain_07.jpg">
-
-<div>
-
-<a class="wh-link"
-href="https://www.wowhead.com/forever/spell=1252237/veterans-chain-shirt"
-target="_blank">
-
-Veteran's Chain Shirt
-
-</a>
-
-<small>
-Disponible dès le niveau 15.
-</small>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     CONSOMMABLES
-     ===================================================== -->
-
-<section class="guide-section"
-         id="consommables">
-
-<h2>
-Consommables
-</h2>
-
-<p>
-Les consommables ne sont pas là uniquement pour les boss. Sur un
-Guerrier, quelques buffs bien choisis peuvent réduire sensiblement
-le temps passé entre deux combats.
-</p>
-
-
-<table class="consumable-table">
+<table class="loot-table">
 
 <thead>
 
 <tr>
-<th>Consommable</th>
-<th>Effet</th>
-<th>Quand l'utiliser</th>
-<th>Cumul</th>
+    <th>Objet</th>
+    <th>Type</th>
+    <th>Niveau</th>
+    <th>Provenance</th>
+    <th>Pourquoi ?</th>
 </tr>
 
 </thead>
@@ -1284,27 +1814,25 @@ le temps passé entre deux combats.
 <tr>
 
 <td>
-
-<a class="wh-link"
-href="https://www.wowhead.com/forever/item=2454/elixir-of-minor-strength"
-target="_blank">
-
-Elixir of Minor Strength
-
+<a href="https://www.wowhead.com/forever/item=6975/whirlwind-axe">
+    Whirlwind Axe
 </a>
-
 </td>
 
 <td>
-+4 Force pendant 1 heure.
+Hache 2M
 </td>
 
 <td>
-Excellent début de leveling.
+30
+</td>
+
+<td class="source quest">
+Quête Guerrier
 </td>
 
 <td>
-Battle Elixir.
+Un objectif majeur autour du niveau 30.
 </td>
 
 </tr>
@@ -1313,27 +1841,25 @@ Battle Elixir.
 <tr>
 
 <td>
-
-<a class="wh-link"
-href="https://www.wowhead.com/forever/spell=3188/elixir-of-ogre-strength"
-target="_blank">
-
-Elixir of Ogre Strength
-
+<a href="https://www.wowhead.com/forever/item=6908/wind-horn">
+    Wind Horn
 </a>
-
 </td>
 
 <td>
-+8 Force pendant 1 heure à partir du niveau 20.
+À vérifier
 </td>
 
 <td>
-Très intéressant pour accélérer les combats.
+—
+</td>
+
+<td class="source">
+À confirmer
 </td>
 
 <td>
-Battle Elixir : ne remplace pas un Guardian Elixir.
+Donnée à vérifier avant publication définitive.
 </td>
 
 </tr>
@@ -1342,27 +1868,26 @@ Battle Elixir : ne remplace pas un Guardian Elixir.
 <tr>
 
 <td>
-
-<a class="wh-link"
-href="https://www.wowhead.com/forever/item=3389/elixir-of-defense"
-target="_blank">
-
-Elixir of Defense
-
+<a href="https://www.wowhead.com/forever/item=6505/crescent-staff">
+    Crescent Staff
 </a>
-
 </td>
 
 <td>
-+150 Armure pendant 1 heure.
+Arme 2M
 </td>
 
 <td>
-Excellent choix si tu prends beaucoup de dégâts ou tankes.
+20
+</td>
+
+<td class="source quest">
+Quête
 </td>
 
 <td>
-Guardian Elixir.
+Exemple d'arme avec une bonne plage de dégâts
+et des statistiques utiles pour la progression.
 </td>
 
 </tr>
@@ -1372,14 +1897,15 @@ Guardian Elixir.
 </table>
 
 
-<div class="guide-note">
+<div class="forever-note">
 
-<strong>Force + Armure : oui, c'est possible.</strong>
+<strong>Règle simple</strong>
 
 <p>
-Un Battle Elixir et un Guardian Elixir occupent deux catégories
-différentes. Tu peux donc combiner un buff de Force avec un buff
-d'armure lorsqu'ils sont disponibles et adaptés à ton niveau.
+    Pendant le leveling, comparez d'abord les armes sur leur
+    dégâts/DPS et leur niveau d'utilisation avant de vous focaliser
+    sur une petite différence de statistiques. Wowhead Forever
+    recense actuellement plus de 1 900 armes dans sa base. :chatgpt-content-reference{index="12"}
 </p>
 
 </div>
@@ -1388,220 +1914,113 @@ d'armure lorsqu'ils sont disponibles et adaptés à ton niveau.
 
 
 <!-- =====================================================
-     DONJONS
-     ===================================================== -->
+     7. PROFESSIONS
+===================================================== -->
 
-<section class="guide-section"
-         id="donjons">
+<section id="professions"
+         class="guide-section">
 
-<h2>
-Donjons
-</h2>
-
-<p>
-Les donjons méritent davantage d'attention dans Forever : une partie
-importante de l'expérience passe désormais par les quêtes de donjon,
-et les récompenses ont été renforcées. Il faut donc éviter de faire
-un donjon sans avoir récupéré ses quêtes. :chatgpt-content-reference{index="3"}
-</p>
-
-
-<div class="dungeon">
-
-<div class="dungeon-map">
-IMAGE CARTE<br>
-À AJOUTER
+<div class="section-title">
+    <span>07</span>
+    <h2>Métiers</h2>
 </div>
 
-<div>
+
+<div class="prof-grid">
+
+<div class="prof">
 
 <h3>
-Cavernes des Lamentations
+    Ingénierie
 </h3>
 
 <p>
-Zone : Les Tarides
+    Excellent choix pour un Guerrier qui veut optimiser son leveling.
+    Les gadgets, explosifs et outils apportent des solutions
+    supplémentaires à une classe qui manque naturellement de
+    mobilité et de contrôle à distance.
 </p>
 
-<p>
-À faire pour les quêtes et certains upgrades d'équipement.
-</p>
-
-<table class="loot-table">
-
-<tr>
-<th>Objet</th>
-<th>Pourquoi le Guerrier le veut</th>
-</tr>
-
-<tr>
-<td>Rockslicer</td>
-<td>Upgrade d'arme potentiel</td>
-</tr>
-
-<tr>
-<td>Cobrahn's Grasp</td>
-<td>Pièce intéressante pour le leveling</td>
-</tr>
-
-<tr>
-<td>Mutant Scale Breastplate</td>
-<td>Très bonne pièce de torse</td>
-</tr>
-
-</table>
-
-</div>
-
 </div>
 
 
-<div class="dungeon">
-
-<div class="dungeon-map">
-IMAGE CARTE<br>
-À AJOUTER
-</div>
-
-<div>
+<div class="prof">
 
 <h3>
-Ruines de Lordaeron
+    Alchimie
 </h3>
 
 <p>
-Zone : Lordaeron
+    Très intéressante pour produire ses propres potions et élixirs.
+    Forever conserve notamment des consommables comme
+    <a href="https://www.wowhead.com/forever/item=2454/elixir-of-minor-strength"
+       data-wowhead="item=2454&domain=forever">
+        Elixir of Minor Strength
+    </a>.
 </p>
 
-<p>
-À surveiller notamment pour les pièces ajoutées dans Forever.
-</p>
-
-<table class="loot-table">
-
-<tr>
-<th>Objet</th>
-<th>Pourquoi</th>
-</tr>
-
-<tr>
-<td>Grip of Fear</td>
-<td>Upgrade intéressant pour DPS mêlée</td>
-</tr>
-
-</table>
-
-</div>
-
 </div>
 
 
-<div class="dungeon">
-
-<div class="dungeon-map">
-IMAGE CARTE<br>
-À AJOUTER
-</div>
-
-<div>
+<div class="prof">
 
 <h3>
-Les Mortemines
+    Herboristerie
 </h3>
 
 <p>
-Zone : Bois de la Pénombre
+    Très bonne association avec Alchimie et intéressante pour
+    financer le leveling. Elle permet également de profiter
+    directement des plantes rencontrées pendant la progression.
 </p>
+
+</div>
+
+
+<div class="prof">
+
+<h3>
+    Forge
+</h3>
 
 <p>
-Très intéressant pour les armes et équipements de leveling.
+    La Forge prend tout son sens si vous souhaitez fabriquer
+    directement une partie de votre équipement. Elle permet aussi
+    de construire une identité de personnage très cohérente :
+    récolter les minerais, fabriquer des améliorations et revendre
+    les surplus.
 </p>
 
-<table class="loot-table">
-
-<tr>
-<th>Objet</th>
-<th>Pourquoi</th>
-</tr>
-
-<tr>
-<td>Bandsaw Wristbands</td>
-<td>Bracelets Maille avec effet défensif intéressant</td>
-</tr>
-
-</table>
-
-</div>
-
 </div>
 
 
-<div class="guide-note">
+<div class="prof">
 
-<strong>Petit réflexe :</strong>
+<h3>
+    Premiers soins
+</h3>
 
 <p>
-Avant de lancer un donjon, vérifie toujours les quêtes disponibles.
-Dans Forever, les mobs donnent moins d'XP qu'avant et une partie de
-l'XP a été déplacée vers les quêtes de donjon.
+    À monter systématiquement pendant le leveling. Le Guerrier
+    bénéficie énormément de la possibilité de récupérer des points
+    de vie entre deux combats sans attendre systématiquement
+    une régénération complète.
 </p>
 
 </div>
 
-</section>
 
+<div class="prof">
 
-<!-- =====================================================
-     QUETES
-     ===================================================== -->
-
-<section class="guide-section"
-         id="quetes">
-
-<h2>
-Quêtes à surveiller
-</h2>
+<h3>
+    Dépeçage
+</h3>
 
 <p>
-Certaines récompenses sont suffisamment intéressantes pour mériter
-qu'on adapte légèrement son itinéraire de leveling autour d'elles.
+    Un choix simple si l'objectif est de générer des pièces pendant
+    le leveling. Il se combine facilement avec le dépeçage des
+    créatures rencontrées naturellement.
 </p>
-
-<div class="item-grid">
-
-<div class="item-card">
-
-<div>
-
-<strong>
-Arme de quête
-</strong>
-
-<small>
-Les récompenses d'armes des quêtes de donjon sont particulièrement
-intéressantes dans Forever.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="item-card">
-
-<div>
-
-<strong>
-Brutal Hauberk
-</strong>
-
-<small>
-La chaîne de quête Guerrier devient accessible autour du niveau 20,
-mais elle demande un groupe ou de l'aide pour être réalisée
-confortablement.
-</small>
-
-</div>
 
 </div>
 
@@ -1611,62 +2030,121 @@ confortablement.
 
 
 <!-- =====================================================
-     CONSEILS
-     ===================================================== -->
+     8. CONSUMABLES
+===================================================== -->
 
-<section class="guide-section"
-         id="conseils">
+<section id="consumables"
+         class="guide-section">
 
-<h2>
-Les petits trucs qui font la différence
-</h2>
-
-<ul>
-
-<li>
-Mets à jour ton arme dès que tu trouves une vraie amélioration.
-</li>
-
-<li>
-Ne vide pas toute ta Rage avec Heroic Strike à chaque attaque.
-</li>
-
-<li>
-Garde toujours quelques consommables dans tes sacs.
-</li>
-
-<li>
-Récupère les quêtes de donjon avant d'entrer dans l'instance.
-</li>
-
-<li>
-Si tu joues avec un Paladin, pense au conflit entre Lodestone et
-Blessing of Might.
-</li>
-
-<li>
-Si tu joues avec un Shaman, compare Sharpening Wheel avec
-Strength of Earth Totem.
-</li>
-
-<li>
-Ne te sens pas obligé de suivre un build au point près pendant le
-leveling : le confort de jeu compte aussi.
-</li>
-
-</ul>
-
-
-<div class="guide-note">
-
-<strong>
-Dernière règle : l'arme d'abord.
-</strong>
+<div class="section-title">
+    <span>08</span>
+    <h2>Consommables</h2>
+</div>
 
 <p>
-Un Guerrier avec une arme dépassée peut avoir de beaux objets partout
-ailleurs et quand même avoir l'impression de taper avec une baguette.
-Quand tu dois choisir entre deux upgrades, regarde d'abord ton arme.
+    Les consommables sont particulièrement intéressants sur un
+    Guerrier. L'objectif n'est pas de claquer tout votre stock
+    sur chaque sanglier venu vous chercher des noises : on veut
+    surtout réduire les temps morts et sécuriser les combats
+    importants.
+</p>
+
+
+<div class="consumable-grid">
+
+
+<div class="consumable">
+
+<h3>
+
+<a href="https://www.wowhead.com/forever/item=2454/elixir-of-minor-strength"
+   data-wowhead="item=2454&domain=forever">
+
+    Elixir of Minor Strength
+
+</a>
+
+</h3>
+
+<p>
+    Augmente la Force de 4 pendant 1 heure.
+    Très intéressant pendant les premiers niveaux.
+</p>
+
+<div class="stack-note">
+    Élixir de combat — vérifiez les interactions avec les autres
+    élixirs de même catégorie avant de chercher à les cumuler.
+</div>
+
+</div>
+
+
+<div class="consumable">
+
+<h3>
+
+<a href="https://www.wowhead.com/forever/item=2457/elixir-of-minor-agility"
+   data-wowhead="item=2457&domain=forever">
+
+    Elixir of Minor Agility
+
+</a>
+
+</h3>
+
+<p>
+    Une alternative orientée Agilité. À comparer avec les
+    consommables Force selon votre équipement et votre niveau.
+</p>
+
+<div class="stack-note">
+    Ne partez pas du principe que tous les buffs d'élixir
+    peuvent être actifs simultanément.
+</div>
+
+</div>
+
+
+<div class="consumable">
+
+<h3>
+    Nourriture
+</h3>
+
+<p>
+    Gardez toujours de quoi récupérer rapidement après un combat.
+    Le temps passé assis à attendre est du temps de leveling perdu.
+</p>
+
+</div>
+
+
+<div class="consumable">
+
+<h3>
+    Premiers soins
+</h3>
+
+<p>
+    Les bandages restent l'un des meilleurs outils du Guerrier :
+    vous pouvez récupérer des points de vie sans dépendre d'un
+    soigneur ou d'une potion.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="forever-note">
+
+<strong>Le principe à retenir</strong>
+
+<p>
+    Un consommable doit avoir une raison d'être dans votre sac :
+    gain de dégâts, survie ou réduction du temps de récupération.
+    Les buffs de même catégorie ne doivent pas être supposés
+    cumulables sans vérification de leur fonctionnement Forever.
 </p>
 
 </div>
@@ -1674,14 +2152,339 @@ Quand tu dois choisir entre deux upgrades, regarde d'abord ton arme.
 </section>
 
 
-</article>
+<!-- =====================================================
+     9. DONJONS
+===================================================== -->
 
+<section id="dungeons"
+         class="guide-section">
+
+<div class="section-title">
+    <span>09</span>
+    <h2>Donjons</h2>
+</div>
+
+<p>
+    Le Guerrier possède un énorme avantage pendant le leveling :
+    il peut aussi chercher des groupes comme tank. Cela permet
+    d'enchaîner les donjons tout en travaillant son équipement.
+</p>
+
+
+<div class="dungeon-grid">
+
+
+<div class="dungeon">
+
+<div class="dungeon-top">
+
+<h3>
+    Mortemines
+</h3>
+
+</div>
+
+<div class="dungeon-body">
+
+<div class="dungeon-info">
+
+<div>
+<strong>Faction</strong>
+Alliance
+</div>
+
+<div>
+<strong>Zone</strong>
+Marche de l'Ouest
+</div>
+
+<div>
+<strong>Niveau</strong>
+À confirmer Forever
+</div>
+
+<div>
+<strong>Objectif Guerrier</strong>
+Armes / armure
+</div>
+
+</div>
+
+<p>
+    Une première étape importante pour récupérer de
+    l'équipement et prendre l'habitude de jouer en groupe.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="dungeon">
+
+<div class="dungeon-top">
+
+<h3>
+    Cavernes des Lamentations
+</h3>
+
+</div>
+
+<div class="dungeon-body">
+
+<div class="dungeon-info">
+
+<div>
+<strong>Faction</strong>
+Horde / Alliance
+</div>
+
+<div>
+<strong>Zone</strong>
+Les Tarides
+</div>
+
+<div>
+<strong>Niveau</strong>
+À confirmer Forever
+</div>
+
+<div>
+<strong>Objectif Guerrier</strong>
+Équipement
+</div>
+
+</div>
+
+<p>
+    Donjon intéressant pendant la progression, avec plusieurs
+    possibilités de récupération d'équipement.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="dungeon">
+
+<div class="dungeon-top">
+
+<h3>
+    Monastère écarlate
+</h3>
+
+</div>
+
+<div class="dungeon-body">
+
+<div class="dungeon-info">
+
+<div>
+<strong>Zone</strong>
+Clairières de Tirisfal
+</div>
+
+<div>
+<strong>Objectif</strong>
+Armes / armures
+</div>
+
+<div>
+<strong>Partie</strong>
+Plusieurs ailes
+</div>
+
+<div>
+<strong>Guerrier</strong>
+Très intéressant
+</div>
+
+</div>
+
+<p>
+    Un des passages classiques les plus intéressants pour
+    renouveler progressivement son équipement.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="dungeon">
+
+<div class="dungeon-top">
+
+<h3>
+    Donjons 20–30
+</h3>
+
+</div>
+
+<div class="dungeon-body">
+
+<p>
+    Cette partie sera enrichie avec les tables de loot
+    spécifiques Forever dès que les données seront suffisamment
+    stables pour éviter de publier une liste erronée.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="forever-note">
+
+<strong>La prochaine étape du guide</strong>
+
+<p>
+    Une fois les données Forever stabilisées, cette section pourra
+    devenir l'une des plus utiles du site : pour chaque donjon,
+    Azeroth Forge affichera la localisation, le niveau conseillé,
+    les boss importants et surtout les objets intéressants pour
+    Guerrier avec leur provenance.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     10. TIPS
+===================================================== -->
+
+<section id="tips"
+         class="guide-section">
+
+<div class="section-title">
+    <span>10</span>
+    <h2>Conseils de leveling</h2>
+</div>
+
+
+<div class="tip-grid">
+
+
+<div class="tip">
+
+<strong>
+    Votre arme passe avant beaucoup de choses
+</strong>
+
+<p>
+    Surveillez régulièrement les nouvelles armes.
+    Une bonne arme accélère directement vos combats.
+</p>
+
+</div>
+
+
+<div class="tip">
+
+<strong>
+    Ne combattez pas n'importe quoi
+</strong>
+
+<p>
+    Deux ennemis de votre niveau peuvent être beaucoup plus
+    dangereux qu'un ennemi légèrement inférieur.
+    Le Guerrier gagne à choisir ses combats.
+</p>
+
+</div>
+
+
+<div class="tip">
+
+<strong>
+    Gardez un équipement secondaire
+</strong>
+
+<p>
+    Conservez au minimum une arme à une main et un bouclier.
+    Cela peut faire la différence lorsqu'un groupe cherche
+    un tank ou lorsqu'un combat devient compliqué.
+</p>
+
+</div>
+
+
+<div class="tip">
+
+<strong>
+    Gérez votre rage
+</strong>
+
+<p>
+    Une barre de rage vide au début de chaque combat peut
+    rallonger votre temps de leveling. Pensez à la rage comme
+    une ressource à gérer sur plusieurs combats.
+</p>
+
+</div>
+
+
+<div class="tip">
+
+<strong>
+    Premiers soins : ne les oubliez pas
+</strong>
+
+<p>
+    Le temps passé à récupérer entre les combats est l'un
+    des facteurs importants de votre vitesse de progression.
+    Les bandages réduisent directement ce temps mort.
+</p>
+
+</div>
+
+
+<div class="tip">
+
+<strong>
+    Ne copiez pas aveuglément Classic
+</strong>
+
+<p>
+    Forever change les races, les objets, les compétences et
+    les talents. Une stratégie connue de Vanilla peut donc
+    ne plus être optimale.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
 </div>
 
 </main>
 
 
-<script src="https://wow.zamimg.com/widgets/power.js"></script>
+<footer>
+
+<div class="foot">
+
+<div>
+    <b>Azeroth Forge</b>
+    — Guides, actualités et outils pour WoW Forever.
+</div>
+
+<div>
+    Guide Guerrier — Leveling
+</div>
+
+</div>
+
+</footer>
 
 </body>
 </html>
