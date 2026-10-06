@@ -618,49 +618,194 @@ section{
 }
 
 /* =========================================================
-   DUNGEONS
-   ========================================================= */
+   DONJONS
+========================================================= */
 
-.dungeon{
-  display:grid;
-  grid-template-columns:230px 1fr;
-  gap:0;
-  overflow:hidden;
-  border:1px solid #49402f;
-  background:#121719;
+.guide-section{
+  margin-top:70px;
 }
 
-.dungeon-image{
-  min-height:240px;
-  background:
-    linear-gradient(0deg,#080b0dcc,transparent),
-    var(--dungeon-image) center/cover;
+.section-kicker{
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:3px;
+  color:#d79a3c;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.guide-section h2{
+  margin:0 0 18px;
+  color:#f3e8d3;
+  font-size:36px;
+}
+
+.section-intro{
+  max-width:900px;
+  color:#bdbab2;
+  line-height:1.7;
+  font-size:16px;
+}
+
+.dungeon-card{
+  margin-top:28px;
+  border:1px solid #4d402d;
+  background:#101617;
+  border-radius:5px;
+  overflow:hidden;
+}
+
+.dungeon-header{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  padding:25px 28px;
+  background:linear-gradient(110deg,#1b2020,#111516);
+  border-bottom:1px solid #443925;
+}
+
+.dungeon-header h3{
+  margin:7px 0 5px;
+  color:#f3e8d3;
+  font-size:27px;
+}
+
+.dungeon-level{
+  margin:0;
+  color:#aaa59d;
+  font:12px Arial,sans-serif;
+}
+
+.dungeon-meta{
+  min-width:220px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  font:12px Arial,sans-serif;
+  color:#aaa59d;
+}
+
+.dungeon-meta strong{
+  color:#dca85a;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:5px;
 }
 
 .dungeon-body{
-  padding:22px;
+  padding:28px;
 }
 
-.dungeon-body h3{
-  margin-top:0;
+.dungeon-body h4{
+  margin:25px 0 12px;
+  color:#e8c27c;
+  font-size:21px;
+}
+
+.dungeon-body p{
+  color:#bdbab2;
+  line-height:1.7;
+}
+
+.dungeon-faction{
+  display:inline-block;
+  padding:5px 9px;
+  font:700 10px Arial,sans-serif;
+  letter-spacing:1px;
+}
+
+.dungeon-faction.alliance{
+  background:#315b79;
+  color:#e6f2ff;
+}
+
+.dungeon-faction.horde{
+  background:#63352f;
+  color:#ffe8e3;
+}
+
+.new-dungeon{
+  display:inline-block;
+  padding:6px 10px;
+  margin-bottom:12px;
+  border:1px solid #765321;
+  color:#e2b764;
+  font:700 10px Arial,sans-serif;
+  letter-spacing:1px;
 }
 
 .loot-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
+  border:1px solid #41382c;
+  border-radius:4px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.loot-row{
+  display:grid;
+  grid-template-columns:2fr 1.2fr 1.7fr;
+  gap:15px;
+  padding:12px 15px;
+  border-bottom:1px solid #302b25;
+  color:#aaa69f;
   font:13px Arial,sans-serif;
 }
 
-.loot-table th,
-.loot-table td{
-  border-bottom:1px solid #353631;
-  padding:9px;
-  text-align:left;
+.loot-row:last-child{
+  border-bottom:0;
 }
 
-.loot-table th{
-  color:var(--gold2);
+.loot-row:not(.loot-head):hover{
+  background:#1a1f20;
+}
+
+.loot-head{
+  background:#1b2021;
+  color:#d9c7a4;
+  font-weight:bold;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+.loot-item{
+  color:#e1b45f;
+}
+
+.dungeon-tip{
+  margin-top:22px;
+  padding:18px 20px;
+  border-left:3px solid #bd7d25;
+  background:#171c1d;
+}
+
+.dungeon-tip strong{
+  color:#efc56f;
+}
+
+.dungeon-tip p{
+  margin:7px 0 0;
+}
+
+@media(max-width:700px){
+
+  .dungeon-header{
+    display:block;
+  }
+
+  .dungeon-meta{
+    margin-top:18px;
+  }
+
+  .loot-row{
+    grid-template-columns:1fr;
+    gap:5px;
+  }
+
+  .loot-head{
+    display:none;
+  }
+
 }
 
 /* =========================================================
@@ -2007,180 +2152,568 @@ Cumul : selon catégorie de buff
 </section>
 
 
-<!-- ======================================================
-     8. DONJONS
-     ====================================================== -->
+<!-- =========================================================
+     7. DONJONS 10-20
+========================================================= -->
 
-<section id="dungeons" class="section">
+<section id="donjons" class="guide-section">
 
-<div class="section-title">
+  <div class="section-kicker">07 · LEVELING</div>
 
-<div class="section-number">08</div>
+  <h2>Donjons 10-20</h2>
 
-<h2>
-Donjons
-</h2>
+  <p class="section-intro">
+    Les donjons sont particulièrement intéressants pour un Guerrier :
+    ils permettent de récupérer des armes et de l'équipement qui peuvent
+    rester pertinents pendant plusieurs niveaux.
+  </p>
 
-</div>
-
-
-<div class="card">
-
-<h3>
-Ne sous-estime surtout pas les donjons
-</h3>
-
-<p>
-Le guerrier est particulièrement à l'aise en groupe.
-Un bon groupe permet de réduire énormément ses faiblesses :
-le manque de soins, les temps morts et les combats contre plusieurs
-mobs.
-</p>
-
-<p>
-Et surtout : les donjons sont l'un des meilleurs moyens de récupérer
-une vraie amélioration d'arme.
-</p>
-
-</div>
+  <p class="section-intro">
+    On ne cherche pas forcément à faire chaque donjon dix fois.
+    L'idée est plutôt de savoir <strong>quels objets valent vraiment le détour</strong>.
+  </p>
 
 
-<div class="dungeon"
-style="--dungeon-image:url('../../assets/donjons/mortes-mines.jpg')">
+  <!-- MORTEMINES -->
 
-<div class="dungeon-image"></div>
+  <article class="dungeon-card">
 
-<div class="dungeon-body">
+    <div class="dungeon-header">
 
-<div class="faction">
-Alliance / Horde
-</div>
+      <div>
+        <span class="dungeon-faction alliance">ALLIANCE</span>
 
-<h3>
-Les Mortemines
-</h3>
+        <h3>Les Mortemines</h3>
 
-<p>
-Une instance importante du début de leveling.
-Excellent endroit pour récupérer de l'équipement et compléter
-plusieurs quêtes en même temps.
-</p>
+        <p class="dungeon-level">
+          Niveau conseillé : 17-20
+        </p>
+      </div>
 
-<table class="loot-table">
+      <div class="dungeon-meta">
+        <strong>Localisation</strong>
+        <span>Westfall · Moonbrook</span>
+      </div>
 
-<tr>
-<th>À surveiller</th>
-<th>Type</th>
-<th>Pour</th>
-</tr>
-
-<tr>
-<td>
-<a
-class="wh-link"
-href="https://www.wowhead.com/forever/database"
-target="_blank">
-Arme
-</a>
-</td>
-<td>Arme</td>
-<td>DPS</td>
-</tr>
-
-<tr>
-<td>
-<a
-class="wh-link"
-href="https://www.wowhead.com/forever/database"
-target="_blank">
-Pièce d'armure
-</a>
-</td>
-<td>Plaques / Maille</td>
-<td>Guerrier</td>
-</tr>
-
-</table>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="dungeon"
-style="--dungeon-image:url('../../assets/donjons/wailing-caverns.jpg');margin-top:15px">
+    <div class="dungeon-body">
 
-<div class="dungeon-image"></div>
+      <h4>Pourquoi y aller ?</h4>
 
-<div class="dungeon-body">
+      <p>
+        Excellente source d'armes pour un Guerrier pendant la tranche
+        15-20. Les Mortemines restent l'un des passages les plus
+        intéressants du leveling Alliance.
+      </p>
 
-<div class="faction">
-Horde / Alliance
-</div>
-
-<h3>
-Cavernes des Lamentations
-</h3>
-
-<p>
-Un donjon intéressant pour compléter le leveling et récupérer
-des améliorations tout en faisant les quêtes associées.
-</p>
-
-<table class="loot-table">
-
-<tr>
-<th>À surveiller</th>
-<th>Type</th>
-<th>Pour</th>
-</tr>
-
-<tr>
-<td>
-<a
-class="wh-link"
-href="https://www.wowhead.com/forever/database"
-target="_blank">
-Arme
-</a>
-</td>
-<td>Arme</td>
-<td>DPS</td>
-</tr>
-
-<tr>
-<td>
-<a
-class="wh-link"
-href="https://www.wowhead.com/forever/database"
-target="_blank">
-Équipement
-</a>
-</td>
-<td>Armure</td>
-<td>Guerrier</td>
-</tr>
-
-</table>
-
-</div>
-
-</div>
+      <p>
+        Le donjon propose plusieurs armes particulièrement intéressantes
+        pour les classes de mêlée.
+      </p>
 
 
-<div class="construction" style="margin-top:20px">
+      <h4>Loot Guerrier à surveiller</h4>
 
-<strong>
-Table de loot Forever en construction
-</strong>
+      <div class="loot-table">
 
-<p>
-Chaque donjon recevra progressivement sa localisation, son niveau
-conseillé, les quêtes importantes et surtout les objets réellement
-intéressants pour le Guerrier.
-</p>
+        <div class="loot-row loot-head">
+          <span>Objet</span>
+          <span>Type</span>
+          <span>Source</span>
+        </div>
 
-</div>
+        <a class="loot-row"
+           href="https://www.wowhead.com/forever/item=5191/cruel-barb"
+           target="_blank"
+           rel="noopener">
+
+          <span class="loot-item">
+            Cruel Barb
+          </span>
+
+          <span>Épée 1M</span>
+          <span>Edwin Van Cleef</span>
+
+        </a>
+
+
+        <a class="loot-row"
+           href="https://www.wowhead.com/forever/item=7230/smites-mighty-hammer"
+           target="_blank"
+           rel="noopener">
+
+          <span class="loot-item">
+            Smite's Mighty Hammer
+          </span>
+
+          <span>Masse 2M</span>
+          <span>Mr. Smite</span>
+
+        </a>
+
+
+        <a class="loot-row"
+           href="https://www.wowhead.com/forever/item=5196/smites-reaver"
+           target="_blank"
+           rel="noopener">
+
+          <span class="loot-item">
+            Smite's Reaver
+          </span>
+
+          <span>Hache 1M</span>
+          <span>Mr. Smite</span>
+
+        </a>
+
+
+        <a class="loot-row"
+           href="https://www.wowhead.com/forever/item=1937/blackwater-cutlass"
+           target="_blank"
+           rel="noopener">
+
+          <span class="loot-item">
+            Buzz Saw
+          </span>
+
+          <span>Hache 2M</span>
+          <span>Sneed</span>
+
+        </a>
+
+
+        <div class="loot-row">
+          <span class="loot-item">Rockslicer</span>
+          <span>Hache 2M</span>
+          <span>Rhahk'Zor</span>
+        </div>
+
+
+        <div class="loot-row">
+          <span class="loot-item">Rhahk'Zor's Hammer</span>
+          <span>Masse 2M</span>
+          <span>Rhahk'Zor</span>
+        </div>
+
+      </div>
+
+
+      <div class="dungeon-tip">
+
+        <strong>Priorité Guerrier</strong>
+
+        <p>
+          Si tu joues arme à deux mains, surveille particulièrement
+          les armes de Rhahk'Zor, Sneed et Mr. Smite.
+          Si tu joues une configuration à une main, Cruel Barb reste
+          une excellente cible.
+        </p>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- RAGEFIRE CHASM -->
+
+  <article class="dungeon-card">
+
+    <div class="dungeon-header">
+
+      <div>
+
+        <span class="dungeon-faction horde">HORDE</span>
+
+        <h3>Gouffre de Ragefeu</h3>
+
+        <p class="dungeon-level">
+          Niveau conseillé : 10-15
+        </p>
+
+      </div>
+
+      <div class="dungeon-meta">
+        <strong>Localisation</strong>
+        <span>Orgrimmar · Faille de l'Ombre</span>
+      </div>
+
+    </div>
+
+
+    <div class="dungeon-body">
+
+      <p>
+        Le premier vrai donjon Horde. Les quêtes commencent dès les
+        alentours du niveau 9 et permettent de récupérer de l'expérience
+        ainsi que quelques récompenses intéressantes.
+      </p>
+
+
+      <h4>Récompenses intéressantes pour Guerrier</h4>
+
+      <div class="loot-table">
+
+        <div class="loot-row loot-head">
+          <span>Objet</span>
+          <span>Type</span>
+          <span>Source</span>
+        </div>
+
+        <a class="loot-row"
+           href="https://www.wowhead.com/forever/item=15445/axe-of-orgrimmar"
+           target="_blank"
+           rel="noopener">
+
+          <span class="loot-item">
+            Axe of Orgrimmar
+          </span>
+
+          <span>Hache 2M</span>
+          <span>Quête « Hidden Enemies »</span>
+
+        </a>
+
+
+        <div class="loot-row">
+          <span class="loot-item">Hammer of Orgrimmar</span>
+          <span>Masse 1M</span>
+          <span>Quête « Hidden Enemies »</span>
+        </div>
+
+
+        <div class="loot-row">
+          <span class="loot-item">Ghastly Trousers</span>
+          <span>Jambes</span>
+          <span>Quête</span>
+        </div>
+
+      </div>
+
+
+      <div class="dungeon-tip">
+
+        <strong>À retenir</strong>
+
+        <p>
+          Ragefire Chasm est surtout intéressant pour l'expérience,
+          les quêtes et le remplacement de ton équipement de départ.
+        </p>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- HALL OF THANES -->
+
+  <article class="dungeon-card">
+
+    <div class="dungeon-header">
+
+      <div>
+
+        <span class="dungeon-faction alliance">ALLIANCE</span>
+
+        <h3>Hall of Thanes</h3>
+
+        <p class="dungeon-level">
+          Niveau conseillé : 13-18
+        </p>
+
+      </div>
+
+      <div class="dungeon-meta">
+        <strong>Localisation</strong>
+        <span>Forgefer · Vieux Forgefer</span>
+      </div>
+
+    </div>
+
+
+    <div class="dungeon-body">
+
+      <div class="new-dungeon">
+        NOUVEAU · WORLD OF WARCRAFT FOREVER
+      </div>
+
+      <p>
+        Le Hall of Thanes est l'un des nouveaux donjons de Forever.
+        Il se situe dans le Vieux Forgefer et propose une progression
+        adaptée aux personnages autour du niveau 13 à 18.
+      </p>
+
+
+      <h4>Le gros objectif Guerrier</h4>
+
+      <div class="loot-table">
+
+        <div class="loot-row loot-head">
+          <span>Objet</span>
+          <span>Type</span>
+          <span>Source</span>
+        </div>
+
+        <a class="loot-row"
+           href="https://www.wowhead.com/forever/item=279895/ironforge-greathammer"
+           target="_blank"
+           rel="noopener">
+
+          <span class="loot-item">
+            Ironforge Greathammer
+          </span>
+
+          <span>Masse 2M</span>
+          <span>Quête « Old Ironforge Incursion »</span>
+
+        </a>
+
+
+        <div class="loot-row">
+          <span class="loot-item">Durgen's Crescent Axe</span>
+          <span>Hache 1M</span>
+          <span>Durgen Dirgehammer</span>
+        </div>
+
+
+        <div class="loot-row">
+          <span class="loot-item">Golemguard Chest</span>
+          <span>Plastron maille</span>
+          <span>Plunder</span>
+        </div>
+
+
+        <div class="loot-row">
+          <span class="loot-item">Kindlegem Girdle</span>
+          <span>Ceinture maille</span>
+          <span>Magmatus</span>
+        </div>
+
+      </div>
+
+
+      <div class="dungeon-tip">
+
+        <strong>À ne pas rater</strong>
+
+        <p>
+          <strong>Ironforge Greathammer</strong> est une récompense de
+          quête particulièrement intéressante pour un Guerrier pendant
+          cette tranche de niveaux, notamment grâce à sa Force et son
+          Endurance.
+        </p>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- WC -->
+
+  <article class="dungeon-card">
+
+    <div class="dungeon-header">
+
+      <div>
+
+        <span class="dungeon-faction horde">HORDE</span>
+
+        <h3>Cavernes des Lamentations</h3>
+
+        <p class="dungeon-level">
+          Niveau conseillé : 15-20
+        </p>
+
+      </div>
+
+      <div class="dungeon-meta">
+        <strong>Localisation</strong>
+        <span>Les Tarides</span>
+      </div>
+
+    </div>
+
+
+    <div class="dungeon-body">
+
+      <p>
+        Les Cavernes des Lamentations sont particulièrement intéressantes
+        pour les quêtes et quelques récompenses de progression.
+        Les quêtes principales commencent autour du niveau 13-15.
+      </p>
+
+
+      <h4>Récompenses à surveiller</h4>
+
+      <div class="loot-table">
+
+        <div class="loot-row loot-head">
+          <span>Objet</span>
+          <span>Type</span>
+          <span>Source</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Cobrahn's Grasp</span>
+          <span>Ceinture maille</span>
+          <span>Lady Anacondra</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Savage Trodders</span>
+          <span>Bottes maille</span>
+          <span>Boss</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Mutant Scale Breastplate</span>
+          <span>Plastron maille</span>
+          <span>Mutanus</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Wingblade</span>
+          <span>Épée 1M</span>
+          <span>Récompense de quête</span>
+        </div>
+
+      </div>
+
+
+      <div class="dungeon-tip">
+
+        <strong>Bonus</strong>
+
+        <p>
+          La quête « Leaders of the Fang » propose notamment le choix
+          entre Crescent Staff et Wingblade. Pour un Guerrier,
+          <strong>Wingblade</strong> est naturellement la récompense
+          à regarder en priorité.
+        </p>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- RUINS OF LORDAERON -->
+
+  <article class="dungeon-card">
+
+    <div class="dungeon-header">
+
+      <div>
+
+        <span class="dungeon-faction horde">HORDE</span>
+
+        <h3>Ruines de Lordaeron</h3>
+
+        <p class="dungeon-level">
+          Niveau conseillé : 16-22
+        </p>
+
+      </div>
+
+      <div class="dungeon-meta">
+        <strong>Localisation</strong>
+        <span>Au-dessus d'Undercity · Tirisfal</span>
+      </div>
+
+    </div>
+
+
+    <div class="dungeon-body">
+
+      <div class="new-dungeon">
+        NOUVEAU · WORLD OF WARCRAFT FOREVER
+      </div>
+
+      <p>
+        Les Ruines de Lordaeron sont un autre nouveau donjon de Forever.
+        La progression recommandée se situe autour du niveau 16-22.
+      </p>
+
+
+      <h4>Loot intéressant pour Guerrier</h4>
+
+      <div class="loot-table">
+
+        <div class="loot-row loot-head">
+          <span>Objet</span>
+          <span>Type</span>
+          <span>Source</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Corpse Chopper</span>
+          <span>Hache 2M</span>
+          <span>Bjork</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Vileblood Scimitar</span>
+          <span>Épée 1M</span>
+          <span>Viktor the Vile</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Scepter of the Abandoned</span>
+          <span>Masse 1M</span>
+          <span>The Abandoned</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Atrophic Girdle</span>
+          <span>Ceinture maille</span>
+          <span>Witherfang</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Abomination Bones</span>
+          <span>Plastron maille</span>
+          <span>The Baron</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Bonerust Leggings</span>
+          <span>Jambières maille</span>
+          <span>Bjork</span>
+        </div>
+
+        <div class="loot-row">
+          <span class="loot-item">Grip of Fear</span>
+          <span>Gants maille</span>
+          <span>The Abandoned</span>
+        </div>
+
+      </div>
+
+
+      <div class="dungeon-tip">
+
+        <strong>Objectif Guerrier</strong>
+
+        <p>
+          <strong>Corpse Chopper</strong> est clairement l'un des objets
+          à surveiller si tu continues à jouer arme à deux mains.
+          Le donjon propose également plusieurs pièces maille intéressantes
+          pour compléter ton équipement.
+        </p>
+
+      </div>
+
+    </div>
+
+  </article>
 
 </section>
 
