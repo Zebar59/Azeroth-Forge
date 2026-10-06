@@ -892,46 +892,43 @@ footer .af-wrap{
   }
 }
 
-     /* =========================================================
-   CORRECTION — SECTION DONJONS
-   ========================================================= */
+/* ================================
+   DONJONS 10-20
+   Correction de la grille
+================================ */
 
-#donjons{
+.dungeons-section{
   display:block !important;
   width:100%;
 }
 
-#donjons > .section-title{
+.dungeons-section .dungeon-card{
+  display:block;
+  width:100%;
+  grid-column:1 / -1;
+}
+
+/* Les cartes doivent rester sur toute la largeur */
+.dungeons-section .dungeon-header{
   display:flex;
-  width:100%;
+  justify-content:space-between;
+  align-items:center;
 }
 
-#donjons > .section-intro{
-  display:block;
-  width:100%;
-  max-width:900px;
-}
-
-#donjons > .dungeon-card{
+.dungeons-section .dungeon-body{
   display:block;
   width:100%;
 }
 
-</style>
+/* Tableau du loot */
+.dungeons-section .loot-table{
+  width:100%;
+}
 
-<!-- =========================================================
-     WOWHEAD TOOLTIPS
-     ========================================================= -->
-<script>
-const whScript = document.createElement("script");
-whScript.src = "https://wow.zamimg.com/js/tooltips.js";
-whScript.async = true;
-document.head.appendChild(whScript);
-</script>
-
-</head>
-
-<body>
+.dungeons-section .loot-row{
+  display:grid;
+  grid-template-columns:2fr 1.2fr 1.7fr;
+}
 
 <!-- =========================================================
      HEADER
